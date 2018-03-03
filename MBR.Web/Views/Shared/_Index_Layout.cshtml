@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>@MBR.Web.Constants.PRODUCT_NAME</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="~/Scripts/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Scripts/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/Content/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="~/Content/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="~/plugins/datatables/dataTables.bootstrap.css">
+    <link rel="stylesheet" href="~/Content/Site.css">
+    @RenderSection("header", required: false)
+    <!--[if lt IE 9]>
+    <script src="~/Scripts/excanvas.min.js"></script>
+    <script src="~/Scripts/html5shiv.min.js"></script>
+    <script src="~/Scripts/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
+        @Html.Partial("_Header")
+        @Html.Partial("_Menu")
+        <div class="content-wrapper">
+            <section class="content-header">
+              <h1>
+                @Request["caption"]
+              </h1>
+              @*<ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+              </ol>*@
+            </section>
+            <section class="content">
+                @RenderBody()
+            </section>
+        </div>
+        @Html.Partial("_Footer")
+    </div>
+    <script src="~/plugins/jQuery/jquery-1.12.4.min.js"></script>
+    <script src="~/plugins/jQuery/jquery-migrate.min.js"></script>
+    <script src="~/Scripts/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+    <script src="~/plugins/fastclick/fastclick.js"></script>
+    <script src="~/Scripts/app.min.js"></script>
+    <script src="~/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/plugins/datatables/dataTables.bootstrap.min.js"></script>
+    <script src="~/plugins/bootbox/bootbox.min.js"></script>
+    <script src="~/plugins/blockUI/jquery.blockUI.js"></script>
+    <script src="~/plugins/bootstrap-growl/jquery.bootstrap-growl.min.js"></script>
+    <script src="~/Scripts/mes.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            MES.init();
+            var o = $('.sidebar-menu').find('#_mes_module_@Request["module"]');
+            o.parentsUntil('.sidebar-menu').each(function () {
+                if ($(this).hasClass('treeview-menu')) {
+                    $(this).addClass('menu-open');
+                    $(this).show();
+                }
+                if ($(this).hasClass('treeview')) {
+                    $(this).addClass('active');
+                }
+            });
+        });
+    </script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

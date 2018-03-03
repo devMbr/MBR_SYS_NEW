@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>@MBR.Web.Constants.PRODUCT_NAME</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="~/Scripts/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Scripts/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/Content/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="~/Content/Site.css">
+    @RenderSection("header", required: false)
+    <!--[if lt IE 9]>
+    <script src="~/Scripts/excanvas.min.js"></script>
+    <script src="~/Scripts/html5shiv.min.js"></script>
+    <script src="~/Scripts/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    @RenderBody()
+    <script src="~/plugins/jQuery/jquery-1.12.4.min.js"></script>
+    <script src="~/plugins/jQuery/jquery-migrate.min.js"></script>
+    <script src="~/Scripts/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/plugins/datatables/dataTables.bootstrap.min.js"></script>
+    <script src="~/Scripts/mes.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

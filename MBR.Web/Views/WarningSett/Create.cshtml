@@ -1,0 +1,55 @@
+﻿@model MBR.Models.WN_WarningSett
+
+@{
+    Layout = "~/Views/Shared/_Edit_Layout.cshtml";
+    
+}
+@using (Ajax.BeginForm("Create", "WarningSett", null, new AjaxOptions
+{
+    HttpMethod = "POST",
+    OnSuccess = "OnSuccess",
+    OnFailure = "OnFailure",
+}, new { @class = "form-horizontal", id = "frmEdit" }))
+{
+    <div class="form-body">
+        <div class="form-group">
+            @Html.LabelFor(m => m.Title, new { @class = "control-label col-xs-3" })
+            <div class="col-xs-9">
+                @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Title)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.WarningLevel, new { @class = "control-label col-xs-3" })
+            <div class="col-xs-9">
+                @Html.TextBoxFor(m => m.WarningLevel, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.WarningLevel)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.WarningInfo, new { @class = "control-label col-xs-3" })
+            <div class="col-xs-9">
+                @Html.TextBoxFor(m => m.WarningInfo, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.WarningInfo)
+            </div>
+        </div>
+    </div>
+}
+@section header{
+}
+@section scripts{
+    <script>
+        $(function () {
+
+
+        });
+
+        function OnSuccess(data) {
+            
+        }
+
+        function OnFailure(data) {
+            parent.doFailure(data.message);
+        }
+    </script>
+}

@@ -1,0 +1,101 @@
+﻿@model MES.Models.Role
+@{
+    Layout = "~/Views/Shared/_Edit_Layout.cshtml";
+}
+@section header{
+    <link href="~/plugins/jstree/themes/default/style.min.css" rel="stylesheet">
+}
+@using (Ajax.BeginForm("Edit", "Role", null, new AjaxOptions
+{
+    HttpMethod = "POST",
+    OnSuccess = "OnSuccess",
+    OnFailure = "OnFailure",
+}, new { @class = "form-horizontal", id = "frmEdit" }))
+{
+    @Html.HiddenFor(m => m.RoleID)
+    @Html.HiddenFor(m => m.ModuleIds)
+    @Html.HiddenFor(m => m.CompanyID)
+    @Html.HiddenFor(m => m.Category)
+    @Html.HiddenFor(m => m.Code)
+    @Html.HiddenFor(m => m.Status)
+    @Html.HiddenFor(m => m.OrderBy)
+    <div class="form-body">
+        <div class="form-group">
+            @Html.LabelFor(m => m.FullName, new { @class = "control-label col-xs-3" })
+            <div class="col-xs-9">
+                @Html.TextBoxFor(m => m.FullName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.FullName)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Note, new { @class = "control-label col-xs-3" })
+            <div class="col-xs-9">
+                @Html.TextAreaFor(m => m.Note, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Note)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.ROLECONFIG.DEFAULTLOGINURL, new { @class = "control-label col-xs-3" })
+            <div class="col-xs-9">
+                @Html.HiddenFor(m=>m.ROLECONFIG.RoleID)
+                @Html.HiddenFor(m=>m.ROLECONFIG.DEFAULTLOGINURL)    
+                @Html.DropDownList("ModuleList", null, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.ROLECONFIG.DEFAULTLOGINURL)
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-xs-3">角色权限</label>
+            <div class="col-xs-9">
+                <div id="treeModule"></div>
+            </div>
+        </div>
+    </div>
+}
+@section scripts{
+    <script src="~/plugins/jstree/jstree.min.js"></script>
+    <script>
+        $(function () {
+            var GetModuleTreeUrl = '@Url.Action("GetModuleTree","Module")';
+            $.getJSON(GetModuleTreeUrl, function (json) {
+                $('#treeModule').jstree({
+                    'plugins': ["checkbox"],
+                    "core": {
+                        "data": json
+                    }
+                });
+
+                window.setTimeout(function () {
+
+                    //
+                    $('#treeModule').jstree().uncheck_all();
+                    var checkedStr = $('#ModuleIds').val().split(',');
+                    //$(checkedStr).each(function () {
+                    $.each(checkedStr, function (index, val) {
+                        var node = $('#treeModule').jstree().get_node(val);
+                        if (node) $('#treeModule').jstree().check_node(node);
+                    });
+                }, 500);
+            });
+
+
+        });
+
+        function SetValues() {
+            var checkedArr = $('#treeModule').jstree().get_checked();
+            //Array.prototype.push.apply(checkedArr, $('#treeModule').jstree().get_top_checked());
+            $('#ModuleIds').val(checkedArr);
+
+            var defaultloginurl = $('#ModuleList').val();
+            $('#ROLECONFIG_DEFAULTLOGINURL').val(defaultloginurl);
+            $('#ROLECONFIG_RoleID').val($('#RoleID').val());
+        }
+
+        function OnSuccess(data) {
+            parent.doSuccess(parent.$('#tbRole'), data.message);
+        }
+
+        function OnFailure(data) {
+            parent.doFailure(data.message);
+        }
+    </script>
+}

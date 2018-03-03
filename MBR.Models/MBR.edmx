@@ -1,0 +1,1734 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MBRModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="MBRModelStoreContainer">
+          <EntitySet Name="AirValve" EntityType="MBRModel.Store.AirValve" store:Type="Tables" Schema="mbr" />
+          <EntitySet Name="AN_CLCurve" EntityType="MBRModel.Store.AN_CLCurve" store:Type="Tables" Schema="mbr" />
+          <EntitySet Name="AN_HighCurve" EntityType="MBRModel.Store.AN_HighCurve" store:Type="Tables" Schema="mbr" />
+          <EntitySet Name="AN_LowCurve" EntityType="MBRModel.Store.AN_LowCurve" store:Type="Tables" Schema="mbr" />
+          <EntitySet Name="AN_NetInfo" EntityType="MBRModel.Store.AN_NetInfo" store:Type="Tables" Schema="mbr" />
+          <EntitySet Name="CIPPump" EntityType="MBRModel.Store.CIPPump" store:Type="Tables" Schema="mbr" />
+          <EntitySet Name="Knowlege" EntityType="MBRModel.Store.Knowlege" store:Type="Tables" Schema="mbr" />
+          <EntitySet Name="MBR_Info" EntityType="MBRModel.Store.MBR_Info" store:Type="Tables" Schema="mbr" />
+          <EntitySet Name="MBR_Pool" EntityType="MBRModel.Store.MBR_Pool" store:Type="Tables" Schema="mbr" />
+          <EntitySet Name="MBR_RunningInfo" EntityType="MBRModel.Store.MBR_RunningInfo" store:Type="Tables" Schema="mbr" />
+          <EntitySet Name="MBR_WashingInfo" EntityType="MBRModel.Store.MBR_WashingInfo" store:Type="Tables" Schema="mbr" />
+          <EntitySet Name="Module" EntityType="MBRModel.Store.Module" store:Type="Tables" Schema="mbr" />
+          <EntitySet Name="ModulePermission" EntityType="MBRModel.Store.ModulePermission" store:Type="Tables" Schema="mbr" />
+          <EntitySet Name="Role" EntityType="MBRModel.Store.Role" store:Type="Tables" Schema="mbr" />
+          <EntitySet Name="RoleUser" EntityType="MBRModel.Store.RoleUser" store:Type="Tables" Schema="mbr" />
+          <EntitySet Name="Settings" EntityType="MBRModel.Store.Settings" store:Type="Tables" Schema="mbr" />
+          <EntitySet Name="SYS_CIPLog" EntityType="MBRModel.Store.SYS_CIPLog" store:Type="Tables" Schema="mbr" />
+          <EntitySet Name="SYS_ParamCurValue" EntityType="MBRModel.Store.SYS_ParamCurValue" store:Type="Tables" Schema="mbr" />
+          <EntitySet Name="SYS_ParamInfo" EntityType="MBRModel.Store.SYS_ParamInfo" store:Type="Tables" Schema="mbr" />
+          <EntitySet Name="SYS_PoisonLog" EntityType="MBRModel.Store.SYS_PoisonLog" store:Type="Tables" Schema="mbr" />
+          <EntitySet Name="SysException" EntityType="MBRModel.Store.SysException" store:Type="Tables" Schema="mbr" />
+          <EntitySet Name="SysLog" EntityType="MBRModel.Store.SysLog" store:Type="Tables" Schema="mbr" />
+          <EntitySet Name="User" EntityType="MBRModel.Store.User" store:Type="Tables" Schema="mbr" />
+          <EntitySet Name="WarningStat" EntityType="MBRModel.Store.WarningStat" store:Type="Tables" Schema="mbr" />
+          <EntitySet Name="WN_ParamSett" EntityType="MBRModel.Store.WN_ParamSett" store:Type="Tables" Schema="mbr" />
+          <EntitySet Name="WN_WarningCond" EntityType="MBRModel.Store.WN_WarningCond" store:Type="Tables" Schema="mbr" />
+          <EntitySet Name="WN_WarningLog" EntityType="MBRModel.Store.WN_WarningLog" store:Type="Tables" Schema="mbr" />
+          <EntitySet Name="WN_WarningSett" EntityType="MBRModel.Store.WN_WarningSett" store:Type="Tables" Schema="mbr" />
+          <AssociationSet Name="FK_Reference_1" Association="MBRModel.Store.FK_Reference_1">
+            <End Role="WN_WarningSett" EntitySet="WN_WarningSett" />
+            <End Role="WN_WarningCond" EntitySet="WN_WarningCond" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reference_10" Association="MBRModel.Store.FK_Reference_10">
+            <End Role="MBR_Info" EntitySet="MBR_Info" />
+            <End Role="AN_LowCurve" EntitySet="AN_LowCurve" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reference_11" Association="MBRModel.Store.FK_Reference_11">
+            <End Role="MBR_Info" EntitySet="MBR_Info" />
+            <End Role="AN_CLCurve" EntitySet="AN_CLCurve" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reference_12" Association="MBRModel.Store.FK_Reference_12">
+            <End Role="MBR_Pool" EntitySet="MBR_Pool" />
+            <End Role="AN_NetInfo" EntitySet="AN_NetInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reference_17" Association="MBRModel.Store.FK_Reference_17">
+            <End Role="MBR_Info" EntitySet="MBR_Info" />
+            <End Role="MBR_WashingInfo" EntitySet="MBR_WashingInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reference_2" Association="MBRModel.Store.FK_Reference_2">
+            <End Role="WN_WarningCond" EntitySet="WN_WarningCond" />
+            <End Role="WN_ParamSett" EntitySet="WN_ParamSett" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reference_22" Association="MBRModel.Store.FK_Reference_22">
+            <End Role="User" EntitySet="User" />
+            <End Role="RoleUser" EntitySet="RoleUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reference_3" Association="MBRModel.Store.FK_Reference_3">
+            <End Role="WN_WarningSett" EntitySet="WN_WarningSett" />
+            <End Role="WN_WarningLog" EntitySet="WN_WarningLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reference_4" Association="MBRModel.Store.FK_Reference_4">
+            <End Role="WN_WarningSett" EntitySet="WN_WarningSett" />
+            <End Role="WarningStat" EntitySet="WarningStat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reference_5" Association="MBRModel.Store.FK_Reference_5">
+            <End Role="MBR_Pool" EntitySet="MBR_Pool" />
+            <End Role="MBR_Info" EntitySet="MBR_Info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reference_53" Association="MBRModel.Store.FK_Reference_53">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="RoleUser" EntitySet="RoleUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reference_55" Association="MBRModel.Store.FK_Reference_55">
+            <End Role="Module" EntitySet="Module" />
+            <End Role="ModulePermission" EntitySet="ModulePermission" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reference_6" Association="MBRModel.Store.FK_Reference_6">
+            <End Role="SYS_ParamInfo" EntitySet="SYS_ParamInfo" />
+            <End Role="SYS_ParamCurValue" EntitySet="SYS_ParamCurValue" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reference_60" Association="MBRModel.Store.FK_Reference_60">
+            <End Role="Module" EntitySet="Module" />
+            <End Role="Module1" EntitySet="Module" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reference_7" Association="MBRModel.Store.FK_Reference_7">
+            <End Role="MBR_Pool" EntitySet="MBR_Pool" />
+            <End Role="MBR_RunningInfo" EntitySet="MBR_RunningInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reference_8" Association="MBRModel.Store.FK_Reference_8">
+            <End Role="MBR_Pool" EntitySet="MBR_Pool" />
+            <End Role="MBR_WashingInfo" EntitySet="MBR_WashingInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reference_9" Association="MBRModel.Store.FK_Reference_9">
+            <End Role="MBR_Info" EntitySet="MBR_Info" />
+            <End Role="AN_HighCurve" EntitySet="AN_HighCurve" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AirValve">
+          <Key>
+            <PropertyRef Name="AirValveID" />
+          </Key>
+          <Property Name="AirValveID" Type="int" Nullable="false" />
+          <Property Name="Status_Code" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="AN_CLCurve">
+          <Key>
+            <PropertyRef Name="InfoID" />
+          </Key>
+          <Property Name="InfoID" Type="int" Nullable="false" />
+          <Property Name="Coeff_LV3" Type="double" />
+          <Property Name="Coeff_LV2" Type="double" />
+          <Property Name="Coeff_LV1" Type="double" />
+          <Property Name="Const" Type="double" />
+          <Property Name="UpdateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="AN_HighCurve">
+          <Key>
+            <PropertyRef Name="InfoID" />
+          </Key>
+          <Property Name="InfoID" Type="int" Nullable="false" />
+          <Property Name="Coeff_LV3" Type="double" />
+          <Property Name="Coeff_LV2" Type="double" />
+          <Property Name="Coeff_LV1" Type="double" />
+          <Property Name="Const" Type="double" />
+          <Property Name="UpdateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="AN_LowCurve">
+          <Key>
+            <PropertyRef Name="InfoID" />
+          </Key>
+          <Property Name="InfoID" Type="int" Nullable="false" />
+          <Property Name="Coeff_LV3" Type="double" />
+          <Property Name="Coeff_LV2" Type="double" />
+          <Property Name="Coeff_LV1" Type="double" />
+          <Property Name="Const" Type="double" />
+          <Property Name="UpdateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="AN_NetInfo">
+          <Key>
+            <PropertyRef Name="PoolID" />
+          </Key>
+          <Property Name="PoolID" Type="int" Nullable="false" />
+          <Property Name="Matrix1" Type="longtext" />
+          <Property Name="UpdateTime1" Type="datetime" />
+          <Property Name="Matrix2" Type="longtext" />
+          <Property Name="UpdateTime2" Type="datetime" />
+          <Property Name="Matrix3" Type="longtext" />
+          <Property Name="UpdateTime3" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CIPPump">
+          <Key>
+            <PropertyRef Name="CIPPumpID" />
+          </Key>
+          <Property Name="CIPPumpID" Type="int" Nullable="false" />
+          <Property Name="StatusCode" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Knowlege">
+          <Key>
+            <PropertyRef Name="KnowlegeID" />
+          </Key>
+          <Property Name="KnowlegeID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="varchar" MaxLength="100" />
+          <Property Name="KeyWords" Type="varchar" />
+          <Property Name="Content" Type="longtext" />
+          <Property Name="Author" Type="varchar" MaxLength="10" />
+          <Property Name="UpdateTime" Type="datetime" />
+          <Property Name="AllContent" Type="longtext" />
+          <Property Name="Summary" Type="varchar" MaxLength="5000" />
+        </EntityType>
+        <EntityType Name="MBR_Info">
+          <Key>
+            <PropertyRef Name="InfoID" />
+          </Key>
+          <Property Name="InfoID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PoolID" Type="int" />
+          <Property Name="ChangeDate" Type="datetime" />
+          <Property Name="Company" Type="varchar" MaxLength="200" />
+          <Property Name="Model" Type="varchar" MaxLength="200" />
+          <Property Name="Title" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="MBR_Pool">
+          <Key>
+            <PropertyRef Name="PoolID" />
+          </Key>
+          <Property Name="PoolID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PoolName" Type="varchar" MaxLength="20" />
+          <Property Name="Weight" Type="double" />
+          <Property Name="Order" Type="int" />
+        </EntityType>
+        <EntityType Name="MBR_RunningInfo">
+          <Key>
+            <PropertyRef Name="RunningInfoID" />
+          </Key>
+          <Property Name="RunningInfoID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PoolID" Type="int" />
+          <Property Name="UpdateTime" Type="datetime" />
+          <Property Name="ChanShuiLL" Type="double" />
+          <Property Name="ChanShuiYL" Type="double" />
+          <Property Name="DanChiMCXQL" Type="double" />
+          <Property Name="WuNiND" Type="double" />
+          <Property Name="RongJieY" Type="double" />
+          <Property Name="KuaMoYC" Type="double" />
+          <Property Name="TouShuiL" Type="double" />
+          <Property Name="QiShuiB" Type="double" />
+          <Property Name="ShuiWen" Type="double" />
+          <Property Name="WenDuJZTSL" Type="double" />
+        </EntityType>
+        <EntityType Name="MBR_WashingInfo">
+          <Key>
+            <PropertyRef Name="WashingInfoID" />
+          </Key>
+          <Property Name="WashingInfoID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PoolID" Type="int" />
+          <Property Name="InfoID" Type="int" />
+          <Property Name="BeginTime" Type="datetime" />
+          <Property Name="EndTime" Type="datetime" />
+          <Property Name="WashType" Type="int" />
+          <Property Name="YaoJiLX" Type="int" />
+          <Property Name="JinPaoSJ" Type="double" />
+          <Property Name="YaoJiND" Type="double" />
+          <Property Name="TouShuiL_Low" Type="double" />
+          <Property Name="TouShuiL_High" Type="double" />
+          <Property Name="LvJieCZDC" Type="double" />
+        </EntityType>
+        <EntityType Name="Module">
+          <Key>
+            <PropertyRef Name="ModuleID" />
+          </Key>
+          <Property Name="ModuleID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ParentId" Type="int" />
+          <Property Name="FullName" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="Code" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Location" Type="varchar" MaxLength="200" />
+          <Property Name="Target" Type="varchar" MaxLength="50" />
+          <Property Name="Icon" Type="varchar" MaxLength="200" />
+          <Property Name="OrderBy" Type="int" />
+          <Property Name="Enabled" Type="bool" />
+          <Property Name="Remark" Type="varchar" MaxLength="200" />
+          <Property Name="Level" Type="int" />
+          <Property Name="Isexpand" Type="bool" />
+        </EntityType>
+        <EntityType Name="ModulePermission">
+          <Key>
+            <PropertyRef Name="ModulePermissionID" />
+          </Key>
+          <Property Name="ModulePermissionID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Category" Type="int" />
+          <Property Name="ObjectID" Type="int" />
+          <Property Name="ModuleID" Type="int" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Category" Type="int" />
+          <Property Name="Code" Type="varchar" MaxLength="50" />
+          <Property Name="FullName" Type="varchar" MaxLength="50" />
+          <Property Name="Status" Type="int" />
+          <Property Name="Note" Type="varchar" MaxLength="200" />
+          <Property Name="OrderBy" Type="int" />
+        </EntityType>
+        <EntityType Name="RoleUser">
+          <Key>
+            <PropertyRef Name="RoleID" />
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="RoleID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Settings">
+          <Key>
+            <PropertyRef Name="SettingsID" />
+          </Key>
+          <Property Name="SettingsID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PreDays" Type="int" />
+          <Property Name="MaxValue" Type="double" />
+          <Property Name="MinValue" Type="double" />
+        </EntityType>
+        <EntityType Name="SYS_CIPLog">
+          <Key>
+            <PropertyRef Name="CIPLogID" />
+          </Key>
+          <Property Name="CIPLogID" Type="int" Nullable="false" />
+          <Property Name="V" Type="double" />
+          <Property Name="BeginTime" Type="datetime" />
+          <Property Name="EndTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="SYS_ParamCurValue">
+          <Key>
+            <PropertyRef Name="ParamInfoID" />
+          </Key>
+          <Property Name="ParamInfoID" Type="int" Nullable="false" />
+          <Property Name="DoubleValue" Type="double" />
+          <Property Name="State" Type="bool" />
+          <Property Name="UpdateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="SYS_ParamInfo">
+          <Key>
+            <PropertyRef Name="ParamInfoID" />
+          </Key>
+          <Property Name="ParamInfoID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ParamName" Type="varchar" MaxLength="100" />
+          <Property Name="Title" Type="varchar" MaxLength="100" />
+          <Property Name="ParamKey" Type="varchar" MaxLength="100" />
+          <Property Name="ParamType" Type="int" />
+        </EntityType>
+        <EntityType Name="SYS_PoisonLog">
+          <Key>
+            <PropertyRef Name="PoisonLogID" />
+          </Key>
+          <Property Name="PoisonLogID" Type="int" Nullable="false" />
+          <Property Name="PoisonType" Type="int" />
+          <Property Name="V" Type="double" />
+          <Property Name="BeginPos" Type="double" />
+          <Property Name="EndPos" Type="double" />
+          <Property Name="BeginTime" Type="datetime" />
+          <Property Name="EndTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="SysException">
+          <Key>
+            <PropertyRef Name="SysExceptionID" />
+          </Key>
+          <Property Name="SysExceptionID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="HelpLink" Type="varchar" MaxLength="500" />
+          <Property Name="Message" Type="varchar" MaxLength="500" />
+          <Property Name="Source" Type="varchar" MaxLength="500" />
+          <Property Name="StackTrace" Type="text" />
+          <Property Name="TargetSite" Type="varchar" MaxLength="500" />
+          <Property Name="Data" Type="varchar" MaxLength="500" />
+          <Property Name="CreateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="SysLog">
+          <Key>
+            <PropertyRef Name="SysLogID" />
+          </Key>
+          <Property Name="SysLogID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Operator" Type="varchar" MaxLength="50" />
+          <Property Name="Message" Type="varchar" MaxLength="200" />
+          <Property Name="Result" Type="varchar" MaxLength="20" />
+          <Property Name="Type" Type="varchar" MaxLength="20" />
+          <Property Name="Module" Type="varchar" MaxLength="20" />
+          <Property Name="CreateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="RealName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Password" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Enabled" Type="bool" />
+          <Property Name="OrderBy" Type="int" />
+          <Property Name="Remark" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="WarningStat">
+          <Key>
+            <PropertyRef Name="WarningSettID" />
+          </Key>
+          <Property Name="WarningSettID" Type="int" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" />
+          <Property Name="Status" Type="int" />
+        </EntityType>
+        <EntityType Name="WN_ParamSett">
+          <Key>
+            <PropertyRef Name="ParamSetID" />
+          </Key>
+          <Property Name="ParamSetID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="WarningCondID" Type="int" />
+          <Property Name="ParamID" Type="varchar" MaxLength="50" />
+          <Property Name="High" Type="double" />
+          <Property Name="Low" Type="double" />
+          <Property Name="WaitTime" Type="int" />
+        </EntityType>
+        <EntityType Name="WN_WarningCond">
+          <Key>
+            <PropertyRef Name="WarningCondID" />
+          </Key>
+          <Property Name="WarningCondID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="WarningSettID" Type="int" />
+          <Property Name="WarningCondDesc" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="WN_WarningLog">
+          <Key>
+            <PropertyRef Name="WarningLogID" />
+          </Key>
+          <Property Name="WarningLogID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="WarningSettID" Type="int" />
+          <Property Name="WarningDesc" Type="varchar" MaxLength="500" />
+          <Property Name="Status" Type="int" />
+          <Property Name="Begin" Type="datetime" />
+          <Property Name="End" Type="datetime" />
+        </EntityType>
+        <EntityType Name="WN_WarningSett">
+          <Key>
+            <PropertyRef Name="WarningSettID" />
+          </Key>
+          <Property Name="WarningSettID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="varchar" MaxLength="100" />
+          <Property Name="WarningLevel" Type="int" />
+          <Property Name="WarningInfo" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <Association Name="FK_Reference_1">
+          <End Role="WN_WarningSett" Type="MBRModel.Store.WN_WarningSett" Multiplicity="0..1" />
+          <End Role="WN_WarningCond" Type="MBRModel.Store.WN_WarningCond" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WN_WarningSett">
+              <PropertyRef Name="WarningSettID" />
+            </Principal>
+            <Dependent Role="WN_WarningCond">
+              <PropertyRef Name="WarningSettID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reference_10">
+          <End Role="MBR_Info" Type="MBRModel.Store.MBR_Info" Multiplicity="1" />
+          <End Role="AN_LowCurve" Type="MBRModel.Store.AN_LowCurve" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="MBR_Info">
+              <PropertyRef Name="InfoID" />
+            </Principal>
+            <Dependent Role="AN_LowCurve">
+              <PropertyRef Name="InfoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reference_11">
+          <End Role="MBR_Info" Type="MBRModel.Store.MBR_Info" Multiplicity="1" />
+          <End Role="AN_CLCurve" Type="MBRModel.Store.AN_CLCurve" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="MBR_Info">
+              <PropertyRef Name="InfoID" />
+            </Principal>
+            <Dependent Role="AN_CLCurve">
+              <PropertyRef Name="InfoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reference_12">
+          <End Role="MBR_Pool" Type="MBRModel.Store.MBR_Pool" Multiplicity="1" />
+          <End Role="AN_NetInfo" Type="MBRModel.Store.AN_NetInfo" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="MBR_Pool">
+              <PropertyRef Name="PoolID" />
+            </Principal>
+            <Dependent Role="AN_NetInfo">
+              <PropertyRef Name="PoolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reference_17">
+          <End Role="MBR_Info" Type="MBRModel.Store.MBR_Info" Multiplicity="0..1" />
+          <End Role="MBR_WashingInfo" Type="MBRModel.Store.MBR_WashingInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MBR_Info">
+              <PropertyRef Name="InfoID" />
+            </Principal>
+            <Dependent Role="MBR_WashingInfo">
+              <PropertyRef Name="InfoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reference_2">
+          <End Role="WN_WarningCond" Type="MBRModel.Store.WN_WarningCond" Multiplicity="0..1" />
+          <End Role="WN_ParamSett" Type="MBRModel.Store.WN_ParamSett" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WN_WarningCond">
+              <PropertyRef Name="WarningCondID" />
+            </Principal>
+            <Dependent Role="WN_ParamSett">
+              <PropertyRef Name="WarningCondID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reference_22">
+          <End Role="User" Type="MBRModel.Store.User" Multiplicity="1" />
+          <End Role="RoleUser" Type="MBRModel.Store.RoleUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="RoleUser">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reference_3">
+          <End Role="WN_WarningSett" Type="MBRModel.Store.WN_WarningSett" Multiplicity="0..1" />
+          <End Role="WN_WarningLog" Type="MBRModel.Store.WN_WarningLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WN_WarningSett">
+              <PropertyRef Name="WarningSettID" />
+            </Principal>
+            <Dependent Role="WN_WarningLog">
+              <PropertyRef Name="WarningSettID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reference_4">
+          <End Role="WN_WarningSett" Type="MBRModel.Store.WN_WarningSett" Multiplicity="1" />
+          <End Role="WarningStat" Type="MBRModel.Store.WarningStat" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="WN_WarningSett">
+              <PropertyRef Name="WarningSettID" />
+            </Principal>
+            <Dependent Role="WarningStat">
+              <PropertyRef Name="WarningSettID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reference_5">
+          <End Role="MBR_Pool" Type="MBRModel.Store.MBR_Pool" Multiplicity="0..1" />
+          <End Role="MBR_Info" Type="MBRModel.Store.MBR_Info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MBR_Pool">
+              <PropertyRef Name="PoolID" />
+            </Principal>
+            <Dependent Role="MBR_Info">
+              <PropertyRef Name="PoolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reference_53">
+          <End Role="Role" Type="MBRModel.Store.Role" Multiplicity="1" />
+          <End Role="RoleUser" Type="MBRModel.Store.RoleUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="RoleUser">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reference_55">
+          <End Role="Module" Type="MBRModel.Store.Module" Multiplicity="0..1" />
+          <End Role="ModulePermission" Type="MBRModel.Store.ModulePermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Module">
+              <PropertyRef Name="ModuleID" />
+            </Principal>
+            <Dependent Role="ModulePermission">
+              <PropertyRef Name="ModuleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reference_6">
+          <End Role="SYS_ParamInfo" Type="MBRModel.Store.SYS_ParamInfo" Multiplicity="1" />
+          <End Role="SYS_ParamCurValue" Type="MBRModel.Store.SYS_ParamCurValue" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="SYS_ParamInfo">
+              <PropertyRef Name="ParamInfoID" />
+            </Principal>
+            <Dependent Role="SYS_ParamCurValue">
+              <PropertyRef Name="ParamInfoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reference_60">
+          <End Role="Module" Type="MBRModel.Store.Module" Multiplicity="0..1" />
+          <End Role="Module1" Type="MBRModel.Store.Module" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Module">
+              <PropertyRef Name="ModuleID" />
+            </Principal>
+            <Dependent Role="Module1">
+              <PropertyRef Name="ParentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reference_7">
+          <End Role="MBR_Pool" Type="MBRModel.Store.MBR_Pool" Multiplicity="0..1" />
+          <End Role="MBR_RunningInfo" Type="MBRModel.Store.MBR_RunningInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MBR_Pool">
+              <PropertyRef Name="PoolID" />
+            </Principal>
+            <Dependent Role="MBR_RunningInfo">
+              <PropertyRef Name="PoolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reference_8">
+          <End Role="MBR_Pool" Type="MBRModel.Store.MBR_Pool" Multiplicity="0..1" />
+          <End Role="MBR_WashingInfo" Type="MBRModel.Store.MBR_WashingInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MBR_Pool">
+              <PropertyRef Name="PoolID" />
+            </Principal>
+            <Dependent Role="MBR_WashingInfo">
+              <PropertyRef Name="PoolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reference_9">
+          <End Role="MBR_Info" Type="MBRModel.Store.MBR_Info" Multiplicity="1" />
+          <End Role="AN_HighCurve" Type="MBRModel.Store.AN_HighCurve" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="MBR_Info">
+              <PropertyRef Name="InfoID" />
+            </Principal>
+            <Dependent Role="AN_HighCurve">
+              <PropertyRef Name="InfoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--生成过程中发现错误:
+      警告 6013: 表/视图“def.mbr.AirStatus”未定义主键，并且无法推断有效的主键。已排除了此表/视图。若要使用实体，将需要检查您的架构、添加正确的键并取消对实体的注释。
+      
+      <EntityType Name="AirStatus">
+        <Property Name="AirStatusID" Type="int" />
+        <Property Name="Status" Type="bit" />
+        <Property Name="UpdateTime" Type="datetime" />
+      </EntityType>
+      生成过程中发现错误:
+      警告 6013: 表/视图“def.mbr.PoisonPump”未定义主键，并且无法推断有效的主键。已排除了此表/视图。若要使用实体，将需要检查您的架构、添加正确的键并取消对实体的注释。
+      
+      <EntityType Name="PoisonPump">
+        <Property Name="PoisonPumpID" Type="int" />
+        <Property Name="PP_Name" Type="varchar" MaxLength="50" />
+        <Property Name="PP_Type" Type="bit" />
+        <Property Name="Status_Code" Type="varchar" MaxLength="200" />
+        <Property Name="V_Code" Type="varchar" MaxLength="200" />
+        <Property Name="Pos_Code" Type="varchar" MaxLength="200" />
+      </EntityType>
+      生成过程中发现错误:
+      警告 6013: 表/视图“def.mbr.PoisonStatus”未定义主键，并且无法推断有效的主键。已排除了此表/视图。若要使用实体，将需要检查您的架构、添加正确的键并取消对实体的注释。
+      
+      <EntityType Name="PoisonStatus">
+        <Property Name="PoisonStatusID" Type="int" />
+        <Property Name="Status" Type="bit" />
+        <Property Name="UpdateTime" Type="datetime" />
+      </EntityType>
+      生成过程中发现错误:
+      警告 6013: 表/视图“def.mbr.SYS_CIPStatus”未定义主键，并且无法推断有效的主键。已排除了此表/视图。若要使用实体，将需要检查您的架构、添加正确的键并取消对实体的注释。
+      
+      <EntityType Name="SYS_CIPStatus">
+        <Property Name="CIPStatusID" Type="int" />
+        <Property Name="Status" Type="bool" />
+        <Property Name="UpdateTime" Type="datetime" />
+      </EntityType>-->
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MBRModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="MBREntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AirValve" EntityType="MBRModel.AirValve" />
+          <EntitySet Name="AN_CLCurve" EntityType="MBRModel.AN_CLCurve" />
+          <EntitySet Name="AN_HighCurve" EntityType="MBRModel.AN_HighCurve" />
+          <EntitySet Name="AN_LowCurve" EntityType="MBRModel.AN_LowCurve" />
+          <EntitySet Name="AN_NetInfo" EntityType="MBRModel.AN_NetInfo" />
+          <EntitySet Name="CIPPump" EntityType="MBRModel.CIPPump" />
+          <EntitySet Name="Knowlege" EntityType="MBRModel.Knowlege" />
+          <EntitySet Name="MBR_Info" EntityType="MBRModel.MBR_Info" />
+          <EntitySet Name="MBR_Pool" EntityType="MBRModel.MBR_Pool" />
+          <EntitySet Name="MBR_RunningInfo" EntityType="MBRModel.MBR_RunningInfo" />
+          <EntitySet Name="MBR_WashingInfo" EntityType="MBRModel.MBR_WashingInfo" />
+          <EntitySet Name="Module" EntityType="MBRModel.Module" />
+          <EntitySet Name="ModulePermission" EntityType="MBRModel.ModulePermission" />
+          <EntitySet Name="Role" EntityType="MBRModel.Role" />
+          <EntitySet Name="Settings" EntityType="MBRModel.Settings" />
+          <EntitySet Name="SYS_CIPLog" EntityType="MBRModel.SYS_CIPLog" />
+          <EntitySet Name="SYS_ParamCurValue" EntityType="MBRModel.SYS_ParamCurValue" />
+          <EntitySet Name="SYS_ParamInfo" EntityType="MBRModel.SYS_ParamInfo" />
+          <EntitySet Name="SYS_PoisonLog" EntityType="MBRModel.SYS_PoisonLog" />
+          <EntitySet Name="SysException" EntityType="MBRModel.SysException" />
+          <EntitySet Name="SysLog" EntityType="MBRModel.SysLog" />
+          <EntitySet Name="User" EntityType="MBRModel.User" />
+          <EntitySet Name="WarningStat" EntityType="MBRModel.WarningStat" />
+          <EntitySet Name="WN_ParamSett" EntityType="MBRModel.WN_ParamSett" />
+          <EntitySet Name="WN_WarningCond" EntityType="MBRModel.WN_WarningCond" />
+          <EntitySet Name="WN_WarningLog" EntityType="MBRModel.WN_WarningLog" />
+          <EntitySet Name="WN_WarningSett" EntityType="MBRModel.WN_WarningSett" />
+          <AssociationSet Name="FK_Reference_11" Association="MBRModel.FK_Reference_11">
+            <End Role="MBR_Info" EntitySet="MBR_Info" />
+            <End Role="AN_CLCurve" EntitySet="AN_CLCurve" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reference_9" Association="MBRModel.FK_Reference_9">
+            <End Role="MBR_Info" EntitySet="MBR_Info" />
+            <End Role="AN_HighCurve" EntitySet="AN_HighCurve" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reference_10" Association="MBRModel.FK_Reference_10">
+            <End Role="MBR_Info" EntitySet="MBR_Info" />
+            <End Role="AN_LowCurve" EntitySet="AN_LowCurve" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reference_12" Association="MBRModel.FK_Reference_12">
+            <End Role="MBR_Pool" EntitySet="MBR_Pool" />
+            <End Role="AN_NetInfo" EntitySet="AN_NetInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reference_5" Association="MBRModel.FK_Reference_5">
+            <End Role="MBR_Pool" EntitySet="MBR_Pool" />
+            <End Role="MBR_Info" EntitySet="MBR_Info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reference_7" Association="MBRModel.FK_Reference_7">
+            <End Role="MBR_Pool" EntitySet="MBR_Pool" />
+            <End Role="MBR_RunningInfo" EntitySet="MBR_RunningInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reference_8" Association="MBRModel.FK_Reference_8">
+            <End Role="MBR_Pool" EntitySet="MBR_Pool" />
+            <End Role="MBR_WashingInfo" EntitySet="MBR_WashingInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reference_55" Association="MBRModel.FK_Reference_55">
+            <End Role="Module" EntitySet="Module" />
+            <End Role="ModulePermission" EntitySet="ModulePermission" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reference_60" Association="MBRModel.FK_Reference_60">
+            <End Role="Module" EntitySet="Module" />
+            <End Role="Module1" EntitySet="Module" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reference_6" Association="MBRModel.FK_Reference_6">
+            <End Role="SYS_ParamInfo" EntitySet="SYS_ParamInfo" />
+            <End Role="SYS_ParamCurValue" EntitySet="SYS_ParamCurValue" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reference_4" Association="MBRModel.FK_Reference_4">
+            <End Role="WN_WarningSett" EntitySet="WN_WarningSett" />
+            <End Role="WarningStat" EntitySet="WarningStat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reference_2" Association="MBRModel.FK_Reference_2">
+            <End Role="WN_WarningCond" EntitySet="WN_WarningCond" />
+            <End Role="WN_ParamSett" EntitySet="WN_ParamSett" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reference_1" Association="MBRModel.FK_Reference_1">
+            <End Role="WN_WarningSett" EntitySet="WN_WarningSett" />
+            <End Role="WN_WarningCond" EntitySet="WN_WarningCond" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reference_3" Association="MBRModel.FK_Reference_3">
+            <End Role="WN_WarningSett" EntitySet="WN_WarningSett" />
+            <End Role="WN_WarningLog" EntitySet="WN_WarningLog" />
+          </AssociationSet>
+          <AssociationSet Name="RoleUser" Association="MBRModel.RoleUser">
+            <End Role="User" EntitySet="User" />
+            <End Role="Role" EntitySet="Role" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reference_17" Association="MBRModel.FK_Reference_17">
+            <End Role="MBR_Info" EntitySet="MBR_Info" />
+            <End Role="MBR_WashingInfo" EntitySet="MBR_WashingInfo" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AirValve">
+          <Key>
+            <PropertyRef Name="AirValveID" />
+          </Key>
+          <Property Type="Int32" Name="AirValveID" Nullable="false" />
+          <Property Type="String" Name="Status_Code" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="AN_CLCurve">
+          <Key>
+            <PropertyRef Name="InfoID" />
+          </Key>
+          <Property Type="Int32" Name="InfoID" Nullable="false" />
+          <Property Type="Double" Name="Coeff_LV3" />
+          <Property Type="Double" Name="Coeff_LV2" />
+          <Property Type="Double" Name="Coeff_LV1" />
+          <Property Type="Double" Name="Const" />
+          <Property Type="DateTime" Name="UpdateTime" />
+          <NavigationProperty Name="MBR_Info" Relationship="MBRModel.FK_Reference_11" FromRole="AN_CLCurve" ToRole="MBR_Info" />
+        </EntityType>
+        <EntityType Name="AN_HighCurve">
+          <Key>
+            <PropertyRef Name="InfoID" />
+          </Key>
+          <Property Type="Int32" Name="InfoID" Nullable="false" />
+          <Property Type="Double" Name="Coeff_LV3" />
+          <Property Type="Double" Name="Coeff_LV2" />
+          <Property Type="Double" Name="Coeff_LV1" />
+          <Property Type="Double" Name="Const" />
+          <Property Type="DateTime" Name="UpdateTime" />
+          <NavigationProperty Name="MBR_Info" Relationship="MBRModel.FK_Reference_9" FromRole="AN_HighCurve" ToRole="MBR_Info" />
+        </EntityType>
+        <EntityType Name="AN_LowCurve">
+          <Key>
+            <PropertyRef Name="InfoID" />
+          </Key>
+          <Property Type="Int32" Name="InfoID" Nullable="false" />
+          <Property Type="Double" Name="Coeff_LV3" />
+          <Property Type="Double" Name="Coeff_LV2" />
+          <Property Type="Double" Name="Coeff_LV1" />
+          <Property Type="Double" Name="Const" />
+          <Property Type="DateTime" Name="UpdateTime" />
+          <NavigationProperty Name="MBR_Info" Relationship="MBRModel.FK_Reference_10" FromRole="AN_LowCurve" ToRole="MBR_Info" />
+        </EntityType>
+        <EntityType Name="AN_NetInfo">
+          <Key>
+            <PropertyRef Name="PoolID" />
+          </Key>
+          <Property Type="Int32" Name="PoolID" Nullable="false" />
+          <Property Type="String" Name="Matrix1" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="UpdateTime1" />
+          <Property Type="String" Name="Matrix2" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="UpdateTime2" />
+          <Property Type="String" Name="Matrix3" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="UpdateTime3" />
+          <NavigationProperty Name="MBR_Pool" Relationship="MBRModel.FK_Reference_12" FromRole="AN_NetInfo" ToRole="MBR_Pool" />
+        </EntityType>
+        <EntityType Name="CIPPump">
+          <Key>
+            <PropertyRef Name="CIPPumpID" />
+          </Key>
+          <Property Type="Int32" Name="CIPPumpID" Nullable="false" />
+          <Property Type="String" Name="StatusCode" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Knowlege">
+          <Key>
+            <PropertyRef Name="KnowlegeID" />
+          </Key>
+          <Property Type="Int32" Name="KnowlegeID" Nullable="false" />
+          <Property Type="String" Name="Title" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="KeyWords" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Content" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Author" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="UpdateTime" />
+          <Property Type="String" Name="AllContent" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Summary" MaxLength="5000" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="MBR_Info">
+          <Key>
+            <PropertyRef Name="InfoID" />
+          </Key>
+          <Property Type="Int32" Name="InfoID" Nullable="false" />
+          <Property Type="Int32" Name="PoolID" />
+          <Property Type="DateTime" Name="ChangeDate" />
+          <Property Type="String" Name="Company" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Model" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Title" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="AN_CLCurve" Relationship="MBRModel.FK_Reference_11" FromRole="MBR_Info" ToRole="AN_CLCurve" />
+          <NavigationProperty Name="AN_HighCurve" Relationship="MBRModel.FK_Reference_9" FromRole="MBR_Info" ToRole="AN_HighCurve" />
+          <NavigationProperty Name="AN_LowCurve" Relationship="MBRModel.FK_Reference_10" FromRole="MBR_Info" ToRole="AN_LowCurve" />
+          <NavigationProperty Name="MBR_Pool" Relationship="MBRModel.FK_Reference_5" FromRole="MBR_Info" ToRole="MBR_Pool" />
+          <NavigationProperty Name="MBR_WashingInfo" Relationship="MBRModel.FK_Reference_17" FromRole="MBR_Info" ToRole="MBR_WashingInfo" />
+        </EntityType>
+        <EntityType Name="MBR_Pool">
+          <Key>
+            <PropertyRef Name="PoolID" />
+          </Key>
+          <Property Type="Int32" Name="PoolID" Nullable="false" />
+          <Property Type="String" Name="PoolName" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="Double" Name="Weight" />
+          <Property Type="Int32" Name="Order" />
+          <NavigationProperty Name="AN_NetInfo" Relationship="MBRModel.FK_Reference_12" FromRole="MBR_Pool" ToRole="AN_NetInfo" />
+          <NavigationProperty Name="MBR_Info" Relationship="MBRModel.FK_Reference_5" FromRole="MBR_Pool" ToRole="MBR_Info" />
+          <NavigationProperty Name="MBR_RunningInfo" Relationship="MBRModel.FK_Reference_7" FromRole="MBR_Pool" ToRole="MBR_RunningInfo" />
+          <NavigationProperty Name="MBR_WashingInfo" Relationship="MBRModel.FK_Reference_8" FromRole="MBR_Pool" ToRole="MBR_WashingInfo" />
+        </EntityType>
+        <EntityType Name="MBR_RunningInfo">
+          <Key>
+            <PropertyRef Name="RunningInfoID" />
+          </Key>
+          <Property Type="Int32" Name="RunningInfoID" Nullable="false" />
+          <Property Type="Int32" Name="PoolID" />
+          <Property Type="DateTime" Name="UpdateTime" />
+          <Property Type="Double" Name="ChanShuiLL" />
+          <Property Type="Double" Name="ChanShuiYL" />
+          <Property Type="Double" Name="DanChiMCXQL" />
+          <Property Type="Double" Name="WuNiND" />
+          <Property Type="Double" Name="RongJieY" />
+          <Property Type="Double" Name="KuaMoYC" />
+          <Property Type="Double" Name="TouShuiL" />
+          <Property Type="Double" Name="QiShuiB" />
+          <Property Type="Double" Name="ShuiWen" />
+          <Property Type="Double" Name="WenDuJZTSL" />
+          <NavigationProperty Name="MBR_Pool" Relationship="MBRModel.FK_Reference_7" FromRole="MBR_RunningInfo" ToRole="MBR_Pool" />
+        </EntityType>
+        <EntityType Name="MBR_WashingInfo">
+          <Key>
+            <PropertyRef Name="WashingInfoID" />
+          </Key>
+          <Property Type="Int32" Name="WashingInfoID" Nullable="false" />
+          <Property Type="Int32" Name="PoolID" />
+          <Property Type="DateTime" Name="BeginTime" />
+          <Property Type="DateTime" Name="EndTime" />
+          <Property Type="Int32" Name="WashType" />
+          <Property Type="Int32" Name="YaoJiLX" />
+          <Property Type="Double" Name="JinPaoSJ" />
+          <Property Type="Double" Name="YaoJiND" />
+          <Property Type="Double" Name="TouShuiL_Low" />
+          <Property Type="Double" Name="TouShuiL_High" />
+          <Property Type="Double" Name="LvJieCZDC" />
+          <NavigationProperty Name="MBR_Pool" Relationship="MBRModel.FK_Reference_8" FromRole="MBR_WashingInfo" ToRole="MBR_Pool" />
+          <Property Type="Int32" Name="InfoID" />
+          <NavigationProperty Name="MBR_Info" Relationship="MBRModel.FK_Reference_17" FromRole="MBR_WashingInfo" ToRole="MBR_Info" />
+        </EntityType>
+        <EntityType Name="Module">
+          <Key>
+            <PropertyRef Name="ModuleID" />
+          </Key>
+          <Property Type="Int32" Name="ModuleID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ParentId" />
+          <Property Type="String" Name="FullName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Location" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Target" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Icon" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="OrderBy" />
+          <Property Type="Boolean" Name="Enabled" />
+          <Property Type="String" Name="Remark" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="Level" />
+          <Property Type="Boolean" Name="Isexpand" />
+          <NavigationProperty Name="ModulePermission" Relationship="MBRModel.FK_Reference_55" FromRole="Module" ToRole="ModulePermission" />
+          <NavigationProperty Name="Module1" Relationship="MBRModel.FK_Reference_60" FromRole="Module" ToRole="Module1" />
+          <NavigationProperty Name="Module2" Relationship="MBRModel.FK_Reference_60" FromRole="Module1" ToRole="Module" />
+        </EntityType>
+        <EntityType Name="ModulePermission">
+          <Key>
+            <PropertyRef Name="ModulePermissionID" />
+          </Key>
+          <Property Type="Int32" Name="ModulePermissionID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Category" />
+          <Property Type="Int32" Name="ObjectID" />
+          <Property Type="Int32" Name="ModuleID" />
+          <NavigationProperty Name="Module" Relationship="MBRModel.FK_Reference_55" FromRole="ModulePermission" ToRole="Module" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Type="Int32" Name="RoleID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Category" />
+          <Property Type="String" Name="Code" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FullName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="Status" />
+          <Property Type="String" Name="Note" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="OrderBy" />
+          <NavigationProperty Name="User" Relationship="MBRModel.RoleUser" FromRole="Role" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Settings">
+          <Key>
+            <PropertyRef Name="SettingsID" />
+          </Key>
+          <Property Type="Int32" Name="SettingsID" Nullable="false" />
+          <Property Type="Int32" Name="PreDays" />
+          <Property Type="Double" Name="MaxValue" />
+          <Property Type="Double" Name="MinValue" />
+        </EntityType>
+        <EntityType Name="SYS_CIPLog">
+          <Key>
+            <PropertyRef Name="CIPLogID" />
+          </Key>
+          <Property Type="Int32" Name="CIPLogID" Nullable="false" />
+          <Property Type="Double" Name="V" />
+          <Property Type="DateTime" Name="BeginTime" />
+          <Property Type="DateTime" Name="EndTime" />
+        </EntityType>
+        <EntityType Name="SYS_ParamCurValue">
+          <Key>
+            <PropertyRef Name="ParamInfoID" />
+          </Key>
+          <Property Type="Int32" Name="ParamInfoID" Nullable="false" />
+          <Property Type="Double" Name="DoubleValue" />
+          <Property Type="Boolean" Name="State" />
+          <Property Type="DateTime" Name="UpdateTime" />
+          <NavigationProperty Name="SYS_ParamInfo" Relationship="MBRModel.FK_Reference_6" FromRole="SYS_ParamCurValue" ToRole="SYS_ParamInfo" />
+        </EntityType>
+        <EntityType Name="SYS_ParamInfo">
+          <Key>
+            <PropertyRef Name="ParamInfoID" />
+          </Key>
+          <Property Type="Int32" Name="ParamInfoID" Nullable="false" />
+          <Property Type="String" Name="ParamName" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Title" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ParamKey" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="ParamType" />
+          <NavigationProperty Name="SYS_ParamCurValue" Relationship="MBRModel.FK_Reference_6" FromRole="SYS_ParamInfo" ToRole="SYS_ParamCurValue" />
+        </EntityType>
+        <EntityType Name="SYS_PoisonLog">
+          <Key>
+            <PropertyRef Name="PoisonLogID" />
+          </Key>
+          <Property Type="Int32" Name="PoisonLogID" Nullable="false" />
+          <Property Type="Int32" Name="PoisonType" />
+          <Property Type="Double" Name="V" />
+          <Property Type="Double" Name="BeginPos" />
+          <Property Type="Double" Name="EndPos" />
+          <Property Type="DateTime" Name="BeginTime" />
+          <Property Type="DateTime" Name="EndTime" />
+        </EntityType>
+        <EntityType Name="SysException">
+          <Key>
+            <PropertyRef Name="SysExceptionID" />
+          </Key>
+          <Property Type="Int32" Name="SysExceptionID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="HelpLink" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Message" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Source" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="StackTrace" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TargetSite" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Data" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="CreateTime" />
+        </EntityType>
+        <EntityType Name="SysLog">
+          <Key>
+            <PropertyRef Name="SysLogID" />
+          </Key>
+          <Property Type="Int32" Name="SysLogID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Operator" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Message" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Result" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Type" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Module" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="CreateTime" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Type="Int32" Name="UserID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="RealName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="Enabled" />
+          <Property Type="Int32" Name="OrderBy" />
+          <Property Type="String" Name="Remark" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Role" Relationship="MBRModel.RoleUser" FromRole="User" ToRole="Role" />
+        </EntityType>
+        <EntityType Name="WarningStat">
+          <Key>
+            <PropertyRef Name="WarningSettID" />
+          </Key>
+          <Property Type="Int32" Name="WarningSettID" Nullable="false" />
+          <Property Type="DateTime" Name="UpdateTime" />
+          <Property Type="Int32" Name="Status" />
+          <NavigationProperty Name="WN_WarningSett" Relationship="MBRModel.FK_Reference_4" FromRole="WarningStat" ToRole="WN_WarningSett" />
+        </EntityType>
+        <EntityType Name="WN_ParamSett">
+          <Key>
+            <PropertyRef Name="ParamSetID" />
+          </Key>
+          <Property Type="Int32" Name="ParamSetID" Nullable="false" />
+          <Property Type="Int32" Name="WarningCondID" />
+          <Property Type="String" Name="ParamID" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Double" Name="High" />
+          <Property Type="Double" Name="Low" />
+          <Property Type="Int32" Name="WaitTime" />
+          <NavigationProperty Name="WN_WarningCond" Relationship="MBRModel.FK_Reference_2" FromRole="WN_ParamSett" ToRole="WN_WarningCond" />
+        </EntityType>
+        <EntityType Name="WN_WarningCond">
+          <Key>
+            <PropertyRef Name="WarningCondID" />
+          </Key>
+          <Property Type="Int32" Name="WarningCondID" Nullable="false" />
+          <Property Type="Int32" Name="WarningSettID" />
+          <Property Type="String" Name="WarningCondDesc" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="WN_ParamSett" Relationship="MBRModel.FK_Reference_2" FromRole="WN_WarningCond" ToRole="WN_ParamSett" />
+          <NavigationProperty Name="WN_WarningSett" Relationship="MBRModel.FK_Reference_1" FromRole="WN_WarningCond" ToRole="WN_WarningSett" />
+        </EntityType>
+        <EntityType Name="WN_WarningLog">
+          <Key>
+            <PropertyRef Name="WarningLogID" />
+          </Key>
+          <Property Type="Int32" Name="WarningLogID" Nullable="false" />
+          <Property Type="Int32" Name="WarningSettID" />
+          <Property Type="String" Name="WarningDesc" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="Status" />
+          <Property Type="DateTime" Name="Begin" />
+          <Property Type="DateTime" Name="End" />
+          <NavigationProperty Name="WN_WarningSett" Relationship="MBRModel.FK_Reference_3" FromRole="WN_WarningLog" ToRole="WN_WarningSett" />
+        </EntityType>
+        <EntityType Name="WN_WarningSett">
+          <Key>
+            <PropertyRef Name="WarningSettID" />
+          </Key>
+          <Property Type="Int32" Name="WarningSettID" Nullable="false" />
+          <Property Type="String" Name="Title" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="WarningLevel" />
+          <Property Type="String" Name="WarningInfo" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="WarningStat" Relationship="MBRModel.FK_Reference_4" FromRole="WN_WarningSett" ToRole="WarningStat" />
+          <NavigationProperty Name="WN_WarningCond" Relationship="MBRModel.FK_Reference_1" FromRole="WN_WarningSett" ToRole="WN_WarningCond" />
+          <NavigationProperty Name="WN_WarningLog" Relationship="MBRModel.FK_Reference_3" FromRole="WN_WarningSett" ToRole="WN_WarningLog" />
+        </EntityType>
+        <Association Name="FK_Reference_11">
+          <End Type="MBRModel.MBR_Info" Role="MBR_Info" Multiplicity="1" />
+          <End Type="MBRModel.AN_CLCurve" Role="AN_CLCurve" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="MBR_Info">
+              <PropertyRef Name="InfoID" />
+            </Principal>
+            <Dependent Role="AN_CLCurve">
+              <PropertyRef Name="InfoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reference_9">
+          <End Type="MBRModel.MBR_Info" Role="MBR_Info" Multiplicity="1" />
+          <End Type="MBRModel.AN_HighCurve" Role="AN_HighCurve" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="MBR_Info">
+              <PropertyRef Name="InfoID" />
+            </Principal>
+            <Dependent Role="AN_HighCurve">
+              <PropertyRef Name="InfoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reference_10">
+          <End Type="MBRModel.MBR_Info" Role="MBR_Info" Multiplicity="1" />
+          <End Type="MBRModel.AN_LowCurve" Role="AN_LowCurve" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="MBR_Info">
+              <PropertyRef Name="InfoID" />
+            </Principal>
+            <Dependent Role="AN_LowCurve">
+              <PropertyRef Name="InfoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reference_12">
+          <End Type="MBRModel.MBR_Pool" Role="MBR_Pool" Multiplicity="1" />
+          <End Type="MBRModel.AN_NetInfo" Role="AN_NetInfo" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="MBR_Pool">
+              <PropertyRef Name="PoolID" />
+            </Principal>
+            <Dependent Role="AN_NetInfo">
+              <PropertyRef Name="PoolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reference_5">
+          <End Type="MBRModel.MBR_Pool" Role="MBR_Pool" Multiplicity="0..1" />
+          <End Type="MBRModel.MBR_Info" Role="MBR_Info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MBR_Pool">
+              <PropertyRef Name="PoolID" />
+            </Principal>
+            <Dependent Role="MBR_Info">
+              <PropertyRef Name="PoolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reference_7">
+          <End Type="MBRModel.MBR_Pool" Role="MBR_Pool" Multiplicity="0..1" />
+          <End Type="MBRModel.MBR_RunningInfo" Role="MBR_RunningInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MBR_Pool">
+              <PropertyRef Name="PoolID" />
+            </Principal>
+            <Dependent Role="MBR_RunningInfo">
+              <PropertyRef Name="PoolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reference_8">
+          <End Type="MBRModel.MBR_Pool" Role="MBR_Pool" Multiplicity="0..1" />
+          <End Type="MBRModel.MBR_WashingInfo" Role="MBR_WashingInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MBR_Pool">
+              <PropertyRef Name="PoolID" />
+            </Principal>
+            <Dependent Role="MBR_WashingInfo">
+              <PropertyRef Name="PoolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reference_55">
+          <End Type="MBRModel.Module" Role="Module" Multiplicity="0..1" />
+          <End Type="MBRModel.ModulePermission" Role="ModulePermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Module">
+              <PropertyRef Name="ModuleID" />
+            </Principal>
+            <Dependent Role="ModulePermission">
+              <PropertyRef Name="ModuleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reference_60">
+          <End Type="MBRModel.Module" Role="Module" Multiplicity="0..1" />
+          <End Type="MBRModel.Module" Role="Module1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Module">
+              <PropertyRef Name="ModuleID" />
+            </Principal>
+            <Dependent Role="Module1">
+              <PropertyRef Name="ParentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reference_6">
+          <End Type="MBRModel.SYS_ParamInfo" Role="SYS_ParamInfo" Multiplicity="1" />
+          <End Type="MBRModel.SYS_ParamCurValue" Role="SYS_ParamCurValue" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="SYS_ParamInfo">
+              <PropertyRef Name="ParamInfoID" />
+            </Principal>
+            <Dependent Role="SYS_ParamCurValue">
+              <PropertyRef Name="ParamInfoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reference_4">
+          <End Type="MBRModel.WN_WarningSett" Role="WN_WarningSett" Multiplicity="1" />
+          <End Type="MBRModel.WarningStat" Role="WarningStat" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="WN_WarningSett">
+              <PropertyRef Name="WarningSettID" />
+            </Principal>
+            <Dependent Role="WarningStat">
+              <PropertyRef Name="WarningSettID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reference_2">
+          <End Type="MBRModel.WN_WarningCond" Role="WN_WarningCond" Multiplicity="0..1" />
+          <End Type="MBRModel.WN_ParamSett" Role="WN_ParamSett" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WN_WarningCond">
+              <PropertyRef Name="WarningCondID" />
+            </Principal>
+            <Dependent Role="WN_ParamSett">
+              <PropertyRef Name="WarningCondID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reference_1">
+          <End Type="MBRModel.WN_WarningSett" Role="WN_WarningSett" Multiplicity="0..1" />
+          <End Type="MBRModel.WN_WarningCond" Role="WN_WarningCond" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WN_WarningSett">
+              <PropertyRef Name="WarningSettID" />
+            </Principal>
+            <Dependent Role="WN_WarningCond">
+              <PropertyRef Name="WarningSettID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reference_3">
+          <End Type="MBRModel.WN_WarningSett" Role="WN_WarningSett" Multiplicity="0..1" />
+          <End Type="MBRModel.WN_WarningLog" Role="WN_WarningLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WN_WarningSett">
+              <PropertyRef Name="WarningSettID" />
+            </Principal>
+            <Dependent Role="WN_WarningLog">
+              <PropertyRef Name="WarningSettID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RoleUser">
+          <End Type="MBRModel.User" Role="User" Multiplicity="*" />
+          <End Type="MBRModel.Role" Role="Role" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Reference_17">
+          <End Type="MBRModel.MBR_Info" Role="MBR_Info" Multiplicity="0..1" />
+          <End Type="MBRModel.MBR_WashingInfo" Role="MBR_WashingInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MBR_Info">
+              <PropertyRef Name="InfoID" />
+            </Principal>
+            <Dependent Role="MBR_WashingInfo">
+              <PropertyRef Name="InfoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MBRModelStoreContainer" CdmEntityContainer="MBREntities">
+          <EntitySetMapping Name="AirValve">
+            <EntityTypeMapping TypeName="MBRModel.AirValve">
+              <MappingFragment StoreEntitySet="AirValve">
+                <ScalarProperty Name="Status_Code" ColumnName="Status_Code" />
+                <ScalarProperty Name="AirValveID" ColumnName="AirValveID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AN_CLCurve">
+            <EntityTypeMapping TypeName="MBRModel.AN_CLCurve">
+              <MappingFragment StoreEntitySet="AN_CLCurve">
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="Const" ColumnName="Const" />
+                <ScalarProperty Name="Coeff_LV1" ColumnName="Coeff_LV1" />
+                <ScalarProperty Name="Coeff_LV2" ColumnName="Coeff_LV2" />
+                <ScalarProperty Name="Coeff_LV3" ColumnName="Coeff_LV3" />
+                <ScalarProperty Name="InfoID" ColumnName="InfoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AN_HighCurve">
+            <EntityTypeMapping TypeName="MBRModel.AN_HighCurve">
+              <MappingFragment StoreEntitySet="AN_HighCurve">
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="Const" ColumnName="Const" />
+                <ScalarProperty Name="Coeff_LV1" ColumnName="Coeff_LV1" />
+                <ScalarProperty Name="Coeff_LV2" ColumnName="Coeff_LV2" />
+                <ScalarProperty Name="Coeff_LV3" ColumnName="Coeff_LV3" />
+                <ScalarProperty Name="InfoID" ColumnName="InfoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AN_LowCurve">
+            <EntityTypeMapping TypeName="MBRModel.AN_LowCurve">
+              <MappingFragment StoreEntitySet="AN_LowCurve">
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="Const" ColumnName="Const" />
+                <ScalarProperty Name="Coeff_LV1" ColumnName="Coeff_LV1" />
+                <ScalarProperty Name="Coeff_LV2" ColumnName="Coeff_LV2" />
+                <ScalarProperty Name="Coeff_LV3" ColumnName="Coeff_LV3" />
+                <ScalarProperty Name="InfoID" ColumnName="InfoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AN_NetInfo">
+            <EntityTypeMapping TypeName="MBRModel.AN_NetInfo">
+              <MappingFragment StoreEntitySet="AN_NetInfo">
+                <ScalarProperty Name="UpdateTime3" ColumnName="UpdateTime3" />
+                <ScalarProperty Name="Matrix3" ColumnName="Matrix3" />
+                <ScalarProperty Name="UpdateTime2" ColumnName="UpdateTime2" />
+                <ScalarProperty Name="Matrix2" ColumnName="Matrix2" />
+                <ScalarProperty Name="UpdateTime1" ColumnName="UpdateTime1" />
+                <ScalarProperty Name="Matrix1" ColumnName="Matrix1" />
+                <ScalarProperty Name="PoolID" ColumnName="PoolID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CIPPump">
+            <EntityTypeMapping TypeName="MBRModel.CIPPump">
+              <MappingFragment StoreEntitySet="CIPPump">
+                <ScalarProperty Name="StatusCode" ColumnName="StatusCode" />
+                <ScalarProperty Name="CIPPumpID" ColumnName="CIPPumpID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Knowlege">
+            <EntityTypeMapping TypeName="MBRModel.Knowlege">
+              <MappingFragment StoreEntitySet="Knowlege">
+                <ScalarProperty Name="Summary" ColumnName="Summary" />
+                <ScalarProperty Name="AllContent" ColumnName="AllContent" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="Author" ColumnName="Author" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="KeyWords" ColumnName="KeyWords" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="KnowlegeID" ColumnName="KnowlegeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MBR_Info">
+            <EntityTypeMapping TypeName="MBRModel.MBR_Info">
+              <MappingFragment StoreEntitySet="MBR_Info">
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="ChangeDate" ColumnName="ChangeDate" />
+                <ScalarProperty Name="PoolID" ColumnName="PoolID" />
+                <ScalarProperty Name="InfoID" ColumnName="InfoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MBR_Pool">
+            <EntityTypeMapping TypeName="MBRModel.MBR_Pool">
+              <MappingFragment StoreEntitySet="MBR_Pool">
+                <ScalarProperty Name="Order" ColumnName="Order" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="PoolName" ColumnName="PoolName" />
+                <ScalarProperty Name="PoolID" ColumnName="PoolID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MBR_RunningInfo">
+            <EntityTypeMapping TypeName="MBRModel.MBR_RunningInfo">
+              <MappingFragment StoreEntitySet="MBR_RunningInfo">
+                <ScalarProperty Name="WenDuJZTSL" ColumnName="WenDuJZTSL" />
+                <ScalarProperty Name="ShuiWen" ColumnName="ShuiWen" />
+                <ScalarProperty Name="QiShuiB" ColumnName="QiShuiB" />
+                <ScalarProperty Name="TouShuiL" ColumnName="TouShuiL" />
+                <ScalarProperty Name="KuaMoYC" ColumnName="KuaMoYC" />
+                <ScalarProperty Name="RongJieY" ColumnName="RongJieY" />
+                <ScalarProperty Name="WuNiND" ColumnName="WuNiND" />
+                <ScalarProperty Name="DanChiMCXQL" ColumnName="DanChiMCXQL" />
+                <ScalarProperty Name="ChanShuiYL" ColumnName="ChanShuiYL" />
+                <ScalarProperty Name="ChanShuiLL" ColumnName="ChanShuiLL" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="PoolID" ColumnName="PoolID" />
+                <ScalarProperty Name="RunningInfoID" ColumnName="RunningInfoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MBR_WashingInfo">
+            <EntityTypeMapping TypeName="MBRModel.MBR_WashingInfo">
+              <MappingFragment StoreEntitySet="MBR_WashingInfo">
+                <ScalarProperty Name="InfoID" ColumnName="InfoID" />
+                <ScalarProperty Name="LvJieCZDC" ColumnName="LvJieCZDC" />
+                <ScalarProperty Name="TouShuiL_High" ColumnName="TouShuiL_High" />
+                <ScalarProperty Name="TouShuiL_Low" ColumnName="TouShuiL_Low" />
+                <ScalarProperty Name="YaoJiND" ColumnName="YaoJiND" />
+                <ScalarProperty Name="JinPaoSJ" ColumnName="JinPaoSJ" />
+                <ScalarProperty Name="YaoJiLX" ColumnName="YaoJiLX" />
+                <ScalarProperty Name="WashType" ColumnName="WashType" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="BeginTime" ColumnName="BeginTime" />
+                <ScalarProperty Name="PoolID" ColumnName="PoolID" />
+                <ScalarProperty Name="WashingInfoID" ColumnName="WashingInfoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Module">
+            <EntityTypeMapping TypeName="MBRModel.Module">
+              <MappingFragment StoreEntitySet="Module">
+                <ScalarProperty Name="Isexpand" ColumnName="Isexpand" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+                <ScalarProperty Name="Icon" ColumnName="Icon" />
+                <ScalarProperty Name="Target" ColumnName="Target" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ModulePermission">
+            <EntityTypeMapping TypeName="MBRModel.ModulePermission">
+              <MappingFragment StoreEntitySet="ModulePermission">
+                <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+                <ScalarProperty Name="ObjectID" ColumnName="ObjectID" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="ModulePermissionID" ColumnName="ModulePermissionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="MBRModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Settings">
+            <EntityTypeMapping TypeName="MBRModel.Settings">
+              <MappingFragment StoreEntitySet="Settings">
+                <ScalarProperty Name="MinValue" ColumnName="MinValue" />
+                <ScalarProperty Name="MaxValue" ColumnName="MaxValue" />
+                <ScalarProperty Name="PreDays" ColumnName="PreDays" />
+                <ScalarProperty Name="SettingsID" ColumnName="SettingsID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SYS_CIPLog">
+            <EntityTypeMapping TypeName="MBRModel.SYS_CIPLog">
+              <MappingFragment StoreEntitySet="SYS_CIPLog">
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="BeginTime" ColumnName="BeginTime" />
+                <ScalarProperty Name="V" ColumnName="V" />
+                <ScalarProperty Name="CIPLogID" ColumnName="CIPLogID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SYS_ParamCurValue">
+            <EntityTypeMapping TypeName="MBRModel.SYS_ParamCurValue">
+              <MappingFragment StoreEntitySet="SYS_ParamCurValue">
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="DoubleValue" ColumnName="DoubleValue" />
+                <ScalarProperty Name="ParamInfoID" ColumnName="ParamInfoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SYS_ParamInfo">
+            <EntityTypeMapping TypeName="MBRModel.SYS_ParamInfo">
+              <MappingFragment StoreEntitySet="SYS_ParamInfo">
+                <ScalarProperty Name="ParamType" ColumnName="ParamType" />
+                <ScalarProperty Name="ParamKey" ColumnName="ParamKey" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ParamName" ColumnName="ParamName" />
+                <ScalarProperty Name="ParamInfoID" ColumnName="ParamInfoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SYS_PoisonLog">
+            <EntityTypeMapping TypeName="MBRModel.SYS_PoisonLog">
+              <MappingFragment StoreEntitySet="SYS_PoisonLog">
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="BeginTime" ColumnName="BeginTime" />
+                <ScalarProperty Name="EndPos" ColumnName="EndPos" />
+                <ScalarProperty Name="BeginPos" ColumnName="BeginPos" />
+                <ScalarProperty Name="V" ColumnName="V" />
+                <ScalarProperty Name="PoisonType" ColumnName="PoisonType" />
+                <ScalarProperty Name="PoisonLogID" ColumnName="PoisonLogID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SysException">
+            <EntityTypeMapping TypeName="MBRModel.SysException">
+              <MappingFragment StoreEntitySet="SysException">
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="TargetSite" ColumnName="TargetSite" />
+                <ScalarProperty Name="StackTrace" ColumnName="StackTrace" />
+                <ScalarProperty Name="Source" ColumnName="Source" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="HelpLink" ColumnName="HelpLink" />
+                <ScalarProperty Name="SysExceptionID" ColumnName="SysExceptionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SysLog">
+            <EntityTypeMapping TypeName="MBRModel.SysLog">
+              <MappingFragment StoreEntitySet="SysLog">
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Module" ColumnName="Module" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Result" ColumnName="Result" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Operator" ColumnName="Operator" />
+                <ScalarProperty Name="SysLogID" ColumnName="SysLogID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="MBRModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="RealName" ColumnName="RealName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WarningStat">
+            <EntityTypeMapping TypeName="MBRModel.WarningStat">
+              <MappingFragment StoreEntitySet="WarningStat">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="WarningSettID" ColumnName="WarningSettID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WN_ParamSett">
+            <EntityTypeMapping TypeName="MBRModel.WN_ParamSett">
+              <MappingFragment StoreEntitySet="WN_ParamSett">
+                <ScalarProperty Name="WaitTime" ColumnName="WaitTime" />
+                <ScalarProperty Name="Low" ColumnName="Low" />
+                <ScalarProperty Name="High" ColumnName="High" />
+                <ScalarProperty Name="ParamID" ColumnName="ParamID" />
+                <ScalarProperty Name="WarningCondID" ColumnName="WarningCondID" />
+                <ScalarProperty Name="ParamSetID" ColumnName="ParamSetID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WN_WarningCond">
+            <EntityTypeMapping TypeName="MBRModel.WN_WarningCond">
+              <MappingFragment StoreEntitySet="WN_WarningCond">
+                <ScalarProperty Name="WarningCondDesc" ColumnName="WarningCondDesc" />
+                <ScalarProperty Name="WarningSettID" ColumnName="WarningSettID" />
+                <ScalarProperty Name="WarningCondID" ColumnName="WarningCondID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WN_WarningLog">
+            <EntityTypeMapping TypeName="MBRModel.WN_WarningLog">
+              <MappingFragment StoreEntitySet="WN_WarningLog">
+                <ScalarProperty Name="End" ColumnName="End" />
+                <ScalarProperty Name="Begin" ColumnName="Begin" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="WarningDesc" ColumnName="WarningDesc" />
+                <ScalarProperty Name="WarningSettID" ColumnName="WarningSettID" />
+                <ScalarProperty Name="WarningLogID" ColumnName="WarningLogID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WN_WarningSett">
+            <EntityTypeMapping TypeName="MBRModel.WN_WarningSett">
+              <MappingFragment StoreEntitySet="WN_WarningSett">
+                <ScalarProperty Name="WarningInfo" ColumnName="WarningInfo" />
+                <ScalarProperty Name="WarningLevel" ColumnName="WarningLevel" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="WarningSettID" ColumnName="WarningSettID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="RoleUser" TypeName="MBRModel.RoleUser" StoreEntitySet="RoleUser">
+            <EndProperty Name="Role">
+              <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+            </EndProperty>
+            <EndProperty Name="User">
+              <ScalarProperty Name="UserID" ColumnName="UserID" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="MBR" ZoomLevel="97">
+        <EntityTypeShape EntityType="MBRModel.AirValve" Width="1.5" PointX="5.75" PointY="0.75" Height="1.3969734700520746" />
+        <EntityTypeShape EntityType="MBRModel.AN_CLCurve" Width="1.5" PointX="5.25" PointY="5.125" Height="2.3520719401041674" />
+        <EntityTypeShape EntityType="MBRModel.AN_HighCurve" Width="1.5" PointX="5.25" PointY="8.25" Height="2.3520719401041674" />
+        <EntityTypeShape EntityType="MBRModel.AN_LowCurve" Width="1.5" PointX="5.25" PointY="11.375" Height="2.3520719401041674" />
+        <EntityTypeShape EntityType="MBRModel.AN_NetInfo" Width="1.5" PointX="3" PointY="1.875" Height="2.543091634114603" />
+        <EntityTypeShape EntityType="MBRModel.CIPPump" Width="1.5" PointX="0.75" PointY="5.75" Height="1.3969734700520746" />
+        <EntityTypeShape EntityType="MBRModel.Knowlege" Width="1.5" PointX="14.75" PointY="0.75" Height="2.5430916341145746" />
+        <EntityTypeShape EntityType="MBRModel.MBR_Info" Width="1.5" PointX="3" PointY="8" Height="2.9251310221354174" />
+        <EntityTypeShape EntityType="MBRModel.MBR_Pool" Width="1.5" PointX="0.75" PointY="10.75" Height="2.543091634114603" />
+        <EntityTypeShape EntityType="MBRModel.MBR_RunningInfo" Width="1.5" PointX="3" PointY="14.5" Height="3.689209798177103" />
+        <EntityTypeShape EntityType="MBRModel.MBR_WashingInfo" Width="1.5" PointX="3" PointY="18.875" Height="3.3071704101562318" />
+        <EntityTypeShape EntityType="MBRModel.Module" Width="1.5" PointX="7.75" PointY="11" Height="3.8802294921874818" />
+        <EntityTypeShape EntityType="MBRModel.ModulePermission" Width="1.5" PointX="10" PointY="12" Height="1.970032552083353" />
+        <EntityTypeShape EntityType="MBRModel.Role" Width="1.5" PointX="15" PointY="8" Height="2.543091634114603" />
+        <EntityTypeShape EntityType="MBRModel.Settings" Width="1.5" PointX="14.75" PointY="4.75" Height="1.7790128580729174" />
+        <EntityTypeShape EntityType="MBRModel.SYS_CIPLog" Width="1.5" PointX="9.75" PointY="14.75" Height="1.7790128580729174" />
+        <EntityTypeShape EntityType="MBRModel.SYS_ParamCurValue" Width="1.5" PointX="15" PointY="12" Height="1.970032552083353" />
+        <EntityTypeShape EntityType="MBRModel.SYS_ParamInfo" Width="1.5" PointX="12.75" PointY="11.875" Height="2.1610522460937318" />
+        <EntityTypeShape EntityType="MBRModel.SYS_PoisonLog" Width="1.5" PointX="14.75" PointY="14.75" Height="2.3520719401041674" />
+        <EntityTypeShape EntityType="MBRModel.SysException" Width="1.5" PointX="5.75" PointY="15.75" Height="2.5430916341145746" />
+        <EntityTypeShape EntityType="MBRModel.SysLog" Width="1.5" PointX="11.75" PointY="15.75" Height="2.3520719401041674" />
+        <EntityTypeShape EntityType="MBRModel.User" Width="1.5" PointX="12.75" PointY="8" Height="2.543091634114603" />
+        <EntityTypeShape EntityType="MBRModel.WarningStat" Width="1.5" PointX="10" PointY="1.25" Height="1.7790128580729174" />
+        <EntityTypeShape EntityType="MBRModel.WN_ParamSett" Width="1.5" PointX="12.25" PointY="3.75" Height="2.3520719401041674" />
+        <EntityTypeShape EntityType="MBRModel.WN_WarningCond" Width="1.5" PointX="10" PointY="4" Height="1.9700325520833246" />
+        <EntityTypeShape EntityType="MBRModel.WN_WarningLog" Width="1.5" PointX="10" PointY="6.875" Height="2.3520719401041674" />
+        <EntityTypeShape EntityType="MBRModel.WN_WarningSett" Width="1.5" PointX="7.75" PointY="4" Height="2.3520719401041674" />
+        <AssociationConnector Association="MBRModel.FK_Reference_11" >
+          <ConnectorPoint PointX="3.75" PointY="8" />
+          <ConnectorPoint PointX="3.75" PointY="6.3010359700520837" />
+          <ConnectorPoint PointX="5.25" PointY="6.3010359700520837" />
+        </AssociationConnector>
+        <AssociationConnector Association="MBRModel.FK_Reference_9" >
+          <ConnectorPoint PointX="4.5" PointY="9.4260359700520837" />
+          <ConnectorPoint PointX="5.25" PointY="9.4260359700520837" />
+        </AssociationConnector>
+        <AssociationConnector Association="MBRModel.FK_Reference_10" >
+          <ConnectorPoint PointX="3.92187375" PointY="11.116150716145834" />
+          <ConnectorPoint PointX="3.92187375" PointY="12.748203968098956" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="12.748203968098956" />
+          <ConnectorPoint PointX="4.958333333333333" PointY="12.748203968098956" />
+          <ConnectorPoint PointX="5.25" PointY="12.748203968098956" />
+        </AssociationConnector>
+        <AssociationConnector Association="MBRModel.FK_Reference_12" >
+          <ConnectorPoint PointX="2.25" PointY="10.751152846153847" />
+          <ConnectorPoint PointX="2.625" PointY="10.376152846153847" />
+          <ConnectorPoint PointX="2.625" PointY="3.1465458170573015" />
+          <ConnectorPoint PointX="3" PointY="3.1465458170573015" />
+        </AssociationConnector>
+        <AssociationConnector Association="MBRModel.FK_Reference_5" >
+          <ConnectorPoint PointX="2.25" PointY="10.96490428114984" />
+          <ConnectorPoint PointX="3" PointY="10.96490428114984" />
+        </AssociationConnector>
+        <AssociationConnector Association="MBRModel.FK_Reference_7" >
+          <ConnectorPoint PointX="1.5" PointY="13.293091634114603" />
+          <ConnectorPoint PointX="1.5" PointY="16.344604899088552" />
+          <ConnectorPoint PointX="1.8229191666666667" PointY="16.344604899088552" />
+          <ConnectorPoint PointX="1.9895858333333332" PointY="16.344604899088552" />
+          <ConnectorPoint PointX="3" PointY="16.344604899088552" />
+        </AssociationConnector>
+        <AssociationConnector Association="MBRModel.FK_Reference_8" >
+          <ConnectorPoint PointX="1.9062525" PointY="13.293091634114603" />
+          <ConnectorPoint PointX="1.9062525" PointY="20.719604899088544" />
+          <ConnectorPoint PointX="3" PointY="20.719604899088544" />
+        </AssociationConnector>
+        <AssociationConnector Association="MBRModel.FK_Reference_55" >
+          <ConnectorPoint PointX="9.25" PointY="12.985016276041677" />
+          <ConnectorPoint PointX="10" PointY="12.985016276041677" />
+        </AssociationConnector>
+        <AssociationConnector Association="MBRModel.FK_Reference_60" >
+          <ConnectorPoint PointX="8.2819230769230767" PointY="14.880229492187482" />
+          <ConnectorPoint PointX="8.2819230769230767" PointY="15.130229492187482" />
+          <ConnectorPoint PointX="8.72846153846154" PointY="15.130229492187482" />
+          <ConnectorPoint PointX="8.72846153846154" PointY="14.880229492187482" />
+        </AssociationConnector>
+        <AssociationConnector Association="MBRModel.FK_Reference_6" >
+          <ConnectorPoint PointX="14.25" PointY="12.985016276041677" />
+          <ConnectorPoint PointX="15" PointY="12.985016276041677" />
+        </AssociationConnector>
+        <AssociationConnector Association="MBRModel.FK_Reference_4" >
+          <ConnectorPoint PointX="8.5" PointY="4" />
+          <ConnectorPoint PointX="8.5" PointY="2.1395064290364587" />
+          <ConnectorPoint PointX="10" PointY="2.1395064290364587" />
+        </AssociationConnector>
+        <AssociationConnector Association="MBRModel.FK_Reference_2" >
+          <ConnectorPoint PointX="11.5" PointY="4.9850162760416623" />
+          <ConnectorPoint PointX="12.25" PointY="4.9850162760416623" />
+        </AssociationConnector>
+        <AssociationConnector Association="MBRModel.FK_Reference_1" >
+          <ConnectorPoint PointX="9.25" PointY="4.9850162760416623" />
+          <ConnectorPoint PointX="10" PointY="4.9850162760416623" />
+        </AssociationConnector>
+        <AssociationConnector Association="MBRModel.FK_Reference_3" >
+          <ConnectorPoint PointX="8.5" PointY="6.3520719401041674" />
+          <ConnectorPoint PointX="8.5" PointY="8.0510359700520837" />
+          <ConnectorPoint PointX="10" PointY="8.0510359700520837" />
+        </AssociationConnector>
+        <AssociationConnector Association="MBRModel.RoleUser" >
+          <ConnectorPoint PointX="14.25" PointY="9.2715458170573015" />
+          <ConnectorPoint PointX="15" PointY="9.2715458170573015" />
+        </AssociationConnector>
+        <AssociationConnector Association="MBRModel.FK_Reference_17" >
+          <ConnectorPoint PointX="4.5000000000000018" PointY="11.116150716145834" />
+          <ConnectorPoint PointX="4.875" PointY="11.491150716145832" />
+          <ConnectorPoint PointX="4.875" PointY="18.501152846153843" />
+          <ConnectorPoint PointX="4.5" PointY="18.876152846153843" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

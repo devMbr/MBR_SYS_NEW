@@ -1,0 +1,42 @@
+﻿@model MBR.Models.WN_WarningCond
+
+@{
+    Layout = "~/Views/Shared/_Edit_Layout.cshtml";
+    
+}
+@using (Ajax.BeginForm("Create", "WarningCond", null, new AjaxOptions
+{
+    HttpMethod = "POST",
+    OnSuccess = "OnSuccess",
+    OnFailure = "OnFailure",
+}, new { @class = "form-horizontal", id = "frmEdit" }))
+{
+    @Html.Hidden("WarningSettID", Request["WarningSettID"])
+    <div class="form-body">
+        <div class="form-group">
+            @Html.LabelFor(m => m.WarningCondDesc, new { @class = "control-label col-xs-3" })
+            <div class="col-xs-9">
+                @Html.TextBoxFor(m => m.WarningCondDesc, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.WarningCondDesc)
+            </div>
+        </div>
+    </div>
+}
+@section header{
+}
+@section scripts{
+    <script>
+        $(function () {
+
+
+        });
+
+        function OnSuccess(data) {
+            parent.doSuccess(parent.$('#tbWarningCond'), data.message);
+        }
+
+        function OnFailure(data) {
+            parent.doFailure(data.message);
+        }
+    </script>
+}

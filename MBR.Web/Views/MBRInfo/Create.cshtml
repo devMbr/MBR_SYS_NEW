@@ -1,0 +1,81 @@
+﻿@model MBR.Models.MBR_Info
+
+@{
+    Layout = "~/Views/Shared/_Edit_Layout.cshtml";
+    MBR.Models.MBR_Pool MBRPool = ViewBag.CurrentMBRPool;
+    if(MBRPool==null)
+    {
+        return;
+    }
+}
+@using (Ajax.BeginForm("Create", "MBRInfo", null, new AjaxOptions
+{
+    HttpMethod = "POST",
+    OnSuccess = "OnSuccess",
+    OnFailure = "OnFailure",
+}, new { @class = "form-horizontal", id = "frmEdit" }))
+{
+    <div class="form-body">
+        <div class="form-group">
+            <label class="control-label col-xs-3">当前膜池</label>
+            <div class="col-xs-9">
+                @MBRPool.PoolName
+                @Html.Hidden("PoolID", MBRPool.PoolID)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.ChangeDate, new { @class = "control-label col-xs-3" })
+            <div class="col-xs-9">
+                @Html.TextBoxFor(m => m.ChangeDate,"{0:yyyy-MM-dd}", new { @class = "form-control",@readonly = true })
+                @Html.ValidationMessageFor(m => m.ChangeDate)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Company, new { @class = "control-label col-xs-3" })
+            <div class="col-xs-9">
+                @Html.TextBoxFor(m => m.Company, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Company)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Model, new { @class = "control-label col-xs-3" })
+            <div class="col-xs-9">
+                @Html.TextBoxFor(m => m.Model, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Model)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Title, new { @class = "control-label col-xs-3" })
+            <div class="col-xs-9">
+                @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Title)
+            </div>
+        </div>
+    </div>
+}
+@section header{
+    <link rel="stylesheet" href="~/plugins/datepicker/datepicker3.css">
+}
+@section scripts{
+    <script src="~/plugins/datepicker/bootstrap-datepicker.js"></script>
+    <script src="~/plugins/datepicker/locales/bootstrap-datepicker.zh-CN.js"></script>
+    <script>
+        $(function () {
+
+
+            $('#ChangeDate').datepicker({
+                language: 'zh-CN',
+                autoclose: true,
+                format: 'yyyy-mm-dd'
+            });
+        });
+
+        function OnSuccess(data) {
+            parent.doSuccess(parent.$('#tbMBRInfo'), data.message);
+        }
+
+        function OnFailure(data) {
+            parent.doFailure(data.message);
+        }
+    </script>
+}

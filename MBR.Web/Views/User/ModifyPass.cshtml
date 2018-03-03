@@ -1,0 +1,71 @@
+﻿@model MES.Web.Models.LocalPasswordModel
+@{
+            //Layout = "~/Views/Shared/_Edit_Layout.cshtml";
+}
+<div class="box">
+    <div class="box-header">修改密码
+    </div>
+    <div class="box-body">
+        @using (Ajax.BeginForm("ModifyPass", "User", null, new AjaxOptions
+{
+    HttpMethod = "Post",
+    OnSuccess = "OnSuccess",
+    OnFailure = "OnFailure"
+}, new { @class = "form-horizontal" }))
+        {
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.OldPassword, new { @class = "control-label col-xs-3" })
+                <div class="col-xs-9">
+                    @Html.PasswordFor(m => m.OldPassword, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.OldPassword)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.NewPassword, new { @class = "control-label col-xs-3" })
+                <div class="col-xs-9">
+                    @Html.PasswordFor(m => m.NewPassword, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.NewPassword)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.ConfirmPassword, new { @class = "control-label col-xs-3" })
+                <div class="col-xs-9">
+                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.ConfirmPassword)
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-offset-3 col-sm-10">
+                    <button type="button" class="btn btn-default" onclick="doSubmit()">
+                        保存</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+@section header
+{
+    <link rel="stylesheet" href="~/Content/Site.css">
+}
+@section scripts
+{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/plugins/bootbox/bootbox.min.js"></script>
+    <script type="text/javascript">
+        function OnSuccess(data) {
+            //tipDialog(data.message);
+            bootbox.alert(data.message);
+        }
+        function OnFailure() {
+
+        }
+        function doSubmit() {
+            if ($(document.forms[0]).valid()) {
+                $(document.forms[0]).submit();
+            }
+        }
+    </script>
+}

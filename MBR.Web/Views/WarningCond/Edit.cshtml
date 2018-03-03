@@ -1,0 +1,180 @@
+﻿@model MBR.Models.WN_WarningCond
+@{
+    Layout = "~/Views/Shared/_Edit_Layout.cshtml";
+}
+@using (Ajax.BeginForm("Edit", "WarningCond", null, new AjaxOptions
+{
+    HttpMethod = "POST",
+    OnSuccess = "OnSuccess",
+    OnFailure = "OnFailure",
+}, new { @class = "form-horizontal", id = "frmEdit" }))
+{
+    @Html.HiddenFor(m => m.WarningSettID)
+    <div class="form-body">
+        <div class="form-group">
+            @Html.LabelFor(m => m.WarningCondDesc, new { @class = "control-label col-xs-3" })
+            <div class="col-xs-8">
+                @Html.TextBoxFor(m => m.WarningCondDesc, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.WarningCondDesc)
+            </div>
+        </div>
+    </div>
+}
+    
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">
+                        预警条件</h3>
+                    <div class="box-tools pull-right">
+                        <a id="aCreate" class="btn btn-default btn-sm" href="#CreateModal" data-toggle="modal">
+                                    <i class="fa fa-plus"></i>新增 </a>
+                    </div>
+                </div>
+                <div class="box-body">
+                    
+                    <table class="table table-striped table-bordered table-hover dataTable no-footer" role="grid">
+                        <thead>
+                            <tr>
+                                <th>
+                                    参数ID
+                                </th>
+                                <th>
+                                    上限值
+                                </th>
+                                <th>
+                                    下限值
+                                </th>
+                                <th>
+                                    判定时间
+                                </th>
+                                <th style="width: 200px;">
+                                    操作
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody id="contentField">
+                            @if(Model.WN_ParamSett != null) {
+                                foreach (var WN_ParamSett in Model.WN_ParamSett)
+                                {
+                                    <tr id="tr_@WN_ParamSett.ParamSetID">
+                                        <td>
+                                            @Html.HiddenFor(m => WN_ParamSett.ParamSetID)
+                                            @Html.TextBoxFor(m => WN_ParamSett.ParamID, new { @class = "form-control" })
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(m => WN_ParamSett.High, new { @class = "form-control" })
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(m => WN_ParamSett.Low, new { @class = "form-control" })
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(m => WN_ParamSett.WaitTime, new { @class = "form-control" })
+                                        </td>
+                                        <td>
+                                            <a href="javascript:void(0)" class="btnDel" onclick="oper.edit('')">编辑</a> 
+                                            <a href="javascript:void(0)" class="btnDel" onclick="oper.del(@WN_ParamSett.ParamSetID);">删除</a>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section header{
+    <link rel="stylesheet" href="~/plugins/datatables/dataTables.bootstrap.css">
+}
+@section scripts{
+    <script src="~/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/plugins/datatables/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript">
+        var GetListUrl = '@Url.Action("GetList", new { WarningCondID = Request["id"] })';
+        var CreateUrl = '@Url.Action("Create")';
+        var EditUrl = '@Url.Action("Edit")';
+        var DeleteUrl = '@Url.Action("Delete")';
+    </script>
+    <script>
+        $(function () {
+            $('#aCreate').on('click', function () {
+                oper.add();
+
+            })
+        });
+        var oper = {
+            add: function () {
+
+                if ($("input[name='WN_ParamSett.ParamSetID']") && $("input[name='WN_ParamSett.ParamSetID']").length != 0) {
+                    var itemId = [];
+                    $("input[name='WN_ParamSett.ParamSetID']").each(function () {
+                        itemId.push(parseInt($(this).val()));
+                    });
+                    if (itemId.length != 0) {
+                        var maxId = Math.max.apply(null, itemId);
+                        if (maxId != undefined) {
+                            var newMaxId = maxId + 1;
+                            var html = appendHtml(newMaxId);
+                            $("#tr_" + maxId).after(html);
+
+                        }
+                    }
+                } else {
+                    var newMaxId = 0;
+                    var html = appendHtml(newMaxId);
+                    $("#contentField").html(html);
+                }
+
+            },
+            edit: function () {
+
+            },
+            del: function (itemId) {
+                $("#tr_" + itemId).remove();
+            }
+        };
+
+        function appendHtml(newMaxId) {
+            var trStr = '<tr id="tr_' + newMaxId + '">'
+
+                + '<td>'
+			    + '<input type="hidden"  name="ParamSetID" value="' + newMaxId + '"/>'
+                + '<input type="text" class="form-control" name="WN_ParamSett[' + newMaxId + '].ParamID" value=""/>'
+                + '</td>'
+
+                + '<td>'
+                + '<input type="text" class="form-control" name="WN_ParamSett[' + newMaxId + '].High" value=""/>'
+                + '</td>'
+
+                + '<td>'
+                    + '<input type="text" class="form-control" name="WN_ParamSett[' + newMaxId + '].Low"  value=""/>'
+                + '</td>'
+
+                + '<td>'
+                    + '<input type="text" class="form-control" name="WN_ParamSett[' + newMaxId + '].WaitTime"  value=""/>'
+                + '</td>'
+
+                + '<td>'
+                    + '<a href="javascript:void(0)" class="btnDel" onclick="oper.edit(' + newMaxId + ');"><i class="fa fa-edit"></i> 编辑 </a>'
+                    + '<a href="javascript:void(0)" class="btnDel" onclick="oper.del(' + newMaxId + ');"><i class="fa fa-trash-o"></i> 删除 </a>'
+                + '</td>'
+                + '</tr>';
+
+            var html = trStr;
+            return html;
+        }
+
+        function OnSuccess(data) {
+            
+        }
+
+        function OnFailure(data) {
+            parent.doFailure(data.message);
+        }
+    </script>
+}

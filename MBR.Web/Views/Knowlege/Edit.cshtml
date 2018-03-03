@@ -1,0 +1,59 @@
+﻿@model MBR.Models.Knowlege
+@{
+    Layout = "~/Views/Shared/_Edit_Layout.cshtml";
+}
+@using (Ajax.BeginForm("Edit", "Knowlege", null, new AjaxOptions
+{
+    HttpMethod = "POST",
+    OnSuccess = "OnSuccess",
+    OnFailure = "OnFailure",
+}, new { @class = "form-horizontal", id = "frmEdit" }))
+{
+    @Html.HiddenFor(m => m.KnowlegeID)
+    <div class="form-body">
+        <div class="form-group">
+            @Html.LabelFor(m => m.Title, new { @class = "control-label col-xs-2" })
+            <div class="col-xs-10">
+                @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Title)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.KeyWords, new { @class = "control-label col-xs-2" })
+            <div class="col-xs-10">
+                @Html.TextBoxFor(m => m.KeyWords, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.KeyWords)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Content, new { @class = "control-label col-xs-2" })
+            <div class="col-xs-10">
+                @Html.TextAreaFor(m => m.Content, new { @class = "form-control", rows = "5" })
+                @Html.ValidationMessageFor(m => m.Content)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Author, new { @class = "control-label col-xs-2" })
+            <div class="col-xs-4">
+                @Html.TextBoxFor(m => m.Author, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Author)
+            </div>
+            @Html.LabelFor(m => m.UpdateTime, new { @class = "control-label col-xs-2" })
+            <div class="col-xs-4">
+                @Html.TextBoxFor(m => m.UpdateTime, "{0:yyyy-MM-dd}", new { @class = "form-control", @readonly = true })
+                @Html.ValidationMessageFor(m => m.UpdateTime)
+            </div>
+        </div>
+    </div>
+}
+@section scripts{
+    <script>
+        function OnSuccess(data) {
+            parent.doSuccess(parent.$('#tbKnowlege'), data.message);
+        }
+
+        function OnFailure(data) {
+            parent.doFailure(data.message);
+        }
+    </script>
+}

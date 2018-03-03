@@ -1,0 +1,111 @@
+﻿@model MBR.Models.MBR_WashingInfo
+
+@{
+    Layout = "~/Views/Shared/_Edit_Layout.cshtml";
+
+    MBR.Models.MBR_Pool MBRPool = ViewBag.CurrentMBRPool;
+    
+}
+@using (Ajax.BeginForm("Create", "WashingInfo", null, new AjaxOptions
+{
+    HttpMethod = "POST",
+    OnSuccess = "OnSuccess",
+    OnFailure = "OnFailure",
+}, new { @class = "form-horizontal", id = "frmEdit" }))
+{
+    <div class="form-body">
+        <div class="form-group">
+            <label class="control-label col-xs-2">当前膜池</label>
+            <div class="col-xs-4">
+                <p class="form-control-static">@MBRPool.PoolName</p>
+                @Html.Hidden("PoolID", MBRPool.PoolID)
+            </div>
+            <label class="control-label col-xs-2">当前膜</label>
+            <div class="col-xs-4">
+                <p class="form-control-static">@(Request["Title"]??"")</p>
+                @Html.Hidden("InfoID", Request["InfoID"])
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.BeginTime, new { @class = "control-label col-xs-2" })
+            <div class="col-xs-4">
+                @Html.TextBoxFor(m => m.BeginTime, "{0:yyyy-MM-dd}", new { @class = "form-control", @readonly = true })
+                @Html.ValidationMessageFor(m => m.BeginTime)
+            </div>
+            @Html.LabelFor(m => m.EndTime, new { @class = "control-label col-xs-2" })
+            <div class="col-xs-4">
+                @Html.TextBoxFor(m => m.EndTime, "{0:yyyy-MM-dd}", new { @class = "form-control", @readonly = true })
+                @Html.ValidationMessageFor(m => m.EndTime)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.WashType, new { @class = "control-label col-xs-2" })
+            <div class="col-xs-4">
+                @Html.TextBoxFor(m => m.WashType, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.WashType)
+            </div>
+            @Html.LabelFor(m => m.YaoJiLX, new { @class = "control-label col-xs-2" })
+            <div class="col-xs-4">
+                @Html.TextBoxFor(m => m.YaoJiLX, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.YaoJiLX)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.JinPaoSJ, new { @class = "control-label col-xs-2" })
+            <div class="col-xs-4">
+                @Html.TextBoxFor(m => m.JinPaoSJ, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.JinPaoSJ)
+            </div>
+            @Html.LabelFor(m => m.YaoJiND, new { @class = "control-label col-xs-2" })
+            <div class="col-xs-4">
+                @Html.TextBoxFor(m => m.YaoJiND, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.YaoJiND)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.TouShuiL_Low, new { @class = "control-label col-xs-2" })
+            <div class="col-xs-4">
+                @Html.TextBoxFor(m => m.TouShuiL_Low, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.TouShuiL_Low)
+            </div>
+            @Html.LabelFor(m => m.TouShuiL_High, new { @class = "control-label col-xs-2" })
+            <div class="col-xs-4">
+                @Html.TextBoxFor(m => m.TouShuiL_High, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.TouShuiL_High)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.LvJieCZDC, new { @class = "control-label col-xs-2" })
+            <div class="col-xs-4">
+                @Html.TextBoxFor(m => m.LvJieCZDC, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.LvJieCZDC)
+            </div>
+        </div>
+    </div>
+}
+@section header{
+    <link rel="stylesheet" href="~/plugins/datepicker/datepicker3.css">
+}
+@section scripts{
+    <script src="~/plugins/datepicker/bootstrap-datepicker.js"></script>
+    <script src="~/plugins/datepicker/locales/bootstrap-datepicker.zh-CN.js"></script>
+    <script>
+        $(function () {
+
+
+            $('#BeginTime,#EndTime').datepicker({
+                language: 'zh-CN',
+                autoclose: true,
+                format: 'yyyy-mm-dd'
+            });
+        });
+
+        function OnSuccess(data) {
+            parent.doSuccess(parent.$('#tbOffLineWashingInfo'), data.message);
+        }
+
+        function OnFailure(data) {
+            parent.doFailure(data.message);
+        }
+    </script>
+}

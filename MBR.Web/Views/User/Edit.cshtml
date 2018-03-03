@@ -1,0 +1,66 @@
+﻿@model MBR.Models.User
+@{
+    Layout = "~/Views/Shared/_Edit_Layout.cshtml";
+    var RoleList = ViewBag.Roles as IEnumerable<MBR.Models.Role>;
+}
+@using (Ajax.BeginForm("Edit", "User", null, new AjaxOptions
+{
+    HttpMethod = "POST",
+    OnSuccess = "OnSuccess",
+    OnFailure = "OnFailure",
+}, new { @class = "form-horizontal", id = "frmEdit" }))
+{
+    @Html.HiddenFor(m => m.UserID)
+    @Html.HiddenFor(m => m.RoleIds)
+    <div class="form-body">
+        <div class="form-group">
+            @Html.LabelFor(m => m.UserName, new { @class = "control-label col-md-3" })
+            <div class="col-md-9">
+                @Html.TextBoxFor(m => m.UserName, new { @class = "form-control disalbed", @readonly = "true" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.RealName, new { @class = "control-label col-md-3" })
+            <div class="col-md-9">
+                @Html.TextBoxFor(m => m.RealName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.RealName)
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-3" for="">
+                用户角色</label>
+            <div class="col-md-9">
+                <div class="btn-group" data-toggle="buttons">
+                    @foreach (var item in RoleList)
+                    {
+                        <label class="btn btn-default">
+                            <input type="checkbox" autocomplete="off"  name="Role.RoleID" value="@item.RoleID" class="toggle">
+                            @item.FullName
+                        </label>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@section scripts{
+    <script>
+        $(function () {
+            var ids = $('#RoleIds').val();
+            $('input[name="Role.RoleID"]').each(function () {
+                if ((',' + ids + ',').indexOf(',' + $(this).val() + ',') > -1) {
+                    $(this).attr('checked', true);
+                    $(this).parent().addClass('active');
+                }
+            })
+        });
+
+        function OnSuccess(data) {
+            parent.doSuccess(parent.$('#tbUser'), data.message);
+        }
+
+        function OnFailure(data) {
+            parent.doFailure(data.message);
+        }
+    </script>
+}

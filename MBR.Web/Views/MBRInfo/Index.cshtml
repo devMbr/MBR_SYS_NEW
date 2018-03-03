@@ -1,0 +1,204 @@
+﻿@using MBR.Models
+@using MBR.Web
+@{
+    Layout = "~/Views/Shared/_Index_Layout.cshtml";
+    string Type = Request["type"] ?? "washinginfo";//默认清洗日志及评价
+    string sFunctionHtml = "";
+    if(Type=="washinginfo")
+    {
+        sFunctionHtml = "<a href=\"#WashingInfoModal\" onclick=\"OnWashingInfo(' + data + ')\" class=\"btn default btn-xs blue\" data-toggle=\"modal\"><i class=\"fa fa-list\"></i> 进入 </a>";
+    }
+    else if (Type == "offline")
+    {
+        sFunctionHtml = "<a href=\"javascript:void(0)\" onclick=\"OnWashingInfo(' + data + ')\" class=\"btn default btn-xs blue\"><i class=\"fa fa-list\"></i> 进入 </a>";
+    }
+    else if (Type == "an")
+    {
+        sFunctionHtml = "<a href=\"#WashingInfoModal\" onclick=\"OnWashingInfo(' + data + ')\" class=\"btn default btn-xs blue\" data-toggle=\"modal\"><i class=\"fa fa-list\"></i> 进入 </a>";
+    }
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="box">
+            <div class="box-body">
+                <a id="aCreate" class="btn btn-default btn-sm" href="#EditModal" data-toggle="modal">
+                    <i class="fa fa-plus"></i>新增 </a>
+                <div class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                </div>
+                <table id="tbMBRInfo" class="table table-striped table-bordered table-hover dataTable">
+                    <thead>
+                        <tr>
+                            <th>
+                                更换时间
+                            </th>
+                            <th>
+                                厂商
+                            </th>
+                            <th>
+                                规格型号
+                            </th>
+                            <th>
+                                标题简称
+                            </th>
+                            <th style="width: 200px;">
+                                操作
+                            </th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="EditModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">
+                    编辑
+                </h4>
+            </div>
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button id="btnEdit" type="button" class="btn btn-primary">
+                    保存
+                </button>
+                <button type="button" class="btn default" data-dismiss="modal">
+                    关闭
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="WashingInfoModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog" style="width:98%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body">
+                <div style="height:360px;overflow:auto;">
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn default" data-dismiss="modal">
+                    关闭
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript">
+        var GetListUrl = '@Url.Action("GetList")';
+        var CreateUrl = '@Url.Action("Create")';
+        var EditUrl = '@Url.Action("Edit")';
+        var DeleteUrl = '@Url.Action("Delete")';
+        var Type = '@Request["type"]';
+        var WashingInfoUrl = '@Url.Action("WashingInfoIndex", "WashingInfo", new { })';
+        var OffLineUrl = '@Url.Action("OffLineIndex", "WashingInfo", new { })';
+        var ANUrl = '@Url.Action("ANIndex", "AN", new { })';
+    </script>
+    <script type="text/javascript">
+        $(function () {
+            var table = $('#tbMBRInfo').DataTable({
+                "processing": true,
+                "serverSide": true,
+                "ajax": {
+                    "url": GetListUrl,
+                    "type": "POST",
+                    "data": function (d) {
+                        //添加额外的参数传给服务器
+                        d.sort = 'ChangeDate';
+                        d.order = 'desc';
+                    }
+                },
+                "columns": [
+                    { "data": "ChangeDate" },
+                    { "data": "Company" },
+                    { "data": "Model" },
+                    { "data": "Title" },
+                    { "data": "InfoID" }
+                ],
+                "columnDefs": [{
+                    "targets": 0,
+                    "data": "RunDate",
+                    "render": function (data, type, full, meta) {
+                        var sData = '';
+                        if (data) {
+                            sData = data.substr(0, 10); //格式化日期
+                        }
+                        return sData;
+                    }
+                }, {
+                    "targets": 4,
+                    "data": "opt",
+                    "render": function (data, type, full, meta) {
+                        return '<a href="#EditModal" onclick="OnEdit(' + data + ')" class="btn default btn-xs blue" data-toggle="modal"><i class="fa fa-edit"></i> 编辑 </a>' +
+                                    '<a href="javascript:void(0);" onclick="OnDelete(' + data + ')" class="btn default btn-xs blue"><i class="fa fa-trash-o"></i> 删除 </a>' +
+                                    '@Html.Raw(sFunctionHtml)';
+                    }
+                }]
+
+
+            });
+
+            $('#aCreate').on('click', function (event) {
+                var modal = $('#EditModal');
+                modal.find('.modal-body').html("<iframe width='100%' height='300' scrolling='no' frameborder='0' src='" + CreateUrl + "'></iframe>");
+            })
+
+            $('#btnEdit').on('click', function () {
+                window.frames[0].doSubmit('frmEdit');
+            });
+
+        });
+
+        function OnEdit(id) {
+            var modal = $('#EditModal');
+            modal.find('.modal-body').html("<iframe width='100%' height='300' scrolling='no' frameborder='0' src='" + EditUrl + '?id=' + id + "'></iframe>");
+        }
+
+        function OnDelete(id) {
+            doDelete(DeleteUrl + '/' + id);
+        }
+
+        function OnWashingInfo(id) {
+            var url = 'about:blank';
+            if(Type == 'washinginfo'){
+                url = WashingInfoUrl;
+                url = AddUrlParam(url,'InfoID',id);
+                var modal = $('#WashingInfoModal');
+                modal.find('.modal-title').text('膜池清洗记录');
+                modal.find('.modal-body div').html("<iframe width='100%' height='100%' scrolling='no' frameborder='0' src='" + url + "'></iframe>");
+            }
+            else if (Type == 'offline') {
+                url = OffLineUrl;
+                url = AddUrlParam(url, 'InfoID', id);
+                window.location = url;
+            }
+            else if (Type == 'an') {
+                url = ANUrl;
+                url = AddUrlParam(url, 'InfoID', id);
+                var modal = $('#WashingInfoModal');
+                modal.find('.modal-title').text('智能预测');
+                modal.find('.modal-body div').html("<iframe width='100%' height='100%' scrolling='no' frameborder='0' src='" + url + "'></iframe>");
+            } 
+        }
+
+        function AddUrlParam(url, name, value) {
+            if (url.indexOf('?') > -1) {
+                url = url + '&';
+            }
+            else {
+                url = url + '?';
+            }
+            url = url + name + '=' + value;
+            return url;
+        }
+    </script>
+}

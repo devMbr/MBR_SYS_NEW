@@ -1,0 +1,61 @@
+﻿@model MBR.Models.MBR_Info
+@{
+    Layout = "~/Views/Shared/_Edit_Layout.cshtml";
+}
+@using (Ajax.BeginForm("Edit", "MBRInfo", null, new AjaxOptions
+{
+    HttpMethod = "POST",
+    OnSuccess = "OnSuccess",
+    OnFailure = "OnFailure",
+}, new { @class = "form-horizontal", id = "frmEdit" }))
+{
+    @Html.HiddenFor(m => m.InfoID)
+    <div class="form-body">
+        <div class="form-group">
+            <label class="control-label col-xs-3">膜池</label>
+            <div class="col-xs-9">
+                @Model.MBR_Pool.PoolName
+                @Html.HiddenFor(m=>m.PoolID)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.ChangeDate, new { @class = "control-label col-xs-3" })
+            <div class="col-xs-9">
+                @Html.TextBoxFor(m => m.ChangeDate, "{0:yyyy-MM-dd}", new { @class = "form-control", @readonly = true })
+                @Html.ValidationMessageFor(m => m.ChangeDate)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Company, new { @class = "control-label col-xs-3" })
+            <div class="col-xs-9">
+                @Html.TextBoxFor(m => m.Company, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Company)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Model, new { @class = "control-label col-xs-3" })
+            <div class="col-xs-9">
+                @Html.TextBoxFor(m => m.Model, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Model)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Title, new { @class = "control-label col-xs-3" })
+            <div class="col-xs-9">
+                @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Title)
+            </div>
+        </div>
+    </div>
+}
+@section scripts{
+    <script>
+        function OnSuccess(data) {
+            parent.doSuccess(parent.$('#tbMBRInfo'), data.message);
+        }
+
+        function OnFailure(data) {
+            parent.doFailure(data.message);
+        }
+    </script>
+}
