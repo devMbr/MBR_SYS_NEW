@@ -26,6 +26,12 @@ namespace MBR.Web.Models
         /// 累积氯曲线
         /// </summary>
         public AN_CLCurve CLCurve { get; set; }
+
+        public int XValue { get; set; }
+
+        public double YValue { get; set; }
+
+        public int InfoID { get; set; }
     }
     
 }
