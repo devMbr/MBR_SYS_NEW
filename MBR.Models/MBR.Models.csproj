@@ -73,6 +73,8 @@
     <Compile Include="Extend\Knowlege.cs" />
     <Compile Include="Extend\Settings.cs" />
     <Compile Include="Extend\WN_WarningSett.cs" />
+    <Compile Include="Extend\WN_WarningCond.cs" />
+    <Compile Include="Extend\WN_ParamSett.cs" />
     <Compile Include="Knowlege.cs">
       <DependentUpon>MBR.tt</DependentUpon>
     </Compile>

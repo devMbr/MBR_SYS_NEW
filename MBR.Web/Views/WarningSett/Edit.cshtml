@@ -159,14 +159,14 @@
 
             $('#aCreate').on('click', function (event) {
                 var modal = $('#CreateModal');
-                modal.find('.modal-body').html("<iframe width='100%' height='200' scrolling='no' frameborder='0' src='" + CreateUrl + "'></iframe>");
+                modal.find('.modal-body').html("<iframe name='createFrame' width='100%' height='200' scrolling='no' frameborder='0' src='" + CreateUrl + "'></iframe>");
             })
 
             $('#btnCreate').on('click', function () {
-                window.frames[0].doSubmit('frmEdit');
+                window.frames['createFrame'].doSubmit('frmEdit');
             });
             $('#btnEdit').on('click', function () {
-                window.frames[0].doSubmit('frmEdit');
+                window.frames['editFrame'].doSubmit('frmEdit');
             });
 
         });
@@ -182,7 +182,7 @@
 
         function OnEdit(id) {
             var modal = $('#EditModal');
-            modal.find('.modal-body').html("<iframe width='100%' height='250' scrolling='no' frameborder='0' src='" + EditUrl + '?id=' + id + "'></iframe>");
+            modal.find('.modal-body').html("<iframe name='editFrame' width='100%' height='250' scrolling='no' frameborder='0' src='" + EditUrl + '?id=' + id + "'></iframe>");
         }
 
         function OnDelete(id) {

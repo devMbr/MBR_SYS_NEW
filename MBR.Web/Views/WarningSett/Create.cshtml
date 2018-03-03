@@ -45,7 +45,7 @@
         });
 
         function OnSuccess(data) {
-            
+            parent.doSuccess(parent.$('#tbWarningSett'), data.message);
         }
 
         function OnFailure(data) {

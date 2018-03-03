@@ -121,5 +121,72 @@ namespace MBR.Web.Controllers
             }
         }
 
+        [HttpPost]
+        public JsonResult CreateParamSett(WN_ParamSett entity)
+        {
+            using (MBREntities db = new MBREntities())
+            {
+                ParamSettService us = new ParamSettService(db);
+                if (us.Create(ref errors, entity))
+                {
+                    LogHandler.WriteServiceLog(LogonUser.RealName, "WarningCondID:" + entity.WarningCondID, Resource.InsertSucceed, Resource.Create, "预警条件设置");
+                    return Json(JsonHandler.CreateMessage(1, Resource.InsertSucceed), JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    string ErrorCol = errors.Error;
+                    LogHandler.WriteServiceLog(LogonUser.RealName, "WarningCondID:" + entity.WarningCondID, Resource.InsertFail, Resource.Create, "预警条件设置");
+                    return Json(JsonHandler.CreateMessage(0, Resource.InsertFail + ErrorCol), JsonRequestBehavior.AllowGet);
+                }
+            }
+        }
+
+        [HttpPost]
+        public JsonResult EditParamSett(WN_ParamSett entity)
+        {
+            if (entity != null && ModelState.IsValid)
+            {
+                using (MBREntities db = new MBREntities())
+                {
+                    ParamSettService us = new ParamSettService(db);
+
+                    if (us.Edit(ref errors, entity))
+                    {
+                        LogHandler.WriteServiceLog(LogonUser.RealName, "WarningCondID:" + entity.WarningCondID, Resource.EditSucceed, Resource.Edit, "预警条件设置");
+                        return Json(JsonHandler.CreateMessage(1, Resource.EditSucceed));
+                    }
+                    else
+                    {
+                        string ErrorCol = errors.Error;
+                        LogHandler.WriteServiceLog(LogonUser.RealName, "WarningCondID:" + entity.WarningCondID, Resource.EditFail, Resource.Edit, "预警条件设置");
+                        return Json(JsonHandler.CreateMessage(0, Resource.EditFail + ErrorCol));
+                    }
+                }
+            }
+            else
+            {
+                return Json(JsonHandler.CreateMessage(0, Resource.EditFail));
+            }
+        }
+
+        [HttpPost]
+        public JsonResult DeleteParamSett(int id)
+        {
+            using (MBREntities db = new MBREntities())
+            {
+                ParamSettService us = new ParamSettService(db);
+                if (us.Delete(ref errors, id))
+                {
+                    LogHandler.WriteServiceLog(LogonUser.RealName, "WarningCondID:" + id, Resource.DeleteSucceed, Resource.Delete, "预警条件设置");
+                    return Json(JsonHandler.CreateMessage(1, Resource.DeleteSucceed));
+                }
+                else
+                {
+                    string ErrorCol = errors.Error;
+                    LogHandler.WriteServiceLog(LogonUser.RealName, "WarningCondID:" + id, Resource.DeleteFail, Resource.Delete, "预警条件设置");
+                    return Json(JsonHandler.CreateMessage(0, Resource.DeleteFail + ErrorCol));
+                }
+            }
+        }
     }
 }

@@ -9,8 +9,8 @@
     <div class="col-md-12">
         <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
-                <li class="active"><a href="#tab_1" data-toggle="tab">运行记录</a></li>
-                <li><a href="#tab_2" data-toggle="tab">曲线</a></li>
+                <li class="active"><a href="#tab_2" data-toggle="tab">曲线</a></li>
+                <li><a href="#tab_1" data-toggle="tab">运行记录</a></li>
                 <li class="pull-right">
                     @Html.Label("日期")
                     @Html.TextBox("beginDate", beginDate.ToString("yyyy-MM-dd"), new { })
@@ -19,10 +19,13 @@
                     <button id="searchsubmit" type="button" class="btn">
                         <i class="fa fa-search"></i>查询
                     </button>
+                    <button id="exportToExcel" type="button" class="btn">
+                        <i class="fa fa-file-excel-o"></i>导出EXCEL
+                    </button>
                 </li>
             </ul>
             <div class="tab-content">
-                <div class="tab-pane active" id="tab_1">
+                <div class="tab-pane" id="tab_1">
                     <table id="tbRunningInfo" width="100%" class="table table-striped table-bordered table-hover dataTable">
                         <thead>
                             <tr>
@@ -94,7 +97,7 @@
                         </thead>
                     </table>
                 </div>
-                <div class="tab-pane" id="tab_2">
+                <div class="tab-pane active" id="tab_2">
                     <div class="box">
                         <div class="box-header">
                             <button id="btnToolBar" type="button" class="btn btn-default btn-xs">
@@ -201,6 +204,7 @@
 
     <script type="text/javascript">
         var GetListUrl = '@Url.Action("GetList", new { PoolID = ViewBag.PoolID })';
+        var ExportExcelUrl = '@Url.Action("DownLoadExcel", new { PoolID = ViewBag.PoolID })';
         var paramFromView = {
             AllParamUrl:'@Url.Action("GetAllParam")',
             AllDataUrl: '@Url.Action("GetAllDataByParam")'
@@ -263,6 +267,19 @@
 
             $("#searchsubmit").bind("click", function () { //点击按钮 触发table重新请求服务器
                 $("#tbRunningInfo").dataTable().fnDraw(false);
+            });
+
+
+            $("#exportToExcel").bind("click", function () { //点击按钮 导出excel
+                if (ExportExcelUrl.indexOf('?') > -1) {
+                    ExportExcelUrl = ExportExcelUrl + '&';
+                }
+                else {
+                    ExportExcelUrl = ExportExcelUrl + '?';
+                }
+                ExportExcelUrl = ExportExcelUrl + 'beginDate=' + $("#beginDate").val() + '&endDate=' + $("#endDate").val();
+                window.open(ExportExcelUrl);
+                //window.location = ExportExcelUrl;
             });
 
             $('#beginDate').datepicker({

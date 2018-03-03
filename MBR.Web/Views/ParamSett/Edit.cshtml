@@ -1,0 +1,60 @@
+﻿@model MBR.Models.WN_ParamSett
+
+@{
+    Layout = "~/Views/Shared/_Edit_Layout.cshtml";
+    
+}
+@using (Ajax.BeginForm("Edit", "ParamSett", null, new AjaxOptions
+{
+    HttpMethod = "POST",
+    OnSuccess = "OnSuccess",
+    OnFailure = "OnFailure",
+}, new { @class = "form-horizontal", id = "frmEdit" }))
+{
+    @Html.HiddenFor(m => m.ParamSetID, new { })
+    @Html.HiddenFor(m => m.WarningCondID, new { })
+    <div class="form-body">
+        <div class="form-group">
+            @Html.LabelFor(m => m.ParamID, new { @class = "control-label col-xs-3" })
+            <div class="col-xs-3">
+                @Html.TextBoxFor(m => m.ParamID, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.ParamID)
+            </div>
+            @Html.LabelFor(m => m.WaitTime, new { @class = "control-label col-xs-3" })
+            <div class="col-xs-3">
+                @Html.TextBoxFor(m => m.WaitTime, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.WaitTime)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.High, new { @class = "control-label col-xs-3" })
+            <div class="col-xs-3">
+                @Html.TextBoxFor(m => m.High, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.High)
+            </div>
+            @Html.LabelFor(m => m.Low, new { @class = "control-label col-xs-3" })
+            <div class="col-xs-3">
+                @Html.TextBoxFor(m => m.Low, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Low)
+            </div>
+        </div>
+    </div>
+}
+@section header{
+}
+@section scripts{
+    <script>
+        $(function () {
+
+
+        });
+
+        function OnSuccess(data) {
+            parent.doSuccess(parent.$('#tbParamSett'), data.message);
+        }
+
+        function OnFailure(data) {
+            parent.doFailure(data.message);
+        }
+    </script>
+}
