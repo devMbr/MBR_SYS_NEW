@@ -5,13 +5,7 @@ MBR.Models/obj/*
 MBR.Web/bin/*
 MBR.Models/bin/*
 *.cache
-MBR.Models/bin/Debug/MBR.Models.pdb
-MBR.Models/MBR.Models.csproj.user
-MBR.Web/Web.config
-MBR.sln
-MBR.Web/MBR.Web.csproj
-MBR.Web/MBR.Web.csproj.user
-MBR.suo
+*.pdb
 *.suo
 MBR.Web/exceptionLog.txt
 *.suo
