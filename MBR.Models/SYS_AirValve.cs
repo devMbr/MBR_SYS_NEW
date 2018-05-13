@@ -12,15 +12,12 @@ using System.Collections.Generic;
 
 namespace MBR.Models
 {
-    public partial class SYS_PoisonLog
+    public partial class SYS_AirValve
     {
-        public int PoisonLogID { get; set; }
-        public Nullable<bool> PoisonType { get; set; }
-        public Nullable<double> V { get; set; }
-        public Nullable<double> BeginPos { get; set; }
-        public Nullable<double> EndPos { get; set; }
-        public Nullable<System.DateTime> BeginTime { get; set; }
-        public Nullable<System.DateTime> EndTime { get; set; }
+        public int PoolID { get; set; }
+        public string Status_Code { get; set; }
+    
+        public virtual MBR_Pool MBR_Pool { get; set; }
     }
     
 }

@@ -21,6 +21,7 @@ namespace MBR.Models
         public Nullable<System.DateTime> UpdateTime2 { get; set; }
         public string Matrix3 { get; set; }
         public Nullable<System.DateTime> UpdateTime3 { get; set; }
+        public Nullable<double> TestResult { get; set; }
     
         public virtual MBR_Pool MBR_Pool { get; set; }
     }

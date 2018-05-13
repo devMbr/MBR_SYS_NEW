@@ -12,15 +12,11 @@ using System.Collections.Generic;
 
 namespace MBR.Models
 {
-    public partial class SYS_PoisonLog
+    public partial class SYS_PoisonStatus
     {
-        public int PoisonLogID { get; set; }
-        public Nullable<bool> PoisonType { get; set; }
-        public Nullable<double> V { get; set; }
-        public Nullable<double> BeginPos { get; set; }
-        public Nullable<double> EndPos { get; set; }
-        public Nullable<System.DateTime> BeginTime { get; set; }
-        public Nullable<System.DateTime> EndTime { get; set; }
+        public int PoisonStatusID { get; set; }
+        public Nullable<bool> Status { get; set; }
+        public Nullable<System.DateTime> UpdateTime { get; set; }
     }
     
 }

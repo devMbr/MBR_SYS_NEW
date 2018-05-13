@@ -24,10 +24,12 @@ namespace MBR.Models
         public string Title { get; set; }
         public Nullable<int> WarningLevel { get; set; }
         public string WarningInfo { get; set; }
+        public Nullable<int> PoolID { get; set; }
     
-        public virtual WarningStat WarningStat { get; set; }
+        public virtual MBR_Pool MBR_Pool { get; set; }
         public virtual ICollection<WN_WarningCond> WN_WarningCond { get; set; }
         public virtual ICollection<WN_WarningLog> WN_WarningLog { get; set; }
+        public virtual WN_WarningStatus WN_WarningStatus { get; set; }
     }
     
 }

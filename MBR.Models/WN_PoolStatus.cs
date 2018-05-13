@@ -12,10 +12,13 @@ using System.Collections.Generic;
 
 namespace MBR.Models
 {
-    public partial class AirValve
+    public partial class WN_PoolStatus
     {
-        public int AirValveID { get; set; }
-        public string Status_Code { get; set; }
+        public int PoolID { get; set; }
+        public Nullable<int> Status { get; set; }
+        public Nullable<System.DateTime> UpdateTime { get; set; }
+    
+        public virtual MBR_Pool MBR_Pool { get; set; }
     }
     
 }

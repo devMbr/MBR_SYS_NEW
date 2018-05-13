@@ -12,10 +12,11 @@ using System.Collections.Generic;
 
 namespace MBR.Models
 {
-    public partial class CIPPump
+    public partial class SYS_CIPPump
     {
-        public int CIPPumpID { get; set; }
-        public string StatusCode { get; set; }
+        public int PoolID { get; set; }
+        public string Status_Code { get; set; }
+        public string V_Code { get; set; }
     }
     
 }

@@ -27,6 +27,7 @@ namespace MBR.Models
         public Nullable<double> QiShuiB { get; set; }
         public Nullable<double> ShuiWen { get; set; }
         public Nullable<double> WenDuJZTSL { get; set; }
+        public Nullable<double> TouShuiLSJSD { get; set; }
     
         public virtual MBR_Pool MBR_Pool { get; set; }
     }

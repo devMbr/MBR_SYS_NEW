@@ -15,7 +15,7 @@ namespace MBR.Models
     public partial class MBR_WashingInfo
     {
         public int WashingInfoID { get; set; }
-        public Nullable<int> PoolID { get; set; }
+        public Nullable<int> InfoID { get; set; }
         public Nullable<System.DateTime> BeginTime { get; set; }
         public Nullable<System.DateTime> EndTime { get; set; }
         public Nullable<int> WashType { get; set; }
@@ -25,9 +25,7 @@ namespace MBR.Models
         public Nullable<double> TouShuiL_Low { get; set; }
         public Nullable<double> TouShuiL_High { get; set; }
         public Nullable<double> LvJieCZDC { get; set; }
-        public Nullable<int> InfoID { get; set; }
     
-        public virtual MBR_Pool MBR_Pool { get; set; }
         public virtual MBR_Info MBR_Info { get; set; }
     }
     

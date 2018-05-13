@@ -3,6 +3,43 @@
 @{
     User User = System.Web.HttpContext.Current.Session[MBR.Web.Constants.SESSION_USERID] as User;
     string UserName = User == null ? string.Empty : User.RealName;
+
+    Dictionary<int, MBR_Pool> MBRPools = ViewBag.MBRPools as  Dictionary<int, MBR_Pool>;
+    if (MBRPools == null){
+        MBRPools = new Dictionary<int, MBR_Pool>();
+    }
+    
+    MBR_Pool CurrentMBRPool = ViewBag.CurrentMBRPool as MBR_Pool;
+    if (CurrentMBRPool == null)
+    {
+        CurrentMBRPool = new MBR_Pool();
+    }
+    String PoolName = CurrentMBRPool.PoolName ?? String.Empty;
+    string pattern = @"(\d+)#";
+    System.Text.RegularExpressions.MatchCollection matches = System.Text.RegularExpressions.Regex.Matches(PoolName, pattern);
+
+    if(matches != null && matches.Count > 0)
+    {
+        PoolName = matches[0].Value;
+    }
+
+    String PoolUrl = Request.Url.AbsolutePath;
+
+    String NewQueryString = string.Empty;
+    System.Collections.Specialized.NameValueCollection UrlParams = Request.QueryString;
+    foreach(var item in UrlParams.AllKeys)
+    {
+        if (!item.Equals(Constants.MBR_POOL_PARAM_NAME))
+        {
+            NewQueryString += string.Format("{0}={1}&", item, UrlParams[item]);
+        }
+    }
+    if (!string.IsNullOrEmpty(NewQueryString)) 
+    {
+        NewQueryString = NewQueryString.Substring(0, NewQueryString.Length - 1);
+        PoolUrl += "?" + NewQueryString;
+    }
+    //System.Diagnostics.Debugger.Break();
 }
 <header class="main-header">
     <a href="#" class="logo">
@@ -22,22 +59,33 @@
           <li class="dropdown notifications-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-building"></i>
-              <span class="label label-success">1#</span>
+              <span class="label label-success">@PoolName</span>
             </a>
             <ul class="dropdown-menu">
               <li class="header">请选择生产线</li>
               <li>
                 <ul class="menu">
+                    @foreach (var item in MBRPools.Values)
+                    {
+                        var tempUrl = PoolUrl;
+                        if (tempUrl.IndexOf("?") > -1)
+                        {
+                            tempUrl += "&";
+                        }
+                        else
+                        {
+                            tempUrl += "?";
+                        }
+                        if (tempUrl.IndexOf(Constants.MBR_POOL_PARAM_NAME) == -1)
+                        {
+                            tempUrl += Constants.MBR_POOL_PARAM_NAME + "=" + item.PoolID;
+                        }
                     <li>
-                        <a href="#">
-                          1#
+                        <a href="@tempUrl">
+                          @item.PoolName
                         </a>
                     </li>
-                    <li>
-                        <a href="#">
-                          2#
-                        </a>
-                    </li>
+                    }
                 </ul>
               </li>
             </ul>

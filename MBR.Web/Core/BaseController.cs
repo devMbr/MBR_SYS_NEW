@@ -150,7 +150,8 @@ namespace MBR.Web
             {
                 filterContext.RequestContext.HttpContext.Session[Constants.MBR_POOL_PARAM_NAME] = PoolID;
             }
-            
+
+            ViewBag.MBRPools = MBRPools;
             ViewBag.CurrentMBRPool = this.CurrentMBRPool;
 
             base.OnActionExecuting(filterContext);

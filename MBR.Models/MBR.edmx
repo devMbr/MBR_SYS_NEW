@@ -6,12 +6,10 @@
     <edmx:StorageModels>
     <Schema Namespace="MBRModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="MBRModelStoreContainer">
-          <EntitySet Name="AirValve" EntityType="MBRModel.Store.AirValve" store:Type="Tables" Schema="mbr" />
           <EntitySet Name="AN_CLCurve" EntityType="MBRModel.Store.AN_CLCurve" store:Type="Tables" Schema="mbr" />
           <EntitySet Name="AN_HighCurve" EntityType="MBRModel.Store.AN_HighCurve" store:Type="Tables" Schema="mbr" />
           <EntitySet Name="AN_LowCurve" EntityType="MBRModel.Store.AN_LowCurve" store:Type="Tables" Schema="mbr" />
           <EntitySet Name="AN_NetInfo" EntityType="MBRModel.Store.AN_NetInfo" store:Type="Tables" Schema="mbr" />
-          <EntitySet Name="CIPPump" EntityType="MBRModel.Store.CIPPump" store:Type="Tables" Schema="mbr" />
           <EntitySet Name="Knowlege" EntityType="MBRModel.Store.Knowlege" store:Type="Tables" Schema="mbr" />
           <EntitySet Name="MBR_Info" EntityType="MBRModel.Store.MBR_Info" store:Type="Tables" Schema="mbr" />
           <EntitySet Name="MBR_Pool" EntityType="MBRModel.Store.MBR_Pool" store:Type="Tables" Schema="mbr" />
@@ -22,18 +20,50 @@
           <EntitySet Name="Role" EntityType="MBRModel.Store.Role" store:Type="Tables" Schema="mbr" />
           <EntitySet Name="RoleUser" EntityType="MBRModel.Store.RoleUser" store:Type="Tables" Schema="mbr" />
           <EntitySet Name="Settings" EntityType="MBRModel.Store.Settings" store:Type="Tables" Schema="mbr" />
+          <EntitySet Name="SYS_AirStatus" EntityType="MBRModel.Store.SYS_AirStatus" store:Type="Tables" Schema="mbr" />
+          <EntitySet Name="SYS_AirValve" EntityType="MBRModel.Store.SYS_AirValve" store:Type="Tables" Schema="mbr" />
           <EntitySet Name="SYS_CIPLog" EntityType="MBRModel.Store.SYS_CIPLog" store:Type="Tables" Schema="mbr" />
+          <EntitySet Name="SYS_CIPPump" EntityType="MBRModel.Store.SYS_CIPPump" store:Type="Tables" Schema="mbr" />
+          <EntitySet Name="SYS_CIPStatus" EntityType="MBRModel.Store.SYS_CIPStatus" store:Type="Tables" Schema="mbr" />
           <EntitySet Name="SYS_ParamCurValue" EntityType="MBRModel.Store.SYS_ParamCurValue" store:Type="Tables" Schema="mbr" />
           <EntitySet Name="SYS_ParamInfo" EntityType="MBRModel.Store.SYS_ParamInfo" store:Type="Tables" Schema="mbr" />
           <EntitySet Name="SYS_PoisonLog" EntityType="MBRModel.Store.SYS_PoisonLog" store:Type="Tables" Schema="mbr" />
+          <EntitySet Name="SYS_PoisonPump" EntityType="MBRModel.Store.SYS_PoisonPump" store:Type="Tables" Schema="mbr" />
+          <EntitySet Name="SYS_PoisonStatus" EntityType="MBRModel.Store.SYS_PoisonStatus" store:Type="Tables" Schema="mbr" />
+          <EntitySet Name="SYS_RuningParam" EntityType="MBRModel.Store.SYS_RuningParam" store:Type="Tables" Schema="mbr" />
           <EntitySet Name="SysException" EntityType="MBRModel.Store.SysException" store:Type="Tables" Schema="mbr" />
           <EntitySet Name="SysLog" EntityType="MBRModel.Store.SysLog" store:Type="Tables" Schema="mbr" />
           <EntitySet Name="User" EntityType="MBRModel.Store.User" store:Type="Tables" Schema="mbr" />
-          <EntitySet Name="WarningStat" EntityType="MBRModel.Store.WarningStat" store:Type="Tables" Schema="mbr" />
           <EntitySet Name="WN_ParamSett" EntityType="MBRModel.Store.WN_ParamSett" store:Type="Tables" Schema="mbr" />
+          <EntitySet Name="WN_PoolStatus" EntityType="MBRModel.Store.WN_PoolStatus" store:Type="Tables" Schema="mbr" />
           <EntitySet Name="WN_WarningCond" EntityType="MBRModel.Store.WN_WarningCond" store:Type="Tables" Schema="mbr" />
           <EntitySet Name="WN_WarningLog" EntityType="MBRModel.Store.WN_WarningLog" store:Type="Tables" Schema="mbr" />
           <EntitySet Name="WN_WarningSett" EntityType="MBRModel.Store.WN_WarningSett" store:Type="Tables" Schema="mbr" />
+          <EntitySet Name="WN_WarningStatus" EntityType="MBRModel.Store.WN_WarningStatus" store:Type="Tables" Schema="mbr" />
+          <AssociationSet Name="FK_Pool_AirValve" Association="MBRModel.Store.FK_Pool_AirValve">
+            <End Role="MBR_Pool" EntitySet="MBR_Pool" />
+            <End Role="SYS_AirValve" EntitySet="SYS_AirValve" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pool_PoisonPump" Association="MBRModel.Store.FK_Pool_PoisonPump">
+            <End Role="MBR_Pool" EntitySet="MBR_Pool" />
+            <End Role="SYS_PoisonPump" EntitySet="SYS_PoisonPump" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pool_RuningParam" Association="MBRModel.Store.FK_Pool_RuningParam">
+            <End Role="MBR_Pool" EntitySet="MBR_Pool" />
+            <End Role="SYS_RuningParam" EntitySet="SYS_RuningParam" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pool_Status" Association="MBRModel.Store.FK_Pool_Status">
+            <End Role="MBR_Pool" EntitySet="MBR_Pool" />
+            <End Role="WN_PoolStatus" EntitySet="WN_PoolStatus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pool_WarningLog" Association="MBRModel.Store.FK_Pool_WarningLog">
+            <End Role="MBR_Pool" EntitySet="MBR_Pool" />
+            <End Role="WN_WarningLog" EntitySet="WN_WarningLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pool_WarningSett" Association="MBRModel.Store.FK_Pool_WarningSett">
+            <End Role="MBR_Pool" EntitySet="MBR_Pool" />
+            <End Role="WN_WarningSett" EntitySet="WN_WarningSett" />
+          </AssociationSet>
           <AssociationSet Name="FK_Reference_1" Association="MBRModel.Store.FK_Reference_1">
             <End Role="WN_WarningSett" EntitySet="WN_WarningSett" />
             <End Role="WN_WarningCond" EntitySet="WN_WarningCond" />
@@ -68,7 +98,7 @@
           </AssociationSet>
           <AssociationSet Name="FK_Reference_4" Association="MBRModel.Store.FK_Reference_4">
             <End Role="WN_WarningSett" EntitySet="WN_WarningSett" />
-            <End Role="WarningStat" EntitySet="WarningStat" />
+            <End Role="WN_WarningStatus" EntitySet="WN_WarningStatus" />
           </AssociationSet>
           <AssociationSet Name="FK_Reference_5" Association="MBRModel.Store.FK_Reference_5">
             <End Role="MBR_Pool" EntitySet="MBR_Pool" />
@@ -94,22 +124,11 @@
             <End Role="MBR_Pool" EntitySet="MBR_Pool" />
             <End Role="MBR_RunningInfo" EntitySet="MBR_RunningInfo" />
           </AssociationSet>
-          <AssociationSet Name="FK_Reference_8" Association="MBRModel.Store.FK_Reference_8">
-            <End Role="MBR_Pool" EntitySet="MBR_Pool" />
-            <End Role="MBR_WashingInfo" EntitySet="MBR_WashingInfo" />
-          </AssociationSet>
           <AssociationSet Name="FK_Reference_9" Association="MBRModel.Store.FK_Reference_9">
             <End Role="MBR_Info" EntitySet="MBR_Info" />
             <End Role="AN_HighCurve" EntitySet="AN_HighCurve" />
           </AssociationSet>
         </EntityContainer>
-        <EntityType Name="AirValve">
-          <Key>
-            <PropertyRef Name="AirValveID" />
-          </Key>
-          <Property Name="AirValveID" Type="int" Nullable="false" />
-          <Property Name="Status_Code" Type="varchar" MaxLength="200" />
-        </EntityType>
         <EntityType Name="AN_CLCurve">
           <Key>
             <PropertyRef Name="InfoID" />
@@ -154,13 +173,7 @@
           <Property Name="UpdateTime2" Type="datetime" />
           <Property Name="Matrix3" Type="longtext" />
           <Property Name="UpdateTime3" Type="datetime" />
-        </EntityType>
-        <EntityType Name="CIPPump">
-          <Key>
-            <PropertyRef Name="CIPPumpID" />
-          </Key>
-          <Property Name="CIPPumpID" Type="int" Nullable="false" />
-          <Property Name="StatusCode" Type="varchar" MaxLength="200" />
+          <Property Name="TestResult" Type="double" />
         </EntityType>
         <EntityType Name="Knowlege">
           <Key>
@@ -191,6 +204,7 @@
             <PropertyRef Name="PoolID" />
           </Key>
           <Property Name="PoolID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Area" Type="double" />
           <Property Name="PoolName" Type="varchar" MaxLength="20" />
           <Property Name="Weight" Type="double" />
           <Property Name="Order" Type="int" />
@@ -212,13 +226,13 @@
           <Property Name="QiShuiB" Type="double" />
           <Property Name="ShuiWen" Type="double" />
           <Property Name="WenDuJZTSL" Type="double" />
+          <Property Name="TouShuiLSJSD" Type="double" />
         </EntityType>
         <EntityType Name="MBR_WashingInfo">
           <Key>
             <PropertyRef Name="WashingInfoID" />
           </Key>
           <Property Name="WashingInfoID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="PoolID" Type="int" />
           <Property Name="InfoID" Type="int" />
           <Property Name="BeginTime" Type="datetime" />
           <Property Name="EndTime" Type="datetime" />
@@ -285,14 +299,45 @@
           <Property Name="MaxValue" Type="double" />
           <Property Name="MinValue" Type="double" />
         </EntityType>
+        <EntityType Name="SYS_AirStatus">
+          <Key>
+            <PropertyRef Name="AirStatusID" />
+          </Key>
+          <Property Name="AirStatusID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Status" Type="bool" />
+          <Property Name="UpdateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="SYS_AirValve">
+          <Key>
+            <PropertyRef Name="PoolID" />
+          </Key>
+          <Property Name="PoolID" Type="int" Nullable="false" />
+          <Property Name="Status_Code" Type="varchar" MaxLength="200" />
+        </EntityType>
         <EntityType Name="SYS_CIPLog">
           <Key>
             <PropertyRef Name="CIPLogID" />
           </Key>
-          <Property Name="CIPLogID" Type="int" Nullable="false" />
+          <Property Name="CIPLogID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="V" Type="double" />
           <Property Name="BeginTime" Type="datetime" />
           <Property Name="EndTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="SYS_CIPPump">
+          <Key>
+            <PropertyRef Name="PoolID" />
+          </Key>
+          <Property Name="PoolID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Status_Code" Type="varchar" MaxLength="200" />
+          <Property Name="V_Code" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="SYS_CIPStatus">
+          <Key>
+            <PropertyRef Name="CIPStatusID" />
+          </Key>
+          <Property Name="CIPStatusID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Status" Type="bool" />
+          <Property Name="UpdateTime" Type="datetime" />
         </EntityType>
         <EntityType Name="SYS_ParamCurValue">
           <Key>
@@ -317,13 +362,50 @@
           <Key>
             <PropertyRef Name="PoisonLogID" />
           </Key>
-          <Property Name="PoisonLogID" Type="int" Nullable="false" />
-          <Property Name="PoisonType" Type="int" />
+          <Property Name="PoisonLogID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PoisonType" Type="bool" />
           <Property Name="V" Type="double" />
           <Property Name="BeginPos" Type="double" />
           <Property Name="EndPos" Type="double" />
           <Property Name="BeginTime" Type="datetime" />
           <Property Name="EndTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="SYS_PoisonPump">
+          <Key>
+            <PropertyRef Name="PoisonPumpID" />
+          </Key>
+          <Property Name="PoisonPumpID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PoolID" Type="int" Nullable="false" />
+          <Property Name="PP_Name" Type="varchar" MaxLength="50" />
+          <Property Name="PP_Type" Type="bool" />
+          <Property Name="Status_Code" Type="varchar" MaxLength="200" />
+          <Property Name="V_Code" Type="varchar" MaxLength="200" />
+          <Property Name="Pos_Code" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="SYS_PoisonStatus">
+          <Key>
+            <PropertyRef Name="PoisonStatusID" />
+          </Key>
+          <Property Name="PoisonStatusID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Status" Type="bool" />
+          <Property Name="UpdateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="SYS_RuningParam">
+          <Key>
+            <PropertyRef Name="RuningParamID" />
+          </Key>
+          <Property Name="RuningParamID" Type="int" Nullable="false" />
+          <Property Name="PoolID" Type="int" />
+          <Property Name="ChanShuiLL" Type="varchar" MaxLength="100" />
+          <Property Name="ChanShuiYL" Type="varchar" MaxLength="100" />
+          <Property Name="DanChiMCXQL" Type="varchar" MaxLength="100" />
+          <Property Name="WuNiND" Type="varchar" MaxLength="100" />
+          <Property Name="RongJieY" Type="varchar" MaxLength="100" />
+          <Property Name="KuaMoYC" Type="varchar" MaxLength="100" />
+          <Property Name="TouShuiL" Type="varchar" MaxLength="100" />
+          <Property Name="QiShuiB" Type="varchar" MaxLength="100" />
+          <Property Name="ShuiWen" Type="varchar" MaxLength="100" />
+          <Property Name="WenDuJZTSL" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="SysException">
           <Key>
@@ -362,14 +444,6 @@
           <Property Name="OrderBy" Type="int" />
           <Property Name="Remark" Type="varchar" MaxLength="200" />
         </EntityType>
-        <EntityType Name="WarningStat">
-          <Key>
-            <PropertyRef Name="WarningSettID" />
-          </Key>
-          <Property Name="WarningSettID" Type="int" Nullable="false" />
-          <Property Name="UpdateTime" Type="datetime" />
-          <Property Name="Status" Type="int" />
-        </EntityType>
         <EntityType Name="WN_ParamSett">
           <Key>
             <PropertyRef Name="ParamSetID" />
@@ -380,6 +454,14 @@
           <Property Name="High" Type="double" />
           <Property Name="Low" Type="double" />
           <Property Name="WaitTime" Type="int" />
+        </EntityType>
+        <EntityType Name="WN_PoolStatus">
+          <Key>
+            <PropertyRef Name="PoolID" />
+          </Key>
+          <Property Name="PoolID" Type="int" Nullable="false" />
+          <Property Name="Status" Type="int" />
+          <Property Name="UpdateTime" Type="datetime" />
         </EntityType>
         <EntityType Name="WN_WarningCond">
           <Key>
@@ -399,6 +481,7 @@
           <Property Name="Status" Type="int" />
           <Property Name="Begin" Type="datetime" />
           <Property Name="End" Type="datetime" />
+          <Property Name="PoolID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="WN_WarningSett">
           <Key>
@@ -408,7 +491,88 @@
           <Property Name="Title" Type="varchar" MaxLength="100" />
           <Property Name="WarningLevel" Type="int" />
           <Property Name="WarningInfo" Type="varchar" MaxLength="100" />
+          <Property Name="PoolID" Type="int" />
         </EntityType>
+        <EntityType Name="WN_WarningStatus">
+          <Key>
+            <PropertyRef Name="WarningSettID" />
+          </Key>
+          <Property Name="WarningSettID" Type="int" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" />
+          <Property Name="Status" Type="int" />
+        </EntityType>
+        <Association Name="FK_Pool_AirValve">
+          <End Role="MBR_Pool" Type="MBRModel.Store.MBR_Pool" Multiplicity="1" />
+          <End Role="SYS_AirValve" Type="MBRModel.Store.SYS_AirValve" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="MBR_Pool">
+              <PropertyRef Name="PoolID" />
+            </Principal>
+            <Dependent Role="SYS_AirValve">
+              <PropertyRef Name="PoolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pool_PoisonPump">
+          <End Role="MBR_Pool" Type="MBRModel.Store.MBR_Pool" Multiplicity="1" />
+          <End Role="SYS_PoisonPump" Type="MBRModel.Store.SYS_PoisonPump" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MBR_Pool">
+              <PropertyRef Name="PoolID" />
+            </Principal>
+            <Dependent Role="SYS_PoisonPump">
+              <PropertyRef Name="PoolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pool_RuningParam">
+          <End Role="MBR_Pool" Type="MBRModel.Store.MBR_Pool" Multiplicity="0..1" />
+          <End Role="SYS_RuningParam" Type="MBRModel.Store.SYS_RuningParam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MBR_Pool">
+              <PropertyRef Name="PoolID" />
+            </Principal>
+            <Dependent Role="SYS_RuningParam">
+              <PropertyRef Name="PoolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pool_Status">
+          <End Role="MBR_Pool" Type="MBRModel.Store.MBR_Pool" Multiplicity="1" />
+          <End Role="WN_PoolStatus" Type="MBRModel.Store.WN_PoolStatus" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="MBR_Pool">
+              <PropertyRef Name="PoolID" />
+            </Principal>
+            <Dependent Role="WN_PoolStatus">
+              <PropertyRef Name="PoolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pool_WarningLog">
+          <End Role="MBR_Pool" Type="MBRModel.Store.MBR_Pool" Multiplicity="1" />
+          <End Role="WN_WarningLog" Type="MBRModel.Store.WN_WarningLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MBR_Pool">
+              <PropertyRef Name="PoolID" />
+            </Principal>
+            <Dependent Role="WN_WarningLog">
+              <PropertyRef Name="PoolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pool_WarningSett">
+          <End Role="MBR_Pool" Type="MBRModel.Store.MBR_Pool" Multiplicity="0..1" />
+          <End Role="WN_WarningSett" Type="MBRModel.Store.WN_WarningSett" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MBR_Pool">
+              <PropertyRef Name="PoolID" />
+            </Principal>
+            <Dependent Role="WN_WarningSett">
+              <PropertyRef Name="PoolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Reference_1">
           <End Role="WN_WarningSett" Type="MBRModel.Store.WN_WarningSett" Multiplicity="0..1" />
           <End Role="WN_WarningCond" Type="MBRModel.Store.WN_WarningCond" Multiplicity="*" />
@@ -507,12 +671,12 @@
         </Association>
         <Association Name="FK_Reference_4">
           <End Role="WN_WarningSett" Type="MBRModel.Store.WN_WarningSett" Multiplicity="1" />
-          <End Role="WarningStat" Type="MBRModel.Store.WarningStat" Multiplicity="0..1" />
+          <End Role="WN_WarningStatus" Type="MBRModel.Store.WN_WarningStatus" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="WN_WarningSett">
               <PropertyRef Name="WarningSettID" />
             </Principal>
-            <Dependent Role="WarningStat">
+            <Dependent Role="WN_WarningStatus">
               <PropertyRef Name="WarningSettID" />
             </Dependent>
           </ReferentialConstraint>
@@ -589,18 +753,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Reference_8">
-          <End Role="MBR_Pool" Type="MBRModel.Store.MBR_Pool" Multiplicity="0..1" />
-          <End Role="MBR_WashingInfo" Type="MBRModel.Store.MBR_WashingInfo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MBR_Pool">
-              <PropertyRef Name="PoolID" />
-            </Principal>
-            <Dependent Role="MBR_WashingInfo">
-              <PropertyRef Name="PoolID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Reference_9">
           <End Role="MBR_Info" Type="MBRModel.Store.MBR_Info" Multiplicity="1" />
           <End Role="AN_HighCurve" Type="MBRModel.Store.AN_HighCurve" Multiplicity="0..1" />
@@ -613,52 +765,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <!--生成过程中发现错误:
-      警告 6013: 表/视图“def.mbr.AirStatus”未定义主键，并且无法推断有效的主键。已排除了此表/视图。若要使用实体，将需要检查您的架构、添加正确的键并取消对实体的注释。
-      
-      <EntityType Name="AirStatus">
-        <Property Name="AirStatusID" Type="int" />
-        <Property Name="Status" Type="bit" />
-        <Property Name="UpdateTime" Type="datetime" />
-      </EntityType>
-      生成过程中发现错误:
-      警告 6013: 表/视图“def.mbr.PoisonPump”未定义主键，并且无法推断有效的主键。已排除了此表/视图。若要使用实体，将需要检查您的架构、添加正确的键并取消对实体的注释。
-      
-      <EntityType Name="PoisonPump">
-        <Property Name="PoisonPumpID" Type="int" />
-        <Property Name="PP_Name" Type="varchar" MaxLength="50" />
-        <Property Name="PP_Type" Type="bit" />
-        <Property Name="Status_Code" Type="varchar" MaxLength="200" />
-        <Property Name="V_Code" Type="varchar" MaxLength="200" />
-        <Property Name="Pos_Code" Type="varchar" MaxLength="200" />
-      </EntityType>
-      生成过程中发现错误:
-      警告 6013: 表/视图“def.mbr.PoisonStatus”未定义主键，并且无法推断有效的主键。已排除了此表/视图。若要使用实体，将需要检查您的架构、添加正确的键并取消对实体的注释。
-      
-      <EntityType Name="PoisonStatus">
-        <Property Name="PoisonStatusID" Type="int" />
-        <Property Name="Status" Type="bit" />
-        <Property Name="UpdateTime" Type="datetime" />
-      </EntityType>
-      生成过程中发现错误:
-      警告 6013: 表/视图“def.mbr.SYS_CIPStatus”未定义主键，并且无法推断有效的主键。已排除了此表/视图。若要使用实体，将需要检查您的架构、添加正确的键并取消对实体的注释。
-      
-      <EntityType Name="SYS_CIPStatus">
-        <Property Name="CIPStatusID" Type="int" />
-        <Property Name="Status" Type="bool" />
-        <Property Name="UpdateTime" Type="datetime" />
-      </EntityType>-->
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MBRModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
         <EntityContainer Name="MBREntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="AirValve" EntityType="MBRModel.AirValve" />
           <EntitySet Name="AN_CLCurve" EntityType="MBRModel.AN_CLCurve" />
           <EntitySet Name="AN_HighCurve" EntityType="MBRModel.AN_HighCurve" />
           <EntitySet Name="AN_LowCurve" EntityType="MBRModel.AN_LowCurve" />
           <EntitySet Name="AN_NetInfo" EntityType="MBRModel.AN_NetInfo" />
-          <EntitySet Name="CIPPump" EntityType="MBRModel.CIPPump" />
           <EntitySet Name="Knowlege" EntityType="MBRModel.Knowlege" />
           <EntitySet Name="MBR_Info" EntityType="MBRModel.MBR_Info" />
           <EntitySet Name="MBR_Pool" EntityType="MBRModel.MBR_Pool" />
@@ -668,18 +783,26 @@
           <EntitySet Name="ModulePermission" EntityType="MBRModel.ModulePermission" />
           <EntitySet Name="Role" EntityType="MBRModel.Role" />
           <EntitySet Name="Settings" EntityType="MBRModel.Settings" />
+          <EntitySet Name="SYS_AirStatus" EntityType="MBRModel.SYS_AirStatus" />
+          <EntitySet Name="SYS_AirValve" EntityType="MBRModel.SYS_AirValve" />
           <EntitySet Name="SYS_CIPLog" EntityType="MBRModel.SYS_CIPLog" />
+          <EntitySet Name="SYS_CIPPump" EntityType="MBRModel.SYS_CIPPump" />
+          <EntitySet Name="SYS_CIPStatus" EntityType="MBRModel.SYS_CIPStatus" />
           <EntitySet Name="SYS_ParamCurValue" EntityType="MBRModel.SYS_ParamCurValue" />
           <EntitySet Name="SYS_ParamInfo" EntityType="MBRModel.SYS_ParamInfo" />
           <EntitySet Name="SYS_PoisonLog" EntityType="MBRModel.SYS_PoisonLog" />
+          <EntitySet Name="SYS_PoisonPump" EntityType="MBRModel.SYS_PoisonPump" />
+          <EntitySet Name="SYS_PoisonStatus" EntityType="MBRModel.SYS_PoisonStatus" />
+          <EntitySet Name="SYS_RuningParam" EntityType="MBRModel.SYS_RuningParam" />
           <EntitySet Name="SysException" EntityType="MBRModel.SysException" />
           <EntitySet Name="SysLog" EntityType="MBRModel.SysLog" />
           <EntitySet Name="User" EntityType="MBRModel.User" />
-          <EntitySet Name="WarningStat" EntityType="MBRModel.WarningStat" />
           <EntitySet Name="WN_ParamSett" EntityType="MBRModel.WN_ParamSett" />
+          <EntitySet Name="WN_PoolStatus" EntityType="MBRModel.WN_PoolStatus" />
           <EntitySet Name="WN_WarningCond" EntityType="MBRModel.WN_WarningCond" />
           <EntitySet Name="WN_WarningLog" EntityType="MBRModel.WN_WarningLog" />
           <EntitySet Name="WN_WarningSett" EntityType="MBRModel.WN_WarningSett" />
+          <EntitySet Name="WN_WarningStatus" EntityType="MBRModel.WN_WarningStatus" />
           <AssociationSet Name="FK_Reference_11" Association="MBRModel.FK_Reference_11">
             <End Role="MBR_Info" EntitySet="MBR_Info" />
             <End Role="AN_CLCurve" EntitySet="AN_CLCurve" />
@@ -696,17 +819,41 @@
             <End Role="MBR_Pool" EntitySet="MBR_Pool" />
             <End Role="AN_NetInfo" EntitySet="AN_NetInfo" />
           </AssociationSet>
+          <AssociationSet Name="FK_Reference_17" Association="MBRModel.FK_Reference_17">
+            <End Role="MBR_Info" EntitySet="MBR_Info" />
+            <End Role="MBR_WashingInfo" EntitySet="MBR_WashingInfo" />
+          </AssociationSet>
           <AssociationSet Name="FK_Reference_5" Association="MBRModel.FK_Reference_5">
             <End Role="MBR_Pool" EntitySet="MBR_Pool" />
             <End Role="MBR_Info" EntitySet="MBR_Info" />
           </AssociationSet>
+          <AssociationSet Name="FK_Pool_AirValve" Association="MBRModel.FK_Pool_AirValve">
+            <End Role="MBR_Pool" EntitySet="MBR_Pool" />
+            <End Role="SYS_AirValve" EntitySet="SYS_AirValve" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pool_PoisonPump" Association="MBRModel.FK_Pool_PoisonPump">
+            <End Role="MBR_Pool" EntitySet="MBR_Pool" />
+            <End Role="SYS_PoisonPump" EntitySet="SYS_PoisonPump" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pool_RuningParam" Association="MBRModel.FK_Pool_RuningParam">
+            <End Role="MBR_Pool" EntitySet="MBR_Pool" />
+            <End Role="SYS_RuningParam" EntitySet="SYS_RuningParam" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pool_Status" Association="MBRModel.FK_Pool_Status">
+            <End Role="MBR_Pool" EntitySet="MBR_Pool" />
+            <End Role="WN_PoolStatus" EntitySet="WN_PoolStatus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pool_WarningLog" Association="MBRModel.FK_Pool_WarningLog">
+            <End Role="MBR_Pool" EntitySet="MBR_Pool" />
+            <End Role="WN_WarningLog" EntitySet="WN_WarningLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pool_WarningSett" Association="MBRModel.FK_Pool_WarningSett">
+            <End Role="MBR_Pool" EntitySet="MBR_Pool" />
+            <End Role="WN_WarningSett" EntitySet="WN_WarningSett" />
+          </AssociationSet>
           <AssociationSet Name="FK_Reference_7" Association="MBRModel.FK_Reference_7">
             <End Role="MBR_Pool" EntitySet="MBR_Pool" />
             <End Role="MBR_RunningInfo" EntitySet="MBR_RunningInfo" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Reference_8" Association="MBRModel.FK_Reference_8">
-            <End Role="MBR_Pool" EntitySet="MBR_Pool" />
-            <End Role="MBR_WashingInfo" EntitySet="MBR_WashingInfo" />
           </AssociationSet>
           <AssociationSet Name="FK_Reference_55" Association="MBRModel.FK_Reference_55">
             <End Role="Module" EntitySet="Module" />
@@ -720,10 +867,6 @@
             <End Role="SYS_ParamInfo" EntitySet="SYS_ParamInfo" />
             <End Role="SYS_ParamCurValue" EntitySet="SYS_ParamCurValue" />
           </AssociationSet>
-          <AssociationSet Name="FK_Reference_4" Association="MBRModel.FK_Reference_4">
-            <End Role="WN_WarningSett" EntitySet="WN_WarningSett" />
-            <End Role="WarningStat" EntitySet="WarningStat" />
-          </AssociationSet>
           <AssociationSet Name="FK_Reference_2" Association="MBRModel.FK_Reference_2">
             <End Role="WN_WarningCond" EntitySet="WN_WarningCond" />
             <End Role="WN_ParamSett" EntitySet="WN_ParamSett" />
@@ -736,22 +879,15 @@
             <End Role="WN_WarningSett" EntitySet="WN_WarningSett" />
             <End Role="WN_WarningLog" EntitySet="WN_WarningLog" />
           </AssociationSet>
+          <AssociationSet Name="FK_Reference_4" Association="MBRModel.FK_Reference_4">
+            <End Role="WN_WarningSett" EntitySet="WN_WarningSett" />
+            <End Role="WN_WarningStatus" EntitySet="WN_WarningStatus" />
+          </AssociationSet>
           <AssociationSet Name="RoleUser" Association="MBRModel.RoleUser">
             <End Role="User" EntitySet="User" />
             <End Role="Role" EntitySet="Role" />
           </AssociationSet>
-          <AssociationSet Name="FK_Reference_17" Association="MBRModel.FK_Reference_17">
-            <End Role="MBR_Info" EntitySet="MBR_Info" />
-            <End Role="MBR_WashingInfo" EntitySet="MBR_WashingInfo" />
-          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="AirValve">
-          <Key>
-            <PropertyRef Name="AirValveID" />
-          </Key>
-          <Property Type="Int32" Name="AirValveID" Nullable="false" />
-          <Property Type="String" Name="Status_Code" MaxLength="200" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityType Name="AN_CLCurve">
           <Key>
             <PropertyRef Name="InfoID" />
@@ -799,20 +935,14 @@
           <Property Type="DateTime" Name="UpdateTime2" />
           <Property Type="String" Name="Matrix3" MaxLength="1073741823" FixedLength="false" Unicode="false" />
           <Property Type="DateTime" Name="UpdateTime3" />
+          <Property Type="Double" Name="TestResult" />
           <NavigationProperty Name="MBR_Pool" Relationship="MBRModel.FK_Reference_12" FromRole="AN_NetInfo" ToRole="MBR_Pool" />
-        </EntityType>
-        <EntityType Name="CIPPump">
-          <Key>
-            <PropertyRef Name="CIPPumpID" />
-          </Key>
-          <Property Type="Int32" Name="CIPPumpID" Nullable="false" />
-          <Property Type="String" Name="StatusCode" MaxLength="200" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Knowlege">
           <Key>
             <PropertyRef Name="KnowlegeID" />
           </Key>
-          <Property Type="Int32" Name="KnowlegeID" Nullable="false" />
+          <Property Type="Int32" Name="KnowlegeID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="Title" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="KeyWords" MaxLength="1000" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="Content" MaxLength="1073741823" FixedLength="false" Unicode="false" />
@@ -825,7 +955,7 @@
           <Key>
             <PropertyRef Name="InfoID" />
           </Key>
-          <Property Type="Int32" Name="InfoID" Nullable="false" />
+          <Property Type="Int32" Name="InfoID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="Int32" Name="PoolID" />
           <Property Type="DateTime" Name="ChangeDate" />
           <Property Type="String" Name="Company" MaxLength="200" FixedLength="false" Unicode="false" />
@@ -834,27 +964,33 @@
           <NavigationProperty Name="AN_CLCurve" Relationship="MBRModel.FK_Reference_11" FromRole="MBR_Info" ToRole="AN_CLCurve" />
           <NavigationProperty Name="AN_HighCurve" Relationship="MBRModel.FK_Reference_9" FromRole="MBR_Info" ToRole="AN_HighCurve" />
           <NavigationProperty Name="AN_LowCurve" Relationship="MBRModel.FK_Reference_10" FromRole="MBR_Info" ToRole="AN_LowCurve" />
-          <NavigationProperty Name="MBR_Pool" Relationship="MBRModel.FK_Reference_5" FromRole="MBR_Info" ToRole="MBR_Pool" />
           <NavigationProperty Name="MBR_WashingInfo" Relationship="MBRModel.FK_Reference_17" FromRole="MBR_Info" ToRole="MBR_WashingInfo" />
+          <NavigationProperty Name="MBR_Pool" Relationship="MBRModel.FK_Reference_5" FromRole="MBR_Info" ToRole="MBR_Pool" />
         </EntityType>
         <EntityType Name="MBR_Pool">
           <Key>
             <PropertyRef Name="PoolID" />
           </Key>
-          <Property Type="Int32" Name="PoolID" Nullable="false" />
+          <Property Type="Int32" Name="PoolID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Double" Name="Area" />
           <Property Type="String" Name="PoolName" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Type="Double" Name="Weight" />
           <Property Type="Int32" Name="Order" />
           <NavigationProperty Name="AN_NetInfo" Relationship="MBRModel.FK_Reference_12" FromRole="MBR_Pool" ToRole="AN_NetInfo" />
           <NavigationProperty Name="MBR_Info" Relationship="MBRModel.FK_Reference_5" FromRole="MBR_Pool" ToRole="MBR_Info" />
+          <NavigationProperty Name="SYS_AirValve" Relationship="MBRModel.FK_Pool_AirValve" FromRole="MBR_Pool" ToRole="SYS_AirValve" />
+          <NavigationProperty Name="SYS_PoisonPump" Relationship="MBRModel.FK_Pool_PoisonPump" FromRole="MBR_Pool" ToRole="SYS_PoisonPump" />
+          <NavigationProperty Name="SYS_RuningParam" Relationship="MBRModel.FK_Pool_RuningParam" FromRole="MBR_Pool" ToRole="SYS_RuningParam" />
+          <NavigationProperty Name="WN_PoolStatus" Relationship="MBRModel.FK_Pool_Status" FromRole="MBR_Pool" ToRole="WN_PoolStatus" />
+          <NavigationProperty Name="WN_WarningLog" Relationship="MBRModel.FK_Pool_WarningLog" FromRole="MBR_Pool" ToRole="WN_WarningLog" />
+          <NavigationProperty Name="WN_WarningSett" Relationship="MBRModel.FK_Pool_WarningSett" FromRole="MBR_Pool" ToRole="WN_WarningSett" />
           <NavigationProperty Name="MBR_RunningInfo" Relationship="MBRModel.FK_Reference_7" FromRole="MBR_Pool" ToRole="MBR_RunningInfo" />
-          <NavigationProperty Name="MBR_WashingInfo" Relationship="MBRModel.FK_Reference_8" FromRole="MBR_Pool" ToRole="MBR_WashingInfo" />
         </EntityType>
         <EntityType Name="MBR_RunningInfo">
           <Key>
             <PropertyRef Name="RunningInfoID" />
           </Key>
-          <Property Type="Int32" Name="RunningInfoID" Nullable="false" />
+          <Property Type="Int32" Name="RunningInfoID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="Int32" Name="PoolID" />
           <Property Type="DateTime" Name="UpdateTime" />
           <Property Type="Double" Name="ChanShuiLL" />
@@ -867,14 +1003,15 @@
           <Property Type="Double" Name="QiShuiB" />
           <Property Type="Double" Name="ShuiWen" />
           <Property Type="Double" Name="WenDuJZTSL" />
+          <Property Type="Double" Name="TouShuiLSJSD" />
           <NavigationProperty Name="MBR_Pool" Relationship="MBRModel.FK_Reference_7" FromRole="MBR_RunningInfo" ToRole="MBR_Pool" />
         </EntityType>
         <EntityType Name="MBR_WashingInfo">
           <Key>
             <PropertyRef Name="WashingInfoID" />
           </Key>
-          <Property Type="Int32" Name="WashingInfoID" Nullable="false" />
-          <Property Type="Int32" Name="PoolID" />
+          <Property Type="Int32" Name="WashingInfoID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="InfoID" />
           <Property Type="DateTime" Name="BeginTime" />
           <Property Type="DateTime" Name="EndTime" />
           <Property Type="Int32" Name="WashType" />
@@ -884,8 +1021,6 @@
           <Property Type="Double" Name="TouShuiL_Low" />
           <Property Type="Double" Name="TouShuiL_High" />
           <Property Type="Double" Name="LvJieCZDC" />
-          <NavigationProperty Name="MBR_Pool" Relationship="MBRModel.FK_Reference_8" FromRole="MBR_WashingInfo" ToRole="MBR_Pool" />
-          <Property Type="Int32" Name="InfoID" />
           <NavigationProperty Name="MBR_Info" Relationship="MBRModel.FK_Reference_17" FromRole="MBR_WashingInfo" ToRole="MBR_Info" />
         </EntityType>
         <EntityType Name="Module">
@@ -935,19 +1070,51 @@
           <Key>
             <PropertyRef Name="SettingsID" />
           </Key>
-          <Property Type="Int32" Name="SettingsID" Nullable="false" />
+          <Property Type="Int32" Name="SettingsID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="Int32" Name="PreDays" />
           <Property Type="Double" Name="MaxValue" />
           <Property Type="Double" Name="MinValue" />
+        </EntityType>
+        <EntityType Name="SYS_AirStatus">
+          <Key>
+            <PropertyRef Name="AirStatusID" />
+          </Key>
+          <Property Type="Int32" Name="AirStatusID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Boolean" Name="Status" />
+          <Property Type="DateTime" Name="UpdateTime" />
+        </EntityType>
+        <EntityType Name="SYS_AirValve">
+          <Key>
+            <PropertyRef Name="PoolID" />
+          </Key>
+          <Property Type="Int32" Name="PoolID" Nullable="false" />
+          <Property Type="String" Name="Status_Code" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="MBR_Pool" Relationship="MBRModel.FK_Pool_AirValve" FromRole="SYS_AirValve" ToRole="MBR_Pool" />
         </EntityType>
         <EntityType Name="SYS_CIPLog">
           <Key>
             <PropertyRef Name="CIPLogID" />
           </Key>
-          <Property Type="Int32" Name="CIPLogID" Nullable="false" />
+          <Property Type="Int32" Name="CIPLogID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="Double" Name="V" />
           <Property Type="DateTime" Name="BeginTime" />
           <Property Type="DateTime" Name="EndTime" />
+        </EntityType>
+        <EntityType Name="SYS_CIPPump">
+          <Key>
+            <PropertyRef Name="PoolID" />
+          </Key>
+          <Property Type="Int32" Name="PoolID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Status_Code" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="V_Code" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SYS_CIPStatus">
+          <Key>
+            <PropertyRef Name="CIPStatusID" />
+          </Key>
+          <Property Type="Int32" Name="CIPStatusID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Boolean" Name="Status" />
+          <Property Type="DateTime" Name="UpdateTime" />
         </EntityType>
         <EntityType Name="SYS_ParamCurValue">
           <Key>
@@ -963,7 +1130,7 @@
           <Key>
             <PropertyRef Name="ParamInfoID" />
           </Key>
-          <Property Type="Int32" Name="ParamInfoID" Nullable="false" />
+          <Property Type="Int32" Name="ParamInfoID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="ParamName" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="Title" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="ParamKey" MaxLength="100" FixedLength="false" Unicode="false" />
@@ -974,13 +1141,52 @@
           <Key>
             <PropertyRef Name="PoisonLogID" />
           </Key>
-          <Property Type="Int32" Name="PoisonLogID" Nullable="false" />
-          <Property Type="Int32" Name="PoisonType" />
+          <Property Type="Int32" Name="PoisonLogID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Boolean" Name="PoisonType" />
           <Property Type="Double" Name="V" />
           <Property Type="Double" Name="BeginPos" />
           <Property Type="Double" Name="EndPos" />
           <Property Type="DateTime" Name="BeginTime" />
           <Property Type="DateTime" Name="EndTime" />
+        </EntityType>
+        <EntityType Name="SYS_PoisonPump">
+          <Key>
+            <PropertyRef Name="PoisonPumpID" />
+          </Key>
+          <Property Type="Int32" Name="PoisonPumpID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="PoolID" Nullable="false" />
+          <Property Type="String" Name="PP_Name" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="PP_Type" />
+          <Property Type="String" Name="Status_Code" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="V_Code" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Pos_Code" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="MBR_Pool" Relationship="MBRModel.FK_Pool_PoisonPump" FromRole="SYS_PoisonPump" ToRole="MBR_Pool" />
+        </EntityType>
+        <EntityType Name="SYS_PoisonStatus">
+          <Key>
+            <PropertyRef Name="PoisonStatusID" />
+          </Key>
+          <Property Type="Int32" Name="PoisonStatusID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Boolean" Name="Status" />
+          <Property Type="DateTime" Name="UpdateTime" />
+        </EntityType>
+        <EntityType Name="SYS_RuningParam">
+          <Key>
+            <PropertyRef Name="RuningParamID" />
+          </Key>
+          <Property Type="Int32" Name="RuningParamID" Nullable="false" />
+          <Property Type="Int32" Name="PoolID" />
+          <Property Type="String" Name="ChanShuiLL" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ChanShuiYL" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DanChiMCXQL" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="WuNiND" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="RongJieY" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="KuaMoYC" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TouShuiL" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="QiShuiB" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ShuiWen" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="WenDuJZTSL" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="MBR_Pool" Relationship="MBRModel.FK_Pool_RuningParam" FromRole="SYS_RuningParam" ToRole="MBR_Pool" />
         </EntityType>
         <EntityType Name="SysException">
           <Key>
@@ -1020,20 +1226,11 @@
           <Property Type="String" Name="Remark" MaxLength="200" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Role" Relationship="MBRModel.RoleUser" FromRole="User" ToRole="Role" />
         </EntityType>
-        <EntityType Name="WarningStat">
-          <Key>
-            <PropertyRef Name="WarningSettID" />
-          </Key>
-          <Property Type="Int32" Name="WarningSettID" Nullable="false" />
-          <Property Type="DateTime" Name="UpdateTime" />
-          <Property Type="Int32" Name="Status" />
-          <NavigationProperty Name="WN_WarningSett" Relationship="MBRModel.FK_Reference_4" FromRole="WarningStat" ToRole="WN_WarningSett" />
-        </EntityType>
         <EntityType Name="WN_ParamSett">
           <Key>
             <PropertyRef Name="ParamSetID" />
           </Key>
-          <Property Type="Int32" Name="ParamSetID" Nullable="false" />
+          <Property Type="Int32" Name="ParamSetID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="Int32" Name="WarningCondID" />
           <Property Type="String" Name="ParamID" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Type="Double" Name="High" />
@@ -1041,11 +1238,20 @@
           <Property Type="Int32" Name="WaitTime" />
           <NavigationProperty Name="WN_WarningCond" Relationship="MBRModel.FK_Reference_2" FromRole="WN_ParamSett" ToRole="WN_WarningCond" />
         </EntityType>
+        <EntityType Name="WN_PoolStatus">
+          <Key>
+            <PropertyRef Name="PoolID" />
+          </Key>
+          <Property Type="Int32" Name="PoolID" Nullable="false" />
+          <Property Type="Int32" Name="Status" />
+          <Property Type="DateTime" Name="UpdateTime" />
+          <NavigationProperty Name="MBR_Pool" Relationship="MBRModel.FK_Pool_Status" FromRole="WN_PoolStatus" ToRole="MBR_Pool" />
+        </EntityType>
         <EntityType Name="WN_WarningCond">
           <Key>
             <PropertyRef Name="WarningCondID" />
           </Key>
-          <Property Type="Int32" Name="WarningCondID" Nullable="false" />
+          <Property Type="Int32" Name="WarningCondID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="Int32" Name="WarningSettID" />
           <Property Type="String" Name="WarningCondDesc" MaxLength="500" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="WN_ParamSett" Relationship="MBRModel.FK_Reference_2" FromRole="WN_WarningCond" ToRole="WN_ParamSett" />
@@ -1055,25 +1261,38 @@
           <Key>
             <PropertyRef Name="WarningLogID" />
           </Key>
-          <Property Type="Int32" Name="WarningLogID" Nullable="false" />
+          <Property Type="Int32" Name="WarningLogID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="Int32" Name="WarningSettID" />
           <Property Type="String" Name="WarningDesc" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Type="Int32" Name="Status" />
           <Property Type="DateTime" Name="Begin" />
           <Property Type="DateTime" Name="End" />
+          <Property Type="Int32" Name="PoolID" Nullable="false" />
+          <NavigationProperty Name="MBR_Pool" Relationship="MBRModel.FK_Pool_WarningLog" FromRole="WN_WarningLog" ToRole="MBR_Pool" />
           <NavigationProperty Name="WN_WarningSett" Relationship="MBRModel.FK_Reference_3" FromRole="WN_WarningLog" ToRole="WN_WarningSett" />
         </EntityType>
         <EntityType Name="WN_WarningSett">
           <Key>
             <PropertyRef Name="WarningSettID" />
           </Key>
-          <Property Type="Int32" Name="WarningSettID" Nullable="false" />
+          <Property Type="Int32" Name="WarningSettID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="Title" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Type="Int32" Name="WarningLevel" />
           <Property Type="String" Name="WarningInfo" MaxLength="100" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="WarningStat" Relationship="MBRModel.FK_Reference_4" FromRole="WN_WarningSett" ToRole="WarningStat" />
+          <Property Type="Int32" Name="PoolID" />
+          <NavigationProperty Name="MBR_Pool" Relationship="MBRModel.FK_Pool_WarningSett" FromRole="WN_WarningSett" ToRole="MBR_Pool" />
           <NavigationProperty Name="WN_WarningCond" Relationship="MBRModel.FK_Reference_1" FromRole="WN_WarningSett" ToRole="WN_WarningCond" />
           <NavigationProperty Name="WN_WarningLog" Relationship="MBRModel.FK_Reference_3" FromRole="WN_WarningSett" ToRole="WN_WarningLog" />
+          <NavigationProperty Name="WN_WarningStatus" Relationship="MBRModel.FK_Reference_4" FromRole="WN_WarningSett" ToRole="WN_WarningStatus" />
+        </EntityType>
+        <EntityType Name="WN_WarningStatus">
+          <Key>
+            <PropertyRef Name="WarningSettID" />
+          </Key>
+          <Property Type="Int32" Name="WarningSettID" Nullable="false" />
+          <Property Type="DateTime" Name="UpdateTime" />
+          <Property Type="Int32" Name="Status" />
+          <NavigationProperty Name="WN_WarningSett" Relationship="MBRModel.FK_Reference_4" FromRole="WN_WarningStatus" ToRole="WN_WarningSett" />
         </EntityType>
         <Association Name="FK_Reference_11">
           <End Type="MBRModel.MBR_Info" Role="MBR_Info" Multiplicity="1" />
@@ -1123,6 +1342,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Reference_17">
+          <End Type="MBRModel.MBR_Info" Role="MBR_Info" Multiplicity="0..1" />
+          <End Type="MBRModel.MBR_WashingInfo" Role="MBR_WashingInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MBR_Info">
+              <PropertyRef Name="InfoID" />
+            </Principal>
+            <Dependent Role="MBR_WashingInfo">
+              <PropertyRef Name="InfoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Reference_5">
           <End Type="MBRModel.MBR_Pool" Role="MBR_Pool" Multiplicity="0..1" />
           <End Type="MBRModel.MBR_Info" Role="MBR_Info" Multiplicity="*" />
@@ -1135,6 +1366,78 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Pool_AirValve">
+          <End Type="MBRModel.MBR_Pool" Role="MBR_Pool" Multiplicity="1" />
+          <End Type="MBRModel.SYS_AirValve" Role="SYS_AirValve" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="MBR_Pool">
+              <PropertyRef Name="PoolID" />
+            </Principal>
+            <Dependent Role="SYS_AirValve">
+              <PropertyRef Name="PoolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pool_PoisonPump">
+          <End Type="MBRModel.MBR_Pool" Role="MBR_Pool" Multiplicity="1" />
+          <End Type="MBRModel.SYS_PoisonPump" Role="SYS_PoisonPump" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MBR_Pool">
+              <PropertyRef Name="PoolID" />
+            </Principal>
+            <Dependent Role="SYS_PoisonPump">
+              <PropertyRef Name="PoolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pool_RuningParam">
+          <End Type="MBRModel.MBR_Pool" Role="MBR_Pool" Multiplicity="0..1" />
+          <End Type="MBRModel.SYS_RuningParam" Role="SYS_RuningParam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MBR_Pool">
+              <PropertyRef Name="PoolID" />
+            </Principal>
+            <Dependent Role="SYS_RuningParam">
+              <PropertyRef Name="PoolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pool_Status">
+          <End Type="MBRModel.MBR_Pool" Role="MBR_Pool" Multiplicity="1" />
+          <End Type="MBRModel.WN_PoolStatus" Role="WN_PoolStatus" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="MBR_Pool">
+              <PropertyRef Name="PoolID" />
+            </Principal>
+            <Dependent Role="WN_PoolStatus">
+              <PropertyRef Name="PoolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pool_WarningLog">
+          <End Type="MBRModel.MBR_Pool" Role="MBR_Pool" Multiplicity="1" />
+          <End Type="MBRModel.WN_WarningLog" Role="WN_WarningLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MBR_Pool">
+              <PropertyRef Name="PoolID" />
+            </Principal>
+            <Dependent Role="WN_WarningLog">
+              <PropertyRef Name="PoolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pool_WarningSett">
+          <End Type="MBRModel.MBR_Pool" Role="MBR_Pool" Multiplicity="0..1" />
+          <End Type="MBRModel.WN_WarningSett" Role="WN_WarningSett" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MBR_Pool">
+              <PropertyRef Name="PoolID" />
+            </Principal>
+            <Dependent Role="WN_WarningSett">
+              <PropertyRef Name="PoolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Reference_7">
           <End Type="MBRModel.MBR_Pool" Role="MBR_Pool" Multiplicity="0..1" />
           <End Type="MBRModel.MBR_RunningInfo" Role="MBR_RunningInfo" Multiplicity="*" />
@@ -1143,18 +1446,6 @@
               <PropertyRef Name="PoolID" />
             </Principal>
             <Dependent Role="MBR_RunningInfo">
-              <PropertyRef Name="PoolID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Reference_8">
-          <End Type="MBRModel.MBR_Pool" Role="MBR_Pool" Multiplicity="0..1" />
-          <End Type="MBRModel.MBR_WashingInfo" Role="MBR_WashingInfo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MBR_Pool">
-              <PropertyRef Name="PoolID" />
-            </Principal>
-            <Dependent Role="MBR_WashingInfo">
               <PropertyRef Name="PoolID" />
             </Dependent>
           </ReferentialConstraint>
@@ -1195,18 +1486,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Reference_4">
-          <End Type="MBRModel.WN_WarningSett" Role="WN_WarningSett" Multiplicity="1" />
-          <End Type="MBRModel.WarningStat" Role="WarningStat" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="WN_WarningSett">
-              <PropertyRef Name="WarningSettID" />
-            </Principal>
-            <Dependent Role="WarningStat">
-              <PropertyRef Name="WarningSettID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Reference_2">
           <End Type="MBRModel.WN_WarningCond" Role="WN_WarningCond" Multiplicity="0..1" />
           <End Type="MBRModel.WN_ParamSett" Role="WN_ParamSett" Multiplicity="*" />
@@ -1243,21 +1522,21 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Reference_4">
+          <End Type="MBRModel.WN_WarningSett" Role="WN_WarningSett" Multiplicity="1" />
+          <End Type="MBRModel.WN_WarningStatus" Role="WN_WarningStatus" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="WN_WarningSett">
+              <PropertyRef Name="WarningSettID" />
+            </Principal>
+            <Dependent Role="WN_WarningStatus">
+              <PropertyRef Name="WarningSettID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="RoleUser">
           <End Type="MBRModel.User" Role="User" Multiplicity="*" />
           <End Type="MBRModel.Role" Role="Role" Multiplicity="*" />
-        </Association>
-        <Association Name="FK_Reference_17">
-          <End Type="MBRModel.MBR_Info" Role="MBR_Info" Multiplicity="0..1" />
-          <End Type="MBRModel.MBR_WashingInfo" Role="MBR_WashingInfo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MBR_Info">
-              <PropertyRef Name="InfoID" />
-            </Principal>
-            <Dependent Role="MBR_WashingInfo">
-              <PropertyRef Name="InfoID" />
-            </Dependent>
-          </ReferentialConstraint>
         </Association>
         </Schema>
     </edmx:ConceptualModels>
@@ -1265,14 +1544,6 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="MBRModelStoreContainer" CdmEntityContainer="MBREntities">
-          <EntitySetMapping Name="AirValve">
-            <EntityTypeMapping TypeName="MBRModel.AirValve">
-              <MappingFragment StoreEntitySet="AirValve">
-                <ScalarProperty Name="Status_Code" ColumnName="Status_Code" />
-                <ScalarProperty Name="AirValveID" ColumnName="AirValveID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="AN_CLCurve">
             <EntityTypeMapping TypeName="MBRModel.AN_CLCurve">
               <MappingFragment StoreEntitySet="AN_CLCurve">
@@ -1312,6 +1583,7 @@
           <EntitySetMapping Name="AN_NetInfo">
             <EntityTypeMapping TypeName="MBRModel.AN_NetInfo">
               <MappingFragment StoreEntitySet="AN_NetInfo">
+                <ScalarProperty Name="TestResult" ColumnName="TestResult" />
                 <ScalarProperty Name="UpdateTime3" ColumnName="UpdateTime3" />
                 <ScalarProperty Name="Matrix3" ColumnName="Matrix3" />
                 <ScalarProperty Name="UpdateTime2" ColumnName="UpdateTime2" />
@@ -1319,14 +1591,6 @@
                 <ScalarProperty Name="UpdateTime1" ColumnName="UpdateTime1" />
                 <ScalarProperty Name="Matrix1" ColumnName="Matrix1" />
                 <ScalarProperty Name="PoolID" ColumnName="PoolID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CIPPump">
-            <EntityTypeMapping TypeName="MBRModel.CIPPump">
-              <MappingFragment StoreEntitySet="CIPPump">
-                <ScalarProperty Name="StatusCode" ColumnName="StatusCode" />
-                <ScalarProperty Name="CIPPumpID" ColumnName="CIPPumpID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1362,6 +1626,7 @@
                 <ScalarProperty Name="Order" ColumnName="Order" />
                 <ScalarProperty Name="Weight" ColumnName="Weight" />
                 <ScalarProperty Name="PoolName" ColumnName="PoolName" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
                 <ScalarProperty Name="PoolID" ColumnName="PoolID" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1369,6 +1634,7 @@
           <EntitySetMapping Name="MBR_RunningInfo">
             <EntityTypeMapping TypeName="MBRModel.MBR_RunningInfo">
               <MappingFragment StoreEntitySet="MBR_RunningInfo">
+                <ScalarProperty Name="TouShuiLSJSD" ColumnName="TouShuiLSJSD" />
                 <ScalarProperty Name="WenDuJZTSL" ColumnName="WenDuJZTSL" />
                 <ScalarProperty Name="ShuiWen" ColumnName="ShuiWen" />
                 <ScalarProperty Name="QiShuiB" ColumnName="QiShuiB" />
@@ -1388,7 +1654,6 @@
           <EntitySetMapping Name="MBR_WashingInfo">
             <EntityTypeMapping TypeName="MBRModel.MBR_WashingInfo">
               <MappingFragment StoreEntitySet="MBR_WashingInfo">
-                <ScalarProperty Name="InfoID" ColumnName="InfoID" />
                 <ScalarProperty Name="LvJieCZDC" ColumnName="LvJieCZDC" />
                 <ScalarProperty Name="TouShuiL_High" ColumnName="TouShuiL_High" />
                 <ScalarProperty Name="TouShuiL_Low" ColumnName="TouShuiL_Low" />
@@ -1398,7 +1663,7 @@
                 <ScalarProperty Name="WashType" ColumnName="WashType" />
                 <ScalarProperty Name="EndTime" ColumnName="EndTime" />
                 <ScalarProperty Name="BeginTime" ColumnName="BeginTime" />
-                <ScalarProperty Name="PoolID" ColumnName="PoolID" />
+                <ScalarProperty Name="InfoID" ColumnName="InfoID" />
                 <ScalarProperty Name="WashingInfoID" ColumnName="WashingInfoID" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1454,6 +1719,23 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="SYS_AirStatus">
+            <EntityTypeMapping TypeName="MBRModel.SYS_AirStatus">
+              <MappingFragment StoreEntitySet="SYS_AirStatus">
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="AirStatusID" ColumnName="AirStatusID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SYS_AirValve">
+            <EntityTypeMapping TypeName="MBRModel.SYS_AirValve">
+              <MappingFragment StoreEntitySet="SYS_AirValve">
+                <ScalarProperty Name="Status_Code" ColumnName="Status_Code" />
+                <ScalarProperty Name="PoolID" ColumnName="PoolID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="SYS_CIPLog">
             <EntityTypeMapping TypeName="MBRModel.SYS_CIPLog">
               <MappingFragment StoreEntitySet="SYS_CIPLog">
@@ -1461,6 +1743,24 @@
                 <ScalarProperty Name="BeginTime" ColumnName="BeginTime" />
                 <ScalarProperty Name="V" ColumnName="V" />
                 <ScalarProperty Name="CIPLogID" ColumnName="CIPLogID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SYS_CIPPump">
+            <EntityTypeMapping TypeName="MBRModel.SYS_CIPPump">
+              <MappingFragment StoreEntitySet="SYS_CIPPump">
+                <ScalarProperty Name="V_Code" ColumnName="V_Code" />
+                <ScalarProperty Name="Status_Code" ColumnName="Status_Code" />
+                <ScalarProperty Name="PoolID" ColumnName="PoolID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SYS_CIPStatus">
+            <EntityTypeMapping TypeName="MBRModel.SYS_CIPStatus">
+              <MappingFragment StoreEntitySet="SYS_CIPStatus">
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CIPStatusID" ColumnName="CIPStatusID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1495,6 +1795,46 @@
                 <ScalarProperty Name="V" ColumnName="V" />
                 <ScalarProperty Name="PoisonType" ColumnName="PoisonType" />
                 <ScalarProperty Name="PoisonLogID" ColumnName="PoisonLogID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SYS_PoisonPump">
+            <EntityTypeMapping TypeName="MBRModel.SYS_PoisonPump">
+              <MappingFragment StoreEntitySet="SYS_PoisonPump">
+                <ScalarProperty Name="Pos_Code" ColumnName="Pos_Code" />
+                <ScalarProperty Name="V_Code" ColumnName="V_Code" />
+                <ScalarProperty Name="Status_Code" ColumnName="Status_Code" />
+                <ScalarProperty Name="PP_Type" ColumnName="PP_Type" />
+                <ScalarProperty Name="PP_Name" ColumnName="PP_Name" />
+                <ScalarProperty Name="PoolID" ColumnName="PoolID" />
+                <ScalarProperty Name="PoisonPumpID" ColumnName="PoisonPumpID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SYS_PoisonStatus">
+            <EntityTypeMapping TypeName="MBRModel.SYS_PoisonStatus">
+              <MappingFragment StoreEntitySet="SYS_PoisonStatus">
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="PoisonStatusID" ColumnName="PoisonStatusID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SYS_RuningParam">
+            <EntityTypeMapping TypeName="MBRModel.SYS_RuningParam">
+              <MappingFragment StoreEntitySet="SYS_RuningParam">
+                <ScalarProperty Name="WenDuJZTSL" ColumnName="WenDuJZTSL" />
+                <ScalarProperty Name="ShuiWen" ColumnName="ShuiWen" />
+                <ScalarProperty Name="QiShuiB" ColumnName="QiShuiB" />
+                <ScalarProperty Name="TouShuiL" ColumnName="TouShuiL" />
+                <ScalarProperty Name="KuaMoYC" ColumnName="KuaMoYC" />
+                <ScalarProperty Name="RongJieY" ColumnName="RongJieY" />
+                <ScalarProperty Name="WuNiND" ColumnName="WuNiND" />
+                <ScalarProperty Name="DanChiMCXQL" ColumnName="DanChiMCXQL" />
+                <ScalarProperty Name="ChanShuiYL" ColumnName="ChanShuiYL" />
+                <ScalarProperty Name="ChanShuiLL" ColumnName="ChanShuiLL" />
+                <ScalarProperty Name="PoolID" ColumnName="PoolID" />
+                <ScalarProperty Name="RuningParamID" ColumnName="RuningParamID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1538,15 +1878,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="WarningStat">
-            <EntityTypeMapping TypeName="MBRModel.WarningStat">
-              <MappingFragment StoreEntitySet="WarningStat">
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
-                <ScalarProperty Name="WarningSettID" ColumnName="WarningSettID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="WN_ParamSett">
             <EntityTypeMapping TypeName="MBRModel.WN_ParamSett">
               <MappingFragment StoreEntitySet="WN_ParamSett">
@@ -1556,6 +1887,15 @@
                 <ScalarProperty Name="ParamID" ColumnName="ParamID" />
                 <ScalarProperty Name="WarningCondID" ColumnName="WarningCondID" />
                 <ScalarProperty Name="ParamSetID" ColumnName="ParamSetID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WN_PoolStatus">
+            <EntityTypeMapping TypeName="MBRModel.WN_PoolStatus">
+              <MappingFragment StoreEntitySet="WN_PoolStatus">
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="PoolID" ColumnName="PoolID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1571,6 +1911,7 @@
           <EntitySetMapping Name="WN_WarningLog">
             <EntityTypeMapping TypeName="MBRModel.WN_WarningLog">
               <MappingFragment StoreEntitySet="WN_WarningLog">
+                <ScalarProperty Name="PoolID" ColumnName="PoolID" />
                 <ScalarProperty Name="End" ColumnName="End" />
                 <ScalarProperty Name="Begin" ColumnName="Begin" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
@@ -1583,9 +1924,19 @@
           <EntitySetMapping Name="WN_WarningSett">
             <EntityTypeMapping TypeName="MBRModel.WN_WarningSett">
               <MappingFragment StoreEntitySet="WN_WarningSett">
+                <ScalarProperty Name="PoolID" ColumnName="PoolID" />
                 <ScalarProperty Name="WarningInfo" ColumnName="WarningInfo" />
                 <ScalarProperty Name="WarningLevel" ColumnName="WarningLevel" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="WarningSettID" ColumnName="WarningSettID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WN_WarningStatus">
+            <EntityTypeMapping TypeName="MBRModel.WN_WarningStatus">
+              <MappingFragment StoreEntitySet="WN_WarningStatus">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
                 <ScalarProperty Name="WarningSettID" ColumnName="WarningSettID" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1621,112 +1972,157 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="MBR" ZoomLevel="97">
-        <EntityTypeShape EntityType="MBRModel.AirValve" Width="1.5" PointX="5.75" PointY="0.75" Height="1.3969734700520746" />
-        <EntityTypeShape EntityType="MBRModel.AN_CLCurve" Width="1.5" PointX="5.25" PointY="5.125" Height="2.3520719401041674" />
-        <EntityTypeShape EntityType="MBRModel.AN_HighCurve" Width="1.5" PointX="5.25" PointY="8.25" Height="2.3520719401041674" />
-        <EntityTypeShape EntityType="MBRModel.AN_LowCurve" Width="1.5" PointX="5.25" PointY="11.375" Height="2.3520719401041674" />
-        <EntityTypeShape EntityType="MBRModel.AN_NetInfo" Width="1.5" PointX="3" PointY="1.875" Height="2.543091634114603" />
-        <EntityTypeShape EntityType="MBRModel.CIPPump" Width="1.5" PointX="0.75" PointY="5.75" Height="1.3969734700520746" />
-        <EntityTypeShape EntityType="MBRModel.Knowlege" Width="1.5" PointX="14.75" PointY="0.75" Height="2.5430916341145746" />
-        <EntityTypeShape EntityType="MBRModel.MBR_Info" Width="1.5" PointX="3" PointY="8" Height="2.9251310221354174" />
-        <EntityTypeShape EntityType="MBRModel.MBR_Pool" Width="1.5" PointX="0.75" PointY="10.75" Height="2.543091634114603" />
-        <EntityTypeShape EntityType="MBRModel.MBR_RunningInfo" Width="1.5" PointX="3" PointY="14.5" Height="3.689209798177103" />
-        <EntityTypeShape EntityType="MBRModel.MBR_WashingInfo" Width="1.5" PointX="3" PointY="18.875" Height="3.3071704101562318" />
-        <EntityTypeShape EntityType="MBRModel.Module" Width="1.5" PointX="7.75" PointY="11" Height="3.8802294921874818" />
-        <EntityTypeShape EntityType="MBRModel.ModulePermission" Width="1.5" PointX="10" PointY="12" Height="1.970032552083353" />
-        <EntityTypeShape EntityType="MBRModel.Role" Width="1.5" PointX="15" PointY="8" Height="2.543091634114603" />
-        <EntityTypeShape EntityType="MBRModel.Settings" Width="1.5" PointX="14.75" PointY="4.75" Height="1.7790128580729174" />
-        <EntityTypeShape EntityType="MBRModel.SYS_CIPLog" Width="1.5" PointX="9.75" PointY="14.75" Height="1.7790128580729174" />
-        <EntityTypeShape EntityType="MBRModel.SYS_ParamCurValue" Width="1.5" PointX="15" PointY="12" Height="1.970032552083353" />
-        <EntityTypeShape EntityType="MBRModel.SYS_ParamInfo" Width="1.5" PointX="12.75" PointY="11.875" Height="2.1610522460937318" />
-        <EntityTypeShape EntityType="MBRModel.SYS_PoisonLog" Width="1.5" PointX="14.75" PointY="14.75" Height="2.3520719401041674" />
-        <EntityTypeShape EntityType="MBRModel.SysException" Width="1.5" PointX="5.75" PointY="15.75" Height="2.5430916341145746" />
-        <EntityTypeShape EntityType="MBRModel.SysLog" Width="1.5" PointX="11.75" PointY="15.75" Height="2.3520719401041674" />
-        <EntityTypeShape EntityType="MBRModel.User" Width="1.5" PointX="12.75" PointY="8" Height="2.543091634114603" />
-        <EntityTypeShape EntityType="MBRModel.WarningStat" Width="1.5" PointX="10" PointY="1.25" Height="1.7790128580729174" />
-        <EntityTypeShape EntityType="MBRModel.WN_ParamSett" Width="1.5" PointX="12.25" PointY="3.75" Height="2.3520719401041674" />
-        <EntityTypeShape EntityType="MBRModel.WN_WarningCond" Width="1.5" PointX="10" PointY="4" Height="1.9700325520833246" />
-        <EntityTypeShape EntityType="MBRModel.WN_WarningLog" Width="1.5" PointX="10" PointY="6.875" Height="2.3520719401041674" />
-        <EntityTypeShape EntityType="MBRModel.WN_WarningSett" Width="1.5" PointX="7.75" PointY="4" Height="2.3520719401041674" />
+        <EntityTypeShape EntityType="MBRModel.AN_CLCurve" Width="1.5" PointX="5.25" PointY="8.125" Height="2.3520719401041674" />
+        <EntityTypeShape EntityType="MBRModel.AN_HighCurve" Width="1.5" PointX="5.25" PointY="11.25" Height="2.3520719401041674" />
+        <EntityTypeShape EntityType="MBRModel.AN_LowCurve" Width="1.5" PointX="5.25" PointY="14.375" Height="2.3520719401041674" />
+        <EntityTypeShape EntityType="MBRModel.AN_NetInfo" Width="1.5" PointX="3" PointY="4.625" Height="2.7341113281249818" />
+        <EntityTypeShape EntityType="MBRModel.Knowlege" Width="1.5" PointX="0.75" PointY="0.75" Height="2.5430916341145746" />
+        <EntityTypeShape EntityType="MBRModel.MBR_Info" Width="1.5" PointX="3" PointY="12.875" Height="3.1161507161458246" />
+        <EntityTypeShape EntityType="MBRModel.MBR_Pool" Width="1.5" PointX="0.75" PointY="22.25" Height="3.6892097981770746" />
+        <EntityTypeShape EntityType="MBRModel.MBR_RunningInfo" Width="1.5" PointX="3" PointY="21.5" Height="3.8802294921874818" />
+        <EntityTypeShape EntityType="MBRModel.MBR_WashingInfo" Width="1.5" PointX="5.25" PointY="17.5" Height="3.3071704101562318" />
+        <EntityTypeShape EntityType="MBRModel.Module" Width="1.5" PointX="5.75" PointY="1" Height="3.8802294921874823" />
+        <EntityTypeShape EntityType="MBRModel.ModulePermission" Width="1.5" PointX="8" PointY="2" Height="1.970032552083353" />
+        <EntityTypeShape EntityType="MBRModel.Role" Width="1.5" PointX="10" PointY="5" Height="2.543091634114603" />
+        <EntityTypeShape EntityType="MBRModel.Settings" Width="1.5" PointX="2.75" PointY="0.75" Height="1.7790128580729174" />
+        <EntityTypeShape EntityType="MBRModel.SYS_AirStatus" Width="1.5" PointX="0.75" PointY="8.75" Height="1.5879931640624818" />
+        <EntityTypeShape EntityType="MBRModel.SYS_AirValve" Width="1.5" PointX="3" PointY="26.125" Height="1.5879931640624818" />
+        <EntityTypeShape EntityType="MBRModel.SYS_CIPLog" Width="1.5" PointX="10.75" PointY="0.75" Height="1.7790128580729174" />
+        <EntityTypeShape EntityType="MBRModel.SYS_CIPPump" Width="1.5" PointX="9.75" PointY="11.75" Height="1.5879931640624818" />
+        <EntityTypeShape EntityType="MBRModel.SYS_CIPStatus" Width="1.5" PointX="11.75" PointY="11.75" Height="1.5879931640624818" />
+        <EntityTypeShape EntityType="MBRModel.SYS_ParamCurValue" Width="1.5" PointX="10" PointY="9" Height="1.970032552083353" />
+        <EntityTypeShape EntityType="MBRModel.SYS_ParamInfo" Width="1.5" PointX="7.75" PointY="8.875" Height="2.1610522460937318" />
+        <EntityTypeShape EntityType="MBRModel.SYS_PoisonLog" Width="1.5" PointX="12.75" PointY="0.75" Height="2.3520719401041674" />
+        <EntityTypeShape EntityType="MBRModel.SYS_PoisonPump" Width="1.5" PointX="3" PointY="28.5" Height="2.543091634114603" />
+        <EntityTypeShape EntityType="MBRModel.SYS_PoisonStatus" Width="1.5" PointX="12.75" PointY="4.75" Height="1.5879931640624818" />
+        <EntityTypeShape EntityType="MBRModel.SYS_RuningParam" Width="1.5" PointX="3" PointY="31.75" Height="3.498190104166639" />
+        <EntityTypeShape EntityType="MBRModel.SysException" Width="1.5" PointX="12.75" PointY="7.75" Height="2.5430916341145888" />
+        <EntityTypeShape EntityType="MBRModel.SysLog" Width="1.5" PointX="13.75" PointY="11.75" Height="2.3520719401041674" />
+        <EntityTypeShape EntityType="MBRModel.User" Width="1.5" PointX="7.75" PointY="5" Height="2.543091634114603" />
+        <EntityTypeShape EntityType="MBRModel.WN_ParamSett" Width="1.5" PointX="7.5" PointY="42" Height="2.3520719401041106" />
+        <EntityTypeShape EntityType="MBRModel.WN_PoolStatus" Width="1.5" PointX="3" PointY="36" Height="1.7790128580728606" />
+        <EntityTypeShape EntityType="MBRModel.WN_WarningCond" Width="1.5" PointX="5.25" PointY="42.25" Height="1.970032552083353" />
+        <EntityTypeShape EntityType="MBRModel.WN_WarningLog" Width="1.5" PointX="5.25" PointY="32.625" Height="2.7341113281249818" />
+        <EntityTypeShape EntityType="MBRModel.WN_WarningSett" Width="1.5" PointX="3" PointY="43.125" Height="2.7341113281249818" />
+        <EntityTypeShape EntityType="MBRModel.WN_WarningStatus" Width="1.5" PointX="5.25" PointY="45.125" Height="1.7790128580728606" />
         <AssociationConnector Association="MBRModel.FK_Reference_11" >
-          <ConnectorPoint PointX="3.75" PointY="8" />
-          <ConnectorPoint PointX="3.75" PointY="6.3010359700520837" />
-          <ConnectorPoint PointX="5.25" PointY="6.3010359700520837" />
+          <ConnectorPoint PointX="3.75" PointY="12.875" />
+          <ConnectorPoint PointX="3.75" PointY="9.3010359700520837" />
+          <ConnectorPoint PointX="5.25" PointY="9.3010359700520837" />
         </AssociationConnector>
         <AssociationConnector Association="MBRModel.FK_Reference_9" >
-          <ConnectorPoint PointX="4.5" PointY="9.4260359700520837" />
-          <ConnectorPoint PointX="5.25" PointY="9.4260359700520837" />
+          <ConnectorPoint PointX="4.5" PointY="13.238535970052084" />
+          <ConnectorPoint PointX="5.25" PointY="13.238535970052084" />
         </AssociationConnector>
         <AssociationConnector Association="MBRModel.FK_Reference_10" >
-          <ConnectorPoint PointX="3.92187375" PointY="11.116150716145834" />
-          <ConnectorPoint PointX="3.92187375" PointY="12.748203968098956" />
-          <ConnectorPoint PointX="4.791666666666667" PointY="12.748203968098956" />
-          <ConnectorPoint PointX="4.958333333333333" PointY="12.748203968098956" />
-          <ConnectorPoint PointX="5.25" PointY="12.748203968098956" />
+          <ConnectorPoint PointX="4.5" PointY="15.183075358072912" />
+          <ConnectorPoint PointX="5.25" PointY="15.183075358072912" />
         </AssociationConnector>
         <AssociationConnector Association="MBRModel.FK_Reference_12" >
-          <ConnectorPoint PointX="2.25" PointY="10.751152846153847" />
-          <ConnectorPoint PointX="2.625" PointY="10.376152846153847" />
-          <ConnectorPoint PointX="2.625" PointY="3.1465458170573015" />
-          <ConnectorPoint PointX="3" PointY="3.1465458170573015" />
-        </AssociationConnector>
-        <AssociationConnector Association="MBRModel.FK_Reference_5" >
-          <ConnectorPoint PointX="2.25" PointY="10.96490428114984" />
-          <ConnectorPoint PointX="3" PointY="10.96490428114984" />
-        </AssociationConnector>
-        <AssociationConnector Association="MBRModel.FK_Reference_7" >
-          <ConnectorPoint PointX="1.5" PointY="13.293091634114603" />
-          <ConnectorPoint PointX="1.5" PointY="16.344604899088552" />
-          <ConnectorPoint PointX="1.8229191666666667" PointY="16.344604899088552" />
-          <ConnectorPoint PointX="1.9895858333333332" PointY="16.344604899088552" />
-          <ConnectorPoint PointX="3" PointY="16.344604899088552" />
-        </AssociationConnector>
-        <AssociationConnector Association="MBRModel.FK_Reference_8" >
-          <ConnectorPoint PointX="1.9062525" PointY="13.293091634114603" />
-          <ConnectorPoint PointX="1.9062525" PointY="20.719604899088544" />
-          <ConnectorPoint PointX="3" PointY="20.719604899088544" />
-        </AssociationConnector>
-        <AssociationConnector Association="MBRModel.FK_Reference_55" >
-          <ConnectorPoint PointX="9.25" PointY="12.985016276041677" />
-          <ConnectorPoint PointX="10" PointY="12.985016276041677" />
-        </AssociationConnector>
-        <AssociationConnector Association="MBRModel.FK_Reference_60" >
-          <ConnectorPoint PointX="8.2819230769230767" PointY="14.880229492187482" />
-          <ConnectorPoint PointX="8.2819230769230767" PointY="15.130229492187482" />
-          <ConnectorPoint PointX="8.72846153846154" PointY="15.130229492187482" />
-          <ConnectorPoint PointX="8.72846153846154" PointY="14.880229492187482" />
-        </AssociationConnector>
-        <AssociationConnector Association="MBRModel.FK_Reference_6" >
-          <ConnectorPoint PointX="14.25" PointY="12.985016276041677" />
-          <ConnectorPoint PointX="15" PointY="12.985016276041677" />
-        </AssociationConnector>
-        <AssociationConnector Association="MBRModel.FK_Reference_4" >
-          <ConnectorPoint PointX="8.5" PointY="4" />
-          <ConnectorPoint PointX="8.5" PointY="2.1395064290364587" />
-          <ConnectorPoint PointX="10" PointY="2.1395064290364587" />
-        </AssociationConnector>
-        <AssociationConnector Association="MBRModel.FK_Reference_2" >
-          <ConnectorPoint PointX="11.5" PointY="4.9850162760416623" />
-          <ConnectorPoint PointX="12.25" PointY="4.9850162760416623" />
-        </AssociationConnector>
-        <AssociationConnector Association="MBRModel.FK_Reference_1" >
-          <ConnectorPoint PointX="9.25" PointY="4.9850162760416623" />
-          <ConnectorPoint PointX="10" PointY="4.9850162760416623" />
-        </AssociationConnector>
-        <AssociationConnector Association="MBRModel.FK_Reference_3" >
-          <ConnectorPoint PointX="8.5" PointY="6.3520719401041674" />
-          <ConnectorPoint PointX="8.5" PointY="8.0510359700520837" />
-          <ConnectorPoint PointX="10" PointY="8.0510359700520837" />
-        </AssociationConnector>
-        <AssociationConnector Association="MBRModel.RoleUser" >
-          <ConnectorPoint PointX="14.25" PointY="9.2715458170573015" />
-          <ConnectorPoint PointX="15" PointY="9.2715458170573015" />
+          <ConnectorPoint PointX="2.25" PointY="22.251152846153843" />
+          <ConnectorPoint PointX="2.625" PointY="21.876152846153843" />
+          <ConnectorPoint PointX="2.625" PointY="5.9920556640624909" />
+          <ConnectorPoint PointX="3" PointY="5.9920556640624909" />
         </AssociationConnector>
         <AssociationConnector Association="MBRModel.FK_Reference_17" >
-          <ConnectorPoint PointX="4.5000000000000018" PointY="11.116150716145834" />
-          <ConnectorPoint PointX="4.875" PointY="11.491150716145832" />
-          <ConnectorPoint PointX="4.875" PointY="18.501152846153843" />
-          <ConnectorPoint PointX="4.5" PointY="18.876152846153843" />
+          <ConnectorPoint PointX="3.75" PointY="15.991150716145825" />
+          <ConnectorPoint PointX="3.75" PointY="19.153585205078116" />
+          <ConnectorPoint PointX="5.25" PointY="19.153585205078116" />
+        </AssociationConnector>
+        <AssociationConnector Association="MBRModel.FK_Reference_5" >
+          <ConnectorPoint PointX="1.5" PointY="22.25" />
+          <ConnectorPoint PointX="1.5" PointY="14.433075358072912" />
+          <ConnectorPoint PointX="2.5416666666666665" PointY="14.433075358072912" />
+          <ConnectorPoint PointX="2.7083333333333335" PointY="14.433075358072912" />
+          <ConnectorPoint PointX="3" PointY="14.433075358072912" />
+        </AssociationConnector>
+        <AssociationConnector Association="MBRModel.FK_Pool_AirValve" >
+          <ConnectorPoint PointX="1.5" PointY="25.939209798177075" />
+          <ConnectorPoint PointX="1.5" PointY="26.918996582031241" />
+          <ConnectorPoint PointX="1.6197929166666667" PointY="26.918996582031241" />
+          <ConnectorPoint PointX="1.7864595833333332" PointY="26.918996582031241" />
+          <ConnectorPoint PointX="1.8229191666666667" PointY="26.918996582031241" />
+          <ConnectorPoint PointX="1.9895858333333332" PointY="26.918996582031241" />
+          <ConnectorPoint PointX="2.0260454166666664" PointY="26.918996582031241" />
+          <ConnectorPoint PointX="2.1927120833333333" PointY="26.918996582031241" />
+          <ConnectorPoint PointX="3" PointY="26.918996582031241" />
+        </AssociationConnector>
+        <AssociationConnector Association="MBRModel.FK_Pool_PoisonPump" >
+          <ConnectorPoint PointX="1.9062525" PointY="25.939209798177075" />
+          <ConnectorPoint PointX="1.9062525" PointY="29.7715458170573" />
+          <ConnectorPoint PointX="2.0260454166666664" PointY="29.7715458170573" />
+          <ConnectorPoint PointX="2.1927120833333333" PointY="29.7715458170573" />
+          <ConnectorPoint PointX="3" PointY="29.7715458170573" />
+        </AssociationConnector>
+        <AssociationConnector Association="MBRModel.FK_Pool_RuningParam" >
+          <ConnectorPoint PointX="1.0937475" PointY="25.939209798177075" />
+          <ConnectorPoint PointX="1.0937475" PointY="33.49909505208332" />
+          <ConnectorPoint PointX="1.2135404166666668" PointY="33.49909505208332" />
+          <ConnectorPoint PointX="1.3802070833333333" PointY="33.49909505208332" />
+          <ConnectorPoint PointX="1.6197929166666667" PointY="33.49909505208332" />
+          <ConnectorPoint PointX="1.7864595833333332" PointY="33.49909505208332" />
+          <ConnectorPoint PointX="2.0260454166666664" PointY="33.49909505208332" />
+          <ConnectorPoint PointX="2.1927120833333333" PointY="33.49909505208332" />
+          <ConnectorPoint PointX="3" PointY="33.49909505208332" />
+        </AssociationConnector>
+        <AssociationConnector Association="MBRModel.FK_Pool_Status" >
+          <ConnectorPoint PointX="2.10937875" PointY="25.939209798177075" />
+          <ConnectorPoint PointX="2.10937875" PointY="36.88950642903643" />
+          <ConnectorPoint PointX="3" PointY="36.88950642903643" />
+        </AssociationConnector>
+        <AssociationConnector Association="MBRModel.FK_Pool_WarningLog" >
+          <ConnectorPoint PointX="1.70312625" PointY="25.939209798177075" />
+          <ConnectorPoint PointX="1.70312625" PointY="35.33490071614581" />
+          <ConnectorPoint PointX="2.0260454166666664" PointY="35.33490071614581" />
+          <ConnectorPoint PointX="2.1927120833333333" PointY="35.33490071614581" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="35.33490071614581" />
+          <ConnectorPoint PointX="4.958333333333333" PointY="35.33490071614581" />
+          <ConnectorPoint PointX="5.25" PointY="35.33490071614581" />
+        </AssociationConnector>
+        <AssociationConnector Association="MBRModel.FK_Pool_WarningSett" >
+          <ConnectorPoint PointX="1.29687375" PointY="25.939209798177075" />
+          <ConnectorPoint PointX="1.29687375" PointY="44.492055664062491" />
+          <ConnectorPoint PointX="3" PointY="44.492055664062491" />
+        </AssociationConnector>
+        <AssociationConnector Association="MBRModel.FK_Reference_7" >
+          <ConnectorPoint PointX="2.25" PointY="23.846943669170656" />
+          <ConnectorPoint PointX="3" PointY="23.846943669170656" />
+        </AssociationConnector>
+        <AssociationConnector Association="MBRModel.FK_Reference_55" >
+          <ConnectorPoint PointX="7.25" PointY="2.9850162760416765" />
+          <ConnectorPoint PointX="8" PointY="2.9850162760416765" />
+        </AssociationConnector>
+        <AssociationConnector Association="MBRModel.FK_Reference_60" >
+          <ConnectorPoint PointX="6.2819230769230767" PointY="4.8802294921874818" />
+          <ConnectorPoint PointX="6.2819230769230767" PointY="5.1302294921874818" />
+          <ConnectorPoint PointX="6.7284615384615378" PointY="5.1302294921874818" />
+          <ConnectorPoint PointX="6.7284615384615378" PointY="4.8802294921874818" />
+        </AssociationConnector>
+        <AssociationConnector Association="MBRModel.FK_Reference_6" >
+          <ConnectorPoint PointX="9.25" PointY="9.9850162760416765" />
+          <ConnectorPoint PointX="10" PointY="9.9850162760416765" />
+        </AssociationConnector>
+        <AssociationConnector Association="MBRModel.FK_Reference_2" >
+          <ConnectorPoint PointX="6.75" PointY="43.235016276041677" />
+          <ConnectorPoint PointX="7.5" PointY="43.235016276041677" />
+        </AssociationConnector>
+        <AssociationConnector Association="MBRModel.FK_Reference_1" >
+          <ConnectorPoint PointX="4.5" PointY="43.672516276041677" />
+          <ConnectorPoint PointX="5.25" PointY="43.672516276041677" />
+        </AssociationConnector>
+        <AssociationConnector Association="MBRModel.FK_Reference_3" >
+          <ConnectorPoint PointX="4.5000000000000018" PointY="43.125" />
+          <ConnectorPoint PointX="4.875" PointY="42.75" />
+          <ConnectorPoint PointX="4.875" PointY="33.94869835807291" />
+          <ConnectorPoint PointX="5.25" PointY="33.94869835807291" />
+        </AssociationConnector>
+        <AssociationConnector Association="MBRModel.FK_Reference_4" >
+          <ConnectorPoint PointX="4.5" PointY="45.492055664062491" />
+          <ConnectorPoint PointX="5.25" PointY="45.492055664062491" />
+        </AssociationConnector>
+        <AssociationConnector Association="MBRModel.RoleUser" >
+          <ConnectorPoint PointX="9.25" PointY="6.2715458170573015" />
+          <ConnectorPoint PointX="10" PointY="6.2715458170573015" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

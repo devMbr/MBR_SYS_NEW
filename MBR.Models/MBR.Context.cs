@@ -25,12 +25,10 @@ namespace MBR.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<AirValve> AirValve { get; set; }
         public DbSet<AN_CLCurve> AN_CLCurve { get; set; }
         public DbSet<AN_HighCurve> AN_HighCurve { get; set; }
         public DbSet<AN_LowCurve> AN_LowCurve { get; set; }
         public DbSet<AN_NetInfo> AN_NetInfo { get; set; }
-        public DbSet<CIPPump> CIPPump { get; set; }
         public DbSet<Knowlege> Knowlege { get; set; }
         public DbSet<MBR_Info> MBR_Info { get; set; }
         public DbSet<MBR_Pool> MBR_Pool { get; set; }
@@ -40,17 +38,25 @@ namespace MBR.Models
         public DbSet<ModulePermission> ModulePermission { get; set; }
         public DbSet<Role> Role { get; set; }
         public DbSet<Settings> Settings { get; set; }
+        public DbSet<SYS_AirStatus> SYS_AirStatus { get; set; }
+        public DbSet<SYS_AirValve> SYS_AirValve { get; set; }
         public DbSet<SYS_CIPLog> SYS_CIPLog { get; set; }
+        public DbSet<SYS_CIPPump> SYS_CIPPump { get; set; }
+        public DbSet<SYS_CIPStatus> SYS_CIPStatus { get; set; }
         public DbSet<SYS_ParamCurValue> SYS_ParamCurValue { get; set; }
         public DbSet<SYS_ParamInfo> SYS_ParamInfo { get; set; }
         public DbSet<SYS_PoisonLog> SYS_PoisonLog { get; set; }
+        public DbSet<SYS_PoisonPump> SYS_PoisonPump { get; set; }
+        public DbSet<SYS_PoisonStatus> SYS_PoisonStatus { get; set; }
+        public DbSet<SYS_RuningParam> SYS_RuningParam { get; set; }
         public DbSet<SysException> SysException { get; set; }
         public DbSet<SysLog> SysLog { get; set; }
         public DbSet<User> User { get; set; }
-        public DbSet<WarningStat> WarningStat { get; set; }
         public DbSet<WN_ParamSett> WN_ParamSett { get; set; }
+        public DbSet<WN_PoolStatus> WN_PoolStatus { get; set; }
         public DbSet<WN_WarningCond> WN_WarningCond { get; set; }
         public DbSet<WN_WarningLog> WN_WarningLog { get; set; }
         public DbSet<WN_WarningSett> WN_WarningSett { get; set; }
+        public DbSet<WN_WarningStatus> WN_WarningStatus { get; set; }
     }
 }

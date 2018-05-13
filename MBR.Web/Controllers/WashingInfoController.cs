@@ -90,7 +90,6 @@ namespace MBR.Web.Controllers
                         new
                         {
                             m.WashingInfoID,
-                            m.PoolID,
                             m.InfoID,
                             m.BeginTime,
                             m.EndTime,
@@ -192,7 +191,6 @@ namespace MBR.Web.Controllers
                         new
                         {
                             m.WashingInfoID,
-                            m.PoolID,
                             m.InfoID,
                             m.BeginTime,
                             m.EndTime,
@@ -224,7 +222,7 @@ namespace MBR.Web.Controllers
             MBR_WashingInfo entity = null;
             using (MBREntities db = new MBREntities())
             {
-                entity = db.MBR_WashingInfo.Include(m=>m.MBR_Pool).Include(m=>m.MBR_Info).Where(m => m.WashingInfoID == id).FirstOrDefault();
+                entity = db.MBR_WashingInfo.Include(m => m.MBR_Info).Include(m => m.MBR_Info.MBR_Pool).Where(m => m.WashingInfoID == id).FirstOrDefault();
             }
             return View(entity);
         }

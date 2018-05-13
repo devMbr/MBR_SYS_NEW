@@ -29,8 +29,8 @@ namespace MBR.Models
         public virtual AN_CLCurve AN_CLCurve { get; set; }
         public virtual AN_HighCurve AN_HighCurve { get; set; }
         public virtual AN_LowCurve AN_LowCurve { get; set; }
-        public virtual MBR_Pool MBR_Pool { get; set; }
         public virtual ICollection<MBR_WashingInfo> MBR_WashingInfo { get; set; }
+        public virtual MBR_Pool MBR_Pool { get; set; }
     }
     
 }

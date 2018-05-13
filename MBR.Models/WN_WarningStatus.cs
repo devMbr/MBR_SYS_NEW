@@ -12,15 +12,13 @@ using System.Collections.Generic;
 
 namespace MBR.Models
 {
-    public partial class SYS_PoisonLog
+    public partial class WN_WarningStatus
     {
-        public int PoisonLogID { get; set; }
-        public Nullable<bool> PoisonType { get; set; }
-        public Nullable<double> V { get; set; }
-        public Nullable<double> BeginPos { get; set; }
-        public Nullable<double> EndPos { get; set; }
-        public Nullable<System.DateTime> BeginTime { get; set; }
-        public Nullable<System.DateTime> EndTime { get; set; }
+        public int WarningSettID { get; set; }
+        public Nullable<System.DateTime> UpdateTime { get; set; }
+        public Nullable<int> Status { get; set; }
+    
+        public virtual WN_WarningSett WN_WarningSett { get; set; }
     }
     
 }

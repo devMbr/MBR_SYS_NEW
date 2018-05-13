@@ -12,13 +12,11 @@ using System.Collections.Generic;
 
 namespace MBR.Models
 {
-    public partial class WarningStat
+    public partial class SYS_AirStatus
     {
-        public int WarningSettID { get; set; }
+        public int AirStatusID { get; set; }
+        public Nullable<bool> Status { get; set; }
         public Nullable<System.DateTime> UpdateTime { get; set; }
-        public Nullable<int> Status { get; set; }
-    
-        public virtual WN_WarningSett WN_WarningSett { get; set; }
     }
     
 }

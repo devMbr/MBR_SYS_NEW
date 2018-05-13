@@ -48,9 +48,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AirValve.cs">
-      <DependentUpon>MBR.tt</DependentUpon>
-    </Compile>
     <Compile Include="AN_CLCurve.cs">
       <DependentUpon>MBR.tt</DependentUpon>
     </Compile>
@@ -61,9 +58,6 @@
       <DependentUpon>MBR.tt</DependentUpon>
     </Compile>
     <Compile Include="AN_NetInfo.cs">
-      <DependentUpon>MBR.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CIPPump.cs">
       <DependentUpon>MBR.tt</DependentUpon>
     </Compile>
     <Compile Include="Extend\User.cs" />
@@ -123,7 +117,19 @@
     <Compile Include="SysLog.cs">
       <DependentUpon>MBR.tt</DependentUpon>
     </Compile>
+    <Compile Include="SYS_AirStatus.cs">
+      <DependentUpon>MBR.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SYS_AirValve.cs">
+      <DependentUpon>MBR.tt</DependentUpon>
+    </Compile>
     <Compile Include="SYS_CIPLog.cs">
+      <DependentUpon>MBR.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SYS_CIPPump.cs">
+      <DependentUpon>MBR.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SYS_CIPStatus.cs">
       <DependentUpon>MBR.tt</DependentUpon>
     </Compile>
     <Compile Include="SYS_ParamCurValue.cs">
@@ -135,13 +141,22 @@
     <Compile Include="SYS_PoisonLog.cs">
       <DependentUpon>MBR.tt</DependentUpon>
     </Compile>
+    <Compile Include="SYS_PoisonPump.cs">
+      <DependentUpon>MBR.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SYS_PoisonStatus.cs">
+      <DependentUpon>MBR.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SYS_RuningParam.cs">
+      <DependentUpon>MBR.tt</DependentUpon>
+    </Compile>
     <Compile Include="User.cs">
       <DependentUpon>MBR.tt</DependentUpon>
     </Compile>
-    <Compile Include="WarningStat.cs">
+    <Compile Include="WN_ParamSett.cs">
       <DependentUpon>MBR.tt</DependentUpon>
     </Compile>
-    <Compile Include="WN_ParamSett.cs">
+    <Compile Include="WN_PoolStatus.cs">
       <DependentUpon>MBR.tt</DependentUpon>
     </Compile>
     <Compile Include="WN_WarningCond.cs">
@@ -151,6 +166,9 @@
       <DependentUpon>MBR.tt</DependentUpon>
     </Compile>
     <Compile Include="WN_WarningSett.cs">
+      <DependentUpon>MBR.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WN_WarningStatus.cs">
       <DependentUpon>MBR.tt</DependentUpon>
     </Compile>
   </ItemGroup>

@@ -20,7 +20,9 @@ namespace MBR.Models
         public Nullable<int> Status { get; set; }
         public Nullable<System.DateTime> Begin { get; set; }
         public Nullable<System.DateTime> End { get; set; }
+        public int PoolID { get; set; }
     
+        public virtual MBR_Pool MBR_Pool { get; set; }
         public virtual WN_WarningSett WN_WarningSett { get; set; }
     }
     
