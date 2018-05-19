@@ -37,7 +37,7 @@
                             <tr>
                                 <th></th>
                                 <th>
-                                    参数ID
+                                    参数
                                 </th>
                                 <th>
                                     上限值
@@ -46,7 +46,7 @@
                                     下限值
                                 </th>
                                 <th>
-                                    判定时间
+                                    判定时间（秒）
                                 </th>
                             </tr>
                         </thead>
@@ -144,7 +144,7 @@
 		            text: '<i class="fa fa-plus"></i>添加',
 		            action: function (e, dt, node, config) {
                         var modal = $('#EditModal').modal();
-                        modal.find('.modal-body').html("<iframe width='100%' height='100' scrolling='no' frameborder='0' src='" + CreateUrl + "'></iframe>");
+                        modal.find('.modal-body').html("<iframe width='100%' height='180' scrolling='no' frameborder='0' src='" + CreateUrl + "'></iframe>");
                         modal.show();
 		            }
 		        },
@@ -158,7 +158,7 @@
 		                }
 		                var id = selectedRow.data().ParamSetID;
                         var modal = $('#EditModal').modal();
-                        modal.find('.modal-body').html("<iframe width='100%' height='100' scrolling='no' frameborder='0' src='" + EditUrl + '?id=' + id + "'></iframe>");
+                        modal.find('.modal-body').html("<iframe width='100%' height='180' scrolling='no' frameborder='0' src='" + EditUrl + '?id=' + id + "'></iframe>");
                         modal.show();
 		            }
 		        },

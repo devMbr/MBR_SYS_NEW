@@ -60,6 +60,12 @@
     <Compile Include="AN_NetInfo.cs">
       <DependentUpon>MBR.tt</DependentUpon>
     </Compile>
+    <Compile Include="DATADICTIONARY.cs">
+      <DependentUpon>MBR.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DATADICTIONARYDETAIL.cs">
+      <DependentUpon>MBR.tt</DependentUpon>
+    </Compile>
     <Compile Include="Extend\User.cs" />
     <Compile Include="Extend\MBR_Info.cs" />
     <Compile Include="Extend\MBR_WashingInfo.cs" />
@@ -68,6 +74,7 @@
     <Compile Include="Extend\WN_WarningSett.cs" />
     <Compile Include="Extend\WN_WarningCond.cs" />
     <Compile Include="Extend\WN_ParamSett.cs" />
+    <Compile Include="Extend\SYS_ParamInfo.cs" />
     <Compile Include="Knowlege.cs">
       <DependentUpon>MBR.tt</DependentUpon>
     </Compile>

@@ -18,7 +18,7 @@ namespace MBR.Models
 
 
         [Required]
-        [Display(Name = "参数ID")]
+        [Display(Name = "参数")]
         public string ParamID { get; set; }
 
 
@@ -28,7 +28,7 @@ namespace MBR.Models
         [Display(Name = "下限值")]
         public Nullable<double> Low { get; set; }
 
-        [Display(Name = "判定时间")]
+        [Display(Name = "判定时间（秒）")]
         public Nullable<int> WaitTime { get; set; }
     }
 }

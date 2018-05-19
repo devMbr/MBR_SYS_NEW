@@ -23,6 +23,27 @@ namespace MBR.Web.Controllers
             WN_ParamSett entity = new WN_ParamSett();
             entity.WarningCondID = WarningCondID;
 
+            List<SelectListItem> ParamNameList = new List<SelectListItem>();
+            SYS_ParamInfoService sysParamInfoService = new SYS_ParamInfoService();
+            using (MBREntities db = new MBREntities())
+            {
+                var list = db.SYS_ParamInfo.OrderBy(m=>m.ParamName).ToList();
+
+                if (list != null)
+                {
+                    foreach (var item in list)
+                    {
+                        ParamNameList.Add(new SelectListItem()
+                        {
+                            Text = item.Title,
+                            Value = item.ParamName
+                        });
+                    }
+                }               
+            }
+
+            ViewBag.ParamID = ParamNameList;
+
             return View(entity);
         }
 
@@ -32,6 +53,27 @@ namespace MBR.Web.Controllers
             using (MBREntities db = new MBREntities())
             {
                 entity = db.WN_ParamSett.Where(m => m.ParamSetID == id).FirstOrDefault();
+
+                List<SelectListItem> ParamNameList = new List<SelectListItem>();
+                SYS_ParamInfoService sysParamInfoService = new SYS_ParamInfoService();
+                var list = db.SYS_ParamInfo.OrderBy(m => m.ParamName).ToList();
+
+                if (list != null)
+                {
+                    foreach (var item in list)
+                    {
+                        var selected = entity.ParamID.Equals(item.ParamName);
+                        
+                        ParamNameList.Add(new SelectListItem()
+                        {
+                            Text = item.Title,
+                            Value = item.ParamName,
+                            Selected = selected
+                        });
+                    }
+                }
+
+                ViewBag.ParamID = ParamNameList;
             }
             return View(entity);
         }

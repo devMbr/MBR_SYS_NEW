@@ -40,7 +40,18 @@ namespace MBR.Web.Controllers
             using (MBREntities db = new MBREntities())
             {
 
-                var query = db.WN_ParamSett.Where(m => m.WarningCondID == WarningCondID).AsQueryable();
+                //var query = db.WN_ParamSett.Where(m => m.WarningCondID == WarningCondID).AsQueryable();
+                var query = from m in db.WN_ParamSett
+                            join n in db.SYS_ParamInfo on m.ParamID equals n.ParamName
+                            where m.WarningCondID == WarningCondID
+                            select new
+                            {
+                                m.ParamSetID,
+                                ParamID = n.Title,
+                                m.High,
+                                m.Low,
+                                m.WaitTime
+                            };
                 var list = query.ToList();
                 var json = new
                 {

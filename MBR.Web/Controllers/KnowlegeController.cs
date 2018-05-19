@@ -38,7 +38,7 @@ namespace MBR.Web.Controllers
         public JsonResult GetList(GridPager pager)
         {
             Expression<Func<Knowlege, bool>> predicate = null;
-            if(!string.IsNullOrEmpty(Request["search[value]"]))
+            if (!string.IsNullOrEmpty(Request["search[value]"]))
             {
                 string value = Request["search[value]"];
                 predicate = m => m.AllContent.Contains(value);
@@ -67,16 +67,17 @@ namespace MBR.Web.Controllers
             {
                 string Title = entity.Title;
                 string Author = entity.Author;
+                string UpdateTime = entity.UpdateTime.Value.ToShortDateString();
                 string KeyWords = entity.KeyWords;
                 string Content = entity.Content;
 
                 entity.AllContent = string.Format("{0}|{1}|{2}|{3}", Title, Author, KeyWords, Content);
 
-                if (Content != null && Content.Length > 1000) 
+                if (Content != null && Content.Length > 300)
                 {
-                    Content = Content.Substring(0, 1000);
+                    Content = Content.Substring(0, 300);
                 }
-                entity.Summary = string.Format("{0} {1} {2} {3}", Title, Author, KeyWords, Content);
+                entity.Summary = string.Format("{0}<br/>{1}<br/>{2}&nbsp;&nbsp;{3}&nbsp;&nbsp;{4}", Content, KeyWords, Title, Author, UpdateTime);
 
             }
 
@@ -98,22 +99,24 @@ namespace MBR.Web.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)] 
         public JsonResult Edit(Knowlege entity)
         {
             if (entity != null && ModelState.IsValid)
             {
                 string Title = entity.Title;
                 string Author = entity.Author;
+                string UpdateTime = entity.UpdateTime.Value.ToShortDateString();
                 string KeyWords = entity.KeyWords;
                 string Content = entity.Content;
 
                 entity.AllContent = string.Format("{0}|{1}|{2}|{3}", Title, Author, KeyWords, Content);
 
-                if (Content != null && Content.Length > 1000)
+                if (Content != null && Content.Length > 300)
                 {
-                    Content = Content.Substring(0, 1000);
+                    Content = Content.Substring(0, 300);
                 }
-                entity.Summary = string.Format("{0} {1} {2} {3}", Title, Author, KeyWords, Content);
+                entity.Summary = string.Format("{0}<br/>{1}<br/>{2}&nbsp;&nbsp;{3}&nbsp;&nbsp;{4}", Content, KeyWords, Title, Author, UpdateTime);
 
                 using (MBREntities db = new MBREntities())
                 {

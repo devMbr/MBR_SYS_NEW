@@ -29,6 +29,8 @@ namespace MBR.Models
         public DbSet<AN_HighCurve> AN_HighCurve { get; set; }
         public DbSet<AN_LowCurve> AN_LowCurve { get; set; }
         public DbSet<AN_NetInfo> AN_NetInfo { get; set; }
+        public DbSet<DATADICTIONARY> DATADICTIONARY { get; set; }
+        public DbSet<DATADICTIONARYDETAIL> DATADICTIONARYDETAIL { get; set; }
         public DbSet<Knowlege> Knowlege { get; set; }
         public DbSet<MBR_Info> MBR_Info { get; set; }
         public DbSet<MBR_Pool> MBR_Pool { get; set; }

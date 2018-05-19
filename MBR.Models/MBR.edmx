@@ -10,6 +10,8 @@
           <EntitySet Name="AN_HighCurve" EntityType="MBRModel.Store.AN_HighCurve" store:Type="Tables" Schema="mbr" />
           <EntitySet Name="AN_LowCurve" EntityType="MBRModel.Store.AN_LowCurve" store:Type="Tables" Schema="mbr" />
           <EntitySet Name="AN_NetInfo" EntityType="MBRModel.Store.AN_NetInfo" store:Type="Tables" Schema="mbr" />
+          <EntitySet Name="DATADICTIONARY" EntityType="MBRModel.Store.DATADICTIONARY" store:Type="Tables" Schema="mbr" />
+          <EntitySet Name="DATADICTIONARYDETAIL" EntityType="MBRModel.Store.DATADICTIONARYDETAIL" store:Type="Tables" Schema="mbr" />
           <EntitySet Name="Knowlege" EntityType="MBRModel.Store.Knowlege" store:Type="Tables" Schema="mbr" />
           <EntitySet Name="MBR_Info" EntityType="MBRModel.Store.MBR_Info" store:Type="Tables" Schema="mbr" />
           <EntitySet Name="MBR_Pool" EntityType="MBRModel.Store.MBR_Pool" store:Type="Tables" Schema="mbr" />
@@ -100,6 +102,18 @@
             <End Role="WN_WarningSett" EntitySet="WN_WarningSett" />
             <End Role="WN_WarningStatus" EntitySet="WN_WarningStatus" />
           </AssociationSet>
+          <AssociationSet Name="FK_Reference_47" Association="MBRModel.Store.FK_Reference_47">
+            <End Role="DATADICTIONARY" EntitySet="DATADICTIONARY" />
+            <End Role="DATADICTIONARY1" EntitySet="DATADICTIONARY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reference_48" Association="MBRModel.Store.FK_Reference_48">
+            <End Role="DATADICTIONARY" EntitySet="DATADICTIONARY" />
+            <End Role="DATADICTIONARYDETAIL" EntitySet="DATADICTIONARYDETAIL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reference_49" Association="MBRModel.Store.FK_Reference_49">
+            <End Role="DATADICTIONARYDETAIL" EntitySet="DATADICTIONARYDETAIL" />
+            <End Role="DATADICTIONARYDETAIL1" EntitySet="DATADICTIONARYDETAIL" />
+          </AssociationSet>
           <AssociationSet Name="FK_Reference_5" Association="MBRModel.Store.FK_Reference_5">
             <End Role="MBR_Pool" EntitySet="MBR_Pool" />
             <End Role="MBR_Info" EntitySet="MBR_Info" />
@@ -174,6 +188,35 @@
           <Property Name="Matrix3" Type="longtext" />
           <Property Name="UpdateTime3" Type="datetime" />
           <Property Name="TestResult" Type="double" />
+        </EntityType>
+        <EntityType Name="DATADICTIONARY">
+          <Key>
+            <PropertyRef Name="DATADICTIONARYID" />
+          </Key>
+          <Property Name="DATADICTIONARYID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PARENTID" Type="int" />
+          <Property Name="ISTREE" Type="int" />
+          <Property Name="CATEGORY" Type="varchar" MaxLength="50" />
+          <Property Name="CODE" Type="varchar" MaxLength="50" />
+          <Property Name="FULLNAME" Type="varchar" MaxLength="50" />
+          <Property Name="ENABLED" Type="int" />
+          <Property Name="SORTCODE" Type="int" />
+          <Property Name="DELETEMARK" Type="int" />
+          <Property Name="REMARK" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="DATADICTIONARYDETAIL">
+          <Key>
+            <PropertyRef Name="DATADICTIONARYDETAILID" />
+          </Key>
+          <Property Name="DATADICTIONARYDETAILID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DATADICTIONARYID" Type="int" />
+          <Property Name="PARENTID" Type="int" />
+          <Property Name="CODE" Type="varchar" MaxLength="50" />
+          <Property Name="FULLNAME" Type="varchar" MaxLength="50" />
+          <Property Name="REMARK" Type="varchar" MaxLength="200" />
+          <Property Name="ENABLED" Type="int" />
+          <Property Name="SORTCODE" Type="int" />
+          <Property Name="DELETEMARK" Type="int" />
         </EntityType>
         <EntityType Name="Knowlege">
           <Key>
@@ -681,6 +724,42 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Reference_47">
+          <End Role="DATADICTIONARY" Type="MBRModel.Store.DATADICTIONARY" Multiplicity="0..1" />
+          <End Role="DATADICTIONARY1" Type="MBRModel.Store.DATADICTIONARY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DATADICTIONARY">
+              <PropertyRef Name="DATADICTIONARYID" />
+            </Principal>
+            <Dependent Role="DATADICTIONARY1">
+              <PropertyRef Name="PARENTID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reference_48">
+          <End Role="DATADICTIONARY" Type="MBRModel.Store.DATADICTIONARY" Multiplicity="0..1" />
+          <End Role="DATADICTIONARYDETAIL" Type="MBRModel.Store.DATADICTIONARYDETAIL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DATADICTIONARY">
+              <PropertyRef Name="DATADICTIONARYID" />
+            </Principal>
+            <Dependent Role="DATADICTIONARYDETAIL">
+              <PropertyRef Name="DATADICTIONARYID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reference_49">
+          <End Role="DATADICTIONARYDETAIL" Type="MBRModel.Store.DATADICTIONARYDETAIL" Multiplicity="0..1" />
+          <End Role="DATADICTIONARYDETAIL1" Type="MBRModel.Store.DATADICTIONARYDETAIL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DATADICTIONARYDETAIL">
+              <PropertyRef Name="DATADICTIONARYDETAILID" />
+            </Principal>
+            <Dependent Role="DATADICTIONARYDETAIL1">
+              <PropertyRef Name="PARENTID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Reference_5">
           <End Role="MBR_Pool" Type="MBRModel.Store.MBR_Pool" Multiplicity="0..1" />
           <End Role="MBR_Info" Type="MBRModel.Store.MBR_Info" Multiplicity="*" />
@@ -774,6 +853,8 @@
           <EntitySet Name="AN_HighCurve" EntityType="MBRModel.AN_HighCurve" />
           <EntitySet Name="AN_LowCurve" EntityType="MBRModel.AN_LowCurve" />
           <EntitySet Name="AN_NetInfo" EntityType="MBRModel.AN_NetInfo" />
+          <EntitySet Name="DATADICTIONARY" EntityType="MBRModel.DATADICTIONARY" />
+          <EntitySet Name="DATADICTIONARYDETAIL" EntityType="MBRModel.DATADICTIONARYDETAIL" />
           <EntitySet Name="Knowlege" EntityType="MBRModel.Knowlege" />
           <EntitySet Name="MBR_Info" EntityType="MBRModel.MBR_Info" />
           <EntitySet Name="MBR_Pool" EntityType="MBRModel.MBR_Pool" />
@@ -818,6 +899,18 @@
           <AssociationSet Name="FK_Reference_12" Association="MBRModel.FK_Reference_12">
             <End Role="MBR_Pool" EntitySet="MBR_Pool" />
             <End Role="AN_NetInfo" EntitySet="AN_NetInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reference_47" Association="MBRModel.FK_Reference_47">
+            <End Role="DATADICTIONARY" EntitySet="DATADICTIONARY" />
+            <End Role="DATADICTIONARY1" EntitySet="DATADICTIONARY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reference_48" Association="MBRModel.FK_Reference_48">
+            <End Role="DATADICTIONARY" EntitySet="DATADICTIONARY" />
+            <End Role="DATADICTIONARYDETAIL" EntitySet="DATADICTIONARYDETAIL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reference_49" Association="MBRModel.FK_Reference_49">
+            <End Role="DATADICTIONARYDETAIL" EntitySet="DATADICTIONARYDETAIL" />
+            <End Role="DATADICTIONARYDETAIL1" EntitySet="DATADICTIONARYDETAIL" />
           </AssociationSet>
           <AssociationSet Name="FK_Reference_17" Association="MBRModel.FK_Reference_17">
             <End Role="MBR_Info" EntitySet="MBR_Info" />
@@ -937,6 +1030,41 @@
           <Property Type="DateTime" Name="UpdateTime3" />
           <Property Type="Double" Name="TestResult" />
           <NavigationProperty Name="MBR_Pool" Relationship="MBRModel.FK_Reference_12" FromRole="AN_NetInfo" ToRole="MBR_Pool" />
+        </EntityType>
+        <EntityType Name="DATADICTIONARY">
+          <Key>
+            <PropertyRef Name="DATADICTIONARYID" />
+          </Key>
+          <Property Type="Int32" Name="DATADICTIONARYID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="PARENTID" />
+          <Property Type="Int32" Name="ISTREE" />
+          <Property Type="String" Name="CATEGORY" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CODE" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FULLNAME" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="ENABLED" />
+          <Property Type="Int32" Name="SORTCODE" />
+          <Property Type="Int32" Name="DELETEMARK" />
+          <Property Type="String" Name="REMARK" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="DATADICTIONARY1" Relationship="MBRModel.FK_Reference_47" FromRole="DATADICTIONARY" ToRole="DATADICTIONARY1" />
+          <NavigationProperty Name="DATADICTIONARY2" Relationship="MBRModel.FK_Reference_47" FromRole="DATADICTIONARY1" ToRole="DATADICTIONARY" />
+          <NavigationProperty Name="DATADICTIONARYDETAIL" Relationship="MBRModel.FK_Reference_48" FromRole="DATADICTIONARY" ToRole="DATADICTIONARYDETAIL" />
+        </EntityType>
+        <EntityType Name="DATADICTIONARYDETAIL">
+          <Key>
+            <PropertyRef Name="DATADICTIONARYDETAILID" />
+          </Key>
+          <Property Type="Int32" Name="DATADICTIONARYDETAILID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="DATADICTIONARYID" />
+          <Property Type="Int32" Name="PARENTID" />
+          <Property Type="String" Name="CODE" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FULLNAME" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="REMARK" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="ENABLED" />
+          <Property Type="Int32" Name="SORTCODE" />
+          <Property Type="Int32" Name="DELETEMARK" />
+          <NavigationProperty Name="DATADICTIONARY" Relationship="MBRModel.FK_Reference_48" FromRole="DATADICTIONARYDETAIL" ToRole="DATADICTIONARY" />
+          <NavigationProperty Name="DATADICTIONARYDETAIL1" Relationship="MBRModel.FK_Reference_49" FromRole="DATADICTIONARYDETAIL" ToRole="DATADICTIONARYDETAIL1" />
+          <NavigationProperty Name="DATADICTIONARYDETAIL2" Relationship="MBRModel.FK_Reference_49" FromRole="DATADICTIONARYDETAIL1" ToRole="DATADICTIONARYDETAIL" />
         </EntityType>
         <EntityType Name="Knowlege">
           <Key>
@@ -1342,6 +1470,42 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Reference_47">
+          <End Type="MBRModel.DATADICTIONARY" Role="DATADICTIONARY" Multiplicity="0..1" />
+          <End Type="MBRModel.DATADICTIONARY" Role="DATADICTIONARY1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DATADICTIONARY">
+              <PropertyRef Name="DATADICTIONARYID" />
+            </Principal>
+            <Dependent Role="DATADICTIONARY1">
+              <PropertyRef Name="PARENTID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reference_48">
+          <End Type="MBRModel.DATADICTIONARY" Role="DATADICTIONARY" Multiplicity="0..1" />
+          <End Type="MBRModel.DATADICTIONARYDETAIL" Role="DATADICTIONARYDETAIL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DATADICTIONARY">
+              <PropertyRef Name="DATADICTIONARYID" />
+            </Principal>
+            <Dependent Role="DATADICTIONARYDETAIL">
+              <PropertyRef Name="DATADICTIONARYID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reference_49">
+          <End Type="MBRModel.DATADICTIONARYDETAIL" Role="DATADICTIONARYDETAIL" Multiplicity="0..1" />
+          <End Type="MBRModel.DATADICTIONARYDETAIL" Role="DATADICTIONARYDETAIL1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DATADICTIONARYDETAIL">
+              <PropertyRef Name="DATADICTIONARYDETAILID" />
+            </Principal>
+            <Dependent Role="DATADICTIONARYDETAIL1">
+              <PropertyRef Name="PARENTID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Reference_17">
           <End Type="MBRModel.MBR_Info" Role="MBR_Info" Multiplicity="0..1" />
           <End Type="MBRModel.MBR_WashingInfo" Role="MBR_WashingInfo" Multiplicity="*" />
@@ -1591,6 +1755,37 @@
                 <ScalarProperty Name="UpdateTime1" ColumnName="UpdateTime1" />
                 <ScalarProperty Name="Matrix1" ColumnName="Matrix1" />
                 <ScalarProperty Name="PoolID" ColumnName="PoolID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DATADICTIONARY">
+            <EntityTypeMapping TypeName="MBRModel.DATADICTIONARY">
+              <MappingFragment StoreEntitySet="DATADICTIONARY">
+                <ScalarProperty Name="REMARK" ColumnName="REMARK" />
+                <ScalarProperty Name="DELETEMARK" ColumnName="DELETEMARK" />
+                <ScalarProperty Name="SORTCODE" ColumnName="SORTCODE" />
+                <ScalarProperty Name="ENABLED" ColumnName="ENABLED" />
+                <ScalarProperty Name="FULLNAME" ColumnName="FULLNAME" />
+                <ScalarProperty Name="CODE" ColumnName="CODE" />
+                <ScalarProperty Name="CATEGORY" ColumnName="CATEGORY" />
+                <ScalarProperty Name="ISTREE" ColumnName="ISTREE" />
+                <ScalarProperty Name="PARENTID" ColumnName="PARENTID" />
+                <ScalarProperty Name="DATADICTIONARYID" ColumnName="DATADICTIONARYID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DATADICTIONARYDETAIL">
+            <EntityTypeMapping TypeName="MBRModel.DATADICTIONARYDETAIL">
+              <MappingFragment StoreEntitySet="DATADICTIONARYDETAIL">
+                <ScalarProperty Name="DELETEMARK" ColumnName="DELETEMARK" />
+                <ScalarProperty Name="SORTCODE" ColumnName="SORTCODE" />
+                <ScalarProperty Name="ENABLED" ColumnName="ENABLED" />
+                <ScalarProperty Name="REMARK" ColumnName="REMARK" />
+                <ScalarProperty Name="FULLNAME" ColumnName="FULLNAME" />
+                <ScalarProperty Name="CODE" ColumnName="CODE" />
+                <ScalarProperty Name="PARENTID" ColumnName="PARENTID" />
+                <ScalarProperty Name="DATADICTIONARYID" ColumnName="DATADICTIONARYID" />
+                <ScalarProperty Name="DATADICTIONARYDETAILID" ColumnName="DATADICTIONARYDETAILID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1975,36 +2170,38 @@
         <EntityTypeShape EntityType="MBRModel.AN_CLCurve" Width="1.5" PointX="5.25" PointY="8.125" Height="2.3520719401041674" />
         <EntityTypeShape EntityType="MBRModel.AN_HighCurve" Width="1.5" PointX="5.25" PointY="11.25" Height="2.3520719401041674" />
         <EntityTypeShape EntityType="MBRModel.AN_LowCurve" Width="1.5" PointX="5.25" PointY="14.375" Height="2.3520719401041674" />
-        <EntityTypeShape EntityType="MBRModel.AN_NetInfo" Width="1.5" PointX="3" PointY="4.625" Height="2.7341113281249818" />
+        <EntityTypeShape EntityType="MBRModel.AN_NetInfo" Width="1.5" PointX="3" PointY="4.625" Height="2.734111328124996" />
+        <EntityTypeShape EntityType="MBRModel.DATADICTIONARY" Width="1.5" PointX="7.75" PointY="5" Height="3.4981901041666665" />
+        <EntityTypeShape EntityType="MBRModel.DATADICTIONARYDETAIL" Width="1.5" PointX="10" PointY="5.125" Height="3.3071704101562602" />
         <EntityTypeShape EntityType="MBRModel.Knowlege" Width="1.5" PointX="0.75" PointY="0.75" Height="2.5430916341145746" />
-        <EntityTypeShape EntityType="MBRModel.MBR_Info" Width="1.5" PointX="3" PointY="12.875" Height="3.1161507161458246" />
+        <EntityTypeShape EntityType="MBRModel.MBR_Info" Width="1.5" PointX="3" PointY="12.875" Height="3.1161507161458388" />
         <EntityTypeShape EntityType="MBRModel.MBR_Pool" Width="1.5" PointX="0.75" PointY="22.25" Height="3.6892097981770746" />
-        <EntityTypeShape EntityType="MBRModel.MBR_RunningInfo" Width="1.5" PointX="3" PointY="21.5" Height="3.8802294921874818" />
-        <EntityTypeShape EntityType="MBRModel.MBR_WashingInfo" Width="1.5" PointX="5.25" PointY="17.5" Height="3.3071704101562318" />
+        <EntityTypeShape EntityType="MBRModel.MBR_RunningInfo" Width="1.5" PointX="3" PointY="21.5" Height="3.8802294921875102" />
+        <EntityTypeShape EntityType="MBRModel.MBR_WashingInfo" Width="1.5" PointX="5.25" PointY="17.5" Height="3.3071704101562602" />
         <EntityTypeShape EntityType="MBRModel.Module" Width="1.5" PointX="5.75" PointY="1" Height="3.8802294921874823" />
         <EntityTypeShape EntityType="MBRModel.ModulePermission" Width="1.5" PointX="8" PointY="2" Height="1.970032552083353" />
-        <EntityTypeShape EntityType="MBRModel.Role" Width="1.5" PointX="10" PointY="5" Height="2.543091634114603" />
+        <EntityTypeShape EntityType="MBRModel.Role" Width="1.5" PointX="10" PointY="10" Height="2.543091634114603" />
         <EntityTypeShape EntityType="MBRModel.Settings" Width="1.5" PointX="2.75" PointY="0.75" Height="1.7790128580729174" />
         <EntityTypeShape EntityType="MBRModel.SYS_AirStatus" Width="1.5" PointX="0.75" PointY="8.75" Height="1.5879931640624818" />
         <EntityTypeShape EntityType="MBRModel.SYS_AirValve" Width="1.5" PointX="3" PointY="26.125" Height="1.5879931640624818" />
-        <EntityTypeShape EntityType="MBRModel.SYS_CIPLog" Width="1.5" PointX="10.75" PointY="0.75" Height="1.7790128580729174" />
-        <EntityTypeShape EntityType="MBRModel.SYS_CIPPump" Width="1.5" PointX="9.75" PointY="11.75" Height="1.5879931640624818" />
-        <EntityTypeShape EntityType="MBRModel.SYS_CIPStatus" Width="1.5" PointX="11.75" PointY="11.75" Height="1.5879931640624818" />
-        <EntityTypeShape EntityType="MBRModel.SYS_ParamCurValue" Width="1.5" PointX="10" PointY="9" Height="1.970032552083353" />
-        <EntityTypeShape EntityType="MBRModel.SYS_ParamInfo" Width="1.5" PointX="7.75" PointY="8.875" Height="2.1610522460937318" />
-        <EntityTypeShape EntityType="MBRModel.SYS_PoisonLog" Width="1.5" PointX="12.75" PointY="0.75" Height="2.3520719401041674" />
+        <EntityTypeShape EntityType="MBRModel.SYS_CIPLog" Width="1.5" PointX="12.75" PointY="3.75" Height="1.7790128580729174" />
+        <EntityTypeShape EntityType="MBRModel.SYS_CIPPump" Width="1.5" PointX="12.75" PointY="6.75" Height="1.5879931640624818" />
+        <EntityTypeShape EntityType="MBRModel.SYS_CIPStatus" Width="1.5" PointX="12.75" PointY="9.75" Height="1.5879931640624818" />
+        <EntityTypeShape EntityType="MBRModel.SYS_ParamCurValue" Width="1.5" PointX="13" PointY="1" Height="1.970032552083353" />
+        <EntityTypeShape EntityType="MBRModel.SYS_ParamInfo" Width="1.5" PointX="10.75" PointY="0.875" Height="2.1610522460937318" />
+        <EntityTypeShape EntityType="MBRModel.SYS_PoisonLog" Width="1.5" PointX="12.75" PointY="12.75" Height="2.3520719401041674" />
         <EntityTypeShape EntityType="MBRModel.SYS_PoisonPump" Width="1.5" PointX="3" PointY="28.5" Height="2.543091634114603" />
-        <EntityTypeShape EntityType="MBRModel.SYS_PoisonStatus" Width="1.5" PointX="12.75" PointY="4.75" Height="1.5879931640624818" />
-        <EntityTypeShape EntityType="MBRModel.SYS_RuningParam" Width="1.5" PointX="3" PointY="31.75" Height="3.498190104166639" />
-        <EntityTypeShape EntityType="MBRModel.SysException" Width="1.5" PointX="12.75" PointY="7.75" Height="2.5430916341145888" />
-        <EntityTypeShape EntityType="MBRModel.SysLog" Width="1.5" PointX="13.75" PointY="11.75" Height="2.3520719401041674" />
-        <EntityTypeShape EntityType="MBRModel.User" Width="1.5" PointX="7.75" PointY="5" Height="2.543091634114603" />
-        <EntityTypeShape EntityType="MBRModel.WN_ParamSett" Width="1.5" PointX="7.5" PointY="42" Height="2.3520719401041106" />
-        <EntityTypeShape EntityType="MBRModel.WN_PoolStatus" Width="1.5" PointX="3" PointY="36" Height="1.7790128580728606" />
-        <EntityTypeShape EntityType="MBRModel.WN_WarningCond" Width="1.5" PointX="5.25" PointY="42.25" Height="1.970032552083353" />
+        <EntityTypeShape EntityType="MBRModel.SYS_PoisonStatus" Width="1.5" PointX="7.75" PointY="13.75" Height="1.5879931640624818" />
+        <EntityTypeShape EntityType="MBRModel.SYS_RuningParam" Width="1.5" PointX="3" PointY="31.75" Height="3.4981901041666674" />
+        <EntityTypeShape EntityType="MBRModel.SysException" Width="1.5" PointX="9.75" PointY="13.75" Height="2.5430916341145746" />
+        <EntityTypeShape EntityType="MBRModel.SysLog" Width="1.5" PointX="14.75" PointY="3.75" Height="2.3520719401041674" />
+        <EntityTypeShape EntityType="MBRModel.User" Width="1.5" PointX="7.75" PointY="10" Height="2.543091634114603" />
+        <EntityTypeShape EntityType="MBRModel.WN_ParamSett" Width="1.5" PointX="7.5" PointY="42" Height="2.3520719401041674" />
+        <EntityTypeShape EntityType="MBRModel.WN_PoolStatus" Width="1.5" PointX="3" PointY="36" Height="1.7790128580729174" />
+        <EntityTypeShape EntityType="MBRModel.WN_WarningCond" Width="1.5" PointX="5.25" PointY="42.25" Height="1.9700325520833246" />
         <EntityTypeShape EntityType="MBRModel.WN_WarningLog" Width="1.5" PointX="5.25" PointY="32.625" Height="2.7341113281249818" />
         <EntityTypeShape EntityType="MBRModel.WN_WarningSett" Width="1.5" PointX="3" PointY="43.125" Height="2.7341113281249818" />
-        <EntityTypeShape EntityType="MBRModel.WN_WarningStatus" Width="1.5" PointX="5.25" PointY="45.125" Height="1.7790128580728606" />
+        <EntityTypeShape EntityType="MBRModel.WN_WarningStatus" Width="1.5" PointX="5.25" PointY="45.125" Height="1.7790128580729174" />
         <AssociationConnector Association="MBRModel.FK_Reference_11" >
           <ConnectorPoint PointX="3.75" PointY="12.875" />
           <ConnectorPoint PointX="3.75" PointY="9.3010359700520837" />
@@ -2015,26 +2212,42 @@
           <ConnectorPoint PointX="5.25" PointY="13.238535970052084" />
         </AssociationConnector>
         <AssociationConnector Association="MBRModel.FK_Reference_10" >
-          <ConnectorPoint PointX="4.5" PointY="15.183075358072912" />
-          <ConnectorPoint PointX="5.25" PointY="15.183075358072912" />
+          <ConnectorPoint PointX="4.5" PointY="15.183075358072919" />
+          <ConnectorPoint PointX="5.25" PointY="15.183075358072919" />
         </AssociationConnector>
         <AssociationConnector Association="MBRModel.FK_Reference_12" >
           <ConnectorPoint PointX="2.25" PointY="22.251152846153843" />
           <ConnectorPoint PointX="2.625" PointY="21.876152846153843" />
-          <ConnectorPoint PointX="2.625" PointY="5.9920556640624909" />
-          <ConnectorPoint PointX="3" PointY="5.9920556640624909" />
+          <ConnectorPoint PointX="2.625" PointY="5.992055664062498" />
+          <ConnectorPoint PointX="3" PointY="5.992055664062498" />
+        </AssociationConnector>
+        <AssociationConnector Association="MBRModel.FK_Reference_47" >
+          <ConnectorPoint PointX="8.2819230769230767" PointY="8.4981901041666674" />
+          <ConnectorPoint PointX="8.2819230769230767" PointY="8.7481901041666674" />
+          <ConnectorPoint PointX="8.72846153846154" PointY="8.7481901041666674" />
+          <ConnectorPoint PointX="8.72846153846154" PointY="8.4981901041666674" />
+        </AssociationConnector>
+        <AssociationConnector Association="MBRModel.FK_Reference_48" >
+          <ConnectorPoint PointX="9.25" PointY="6.77858520507813" />
+          <ConnectorPoint PointX="10" PointY="6.77858520507813" />
+        </AssociationConnector>
+        <AssociationConnector Association="MBRModel.FK_Reference_49" >
+          <ConnectorPoint PointX="10.531923076923077" PointY="8.43217041015626" />
+          <ConnectorPoint PointX="10.531923076923077" PointY="8.68217041015626" />
+          <ConnectorPoint PointX="10.978461538461538" PointY="8.68217041015626" />
+          <ConnectorPoint PointX="10.978461538461538" PointY="8.43217041015626" />
         </AssociationConnector>
         <AssociationConnector Association="MBRModel.FK_Reference_17" >
-          <ConnectorPoint PointX="3.75" PointY="15.991150716145825" />
-          <ConnectorPoint PointX="3.75" PointY="19.153585205078116" />
-          <ConnectorPoint PointX="5.25" PointY="19.153585205078116" />
+          <ConnectorPoint PointX="3.75" PointY="15.991150716145839" />
+          <ConnectorPoint PointX="3.75" PointY="19.15358520507813" />
+          <ConnectorPoint PointX="5.25" PointY="19.15358520507813" />
         </AssociationConnector>
         <AssociationConnector Association="MBRModel.FK_Reference_5" >
           <ConnectorPoint PointX="1.5" PointY="22.25" />
-          <ConnectorPoint PointX="1.5" PointY="14.433075358072912" />
-          <ConnectorPoint PointX="2.5416666666666665" PointY="14.433075358072912" />
-          <ConnectorPoint PointX="2.7083333333333335" PointY="14.433075358072912" />
-          <ConnectorPoint PointX="3" PointY="14.433075358072912" />
+          <ConnectorPoint PointX="1.5" PointY="14.433075358072919" />
+          <ConnectorPoint PointX="2.5416666666666665" PointY="14.433075358072919" />
+          <ConnectorPoint PointX="2.7083333333333335" PointY="14.433075358072919" />
+          <ConnectorPoint PointX="3" PointY="14.433075358072919" />
         </AssociationConnector>
         <AssociationConnector Association="MBRModel.FK_Pool_AirValve" >
           <ConnectorPoint PointX="1.5" PointY="25.939209798177075" />
@@ -2056,28 +2269,28 @@
         </AssociationConnector>
         <AssociationConnector Association="MBRModel.FK_Pool_RuningParam" >
           <ConnectorPoint PointX="1.0937475" PointY="25.939209798177075" />
-          <ConnectorPoint PointX="1.0937475" PointY="33.49909505208332" />
-          <ConnectorPoint PointX="1.2135404166666668" PointY="33.49909505208332" />
-          <ConnectorPoint PointX="1.3802070833333333" PointY="33.49909505208332" />
-          <ConnectorPoint PointX="1.6197929166666667" PointY="33.49909505208332" />
-          <ConnectorPoint PointX="1.7864595833333332" PointY="33.49909505208332" />
-          <ConnectorPoint PointX="2.0260454166666664" PointY="33.49909505208332" />
-          <ConnectorPoint PointX="2.1927120833333333" PointY="33.49909505208332" />
-          <ConnectorPoint PointX="3" PointY="33.49909505208332" />
+          <ConnectorPoint PointX="1.0937475" PointY="33.499095052083334" />
+          <ConnectorPoint PointX="1.2135404166666668" PointY="33.499095052083334" />
+          <ConnectorPoint PointX="1.3802070833333333" PointY="33.499095052083334" />
+          <ConnectorPoint PointX="1.6197929166666667" PointY="33.499095052083334" />
+          <ConnectorPoint PointX="1.7864595833333332" PointY="33.499095052083334" />
+          <ConnectorPoint PointX="2.0260454166666664" PointY="33.499095052083334" />
+          <ConnectorPoint PointX="2.1927120833333333" PointY="33.499095052083334" />
+          <ConnectorPoint PointX="3" PointY="33.499095052083334" />
         </AssociationConnector>
         <AssociationConnector Association="MBRModel.FK_Pool_Status" >
           <ConnectorPoint PointX="2.10937875" PointY="25.939209798177075" />
-          <ConnectorPoint PointX="2.10937875" PointY="36.88950642903643" />
-          <ConnectorPoint PointX="3" PointY="36.88950642903643" />
+          <ConnectorPoint PointX="2.10937875" PointY="36.889506429036459" />
+          <ConnectorPoint PointX="3" PointY="36.889506429036459" />
         </AssociationConnector>
         <AssociationConnector Association="MBRModel.FK_Pool_WarningLog" >
           <ConnectorPoint PointX="1.70312625" PointY="25.939209798177075" />
-          <ConnectorPoint PointX="1.70312625" PointY="35.33490071614581" />
-          <ConnectorPoint PointX="2.0260454166666664" PointY="35.33490071614581" />
-          <ConnectorPoint PointX="2.1927120833333333" PointY="35.33490071614581" />
-          <ConnectorPoint PointX="4.791666666666667" PointY="35.33490071614581" />
-          <ConnectorPoint PointX="4.958333333333333" PointY="35.33490071614581" />
-          <ConnectorPoint PointX="5.25" PointY="35.33490071614581" />
+          <ConnectorPoint PointX="1.70312625" PointY="35.334900716145825" />
+          <ConnectorPoint PointX="2.0260454166666664" PointY="35.334900716145825" />
+          <ConnectorPoint PointX="2.1927120833333333" PointY="35.334900716145825" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="35.334900716145825" />
+          <ConnectorPoint PointX="4.958333333333333" PointY="35.334900716145825" />
+          <ConnectorPoint PointX="5.25" PointY="35.334900716145825" />
         </AssociationConnector>
         <AssociationConnector Association="MBRModel.FK_Pool_WarningSett" >
           <ConnectorPoint PointX="1.29687375" PointY="25.939209798177075" />
@@ -2085,8 +2298,8 @@
           <ConnectorPoint PointX="3" PointY="44.492055664062491" />
         </AssociationConnector>
         <AssociationConnector Association="MBRModel.FK_Reference_7" >
-          <ConnectorPoint PointX="2.25" PointY="23.846943669170656" />
-          <ConnectorPoint PointX="3" PointY="23.846943669170656" />
+          <ConnectorPoint PointX="2.25" PointY="23.84694366917067" />
+          <ConnectorPoint PointX="3" PointY="23.84694366917067" />
         </AssociationConnector>
         <AssociationConnector Association="MBRModel.FK_Reference_55" >
           <ConnectorPoint PointX="7.25" PointY="2.9850162760416765" />
@@ -2099,30 +2312,30 @@
           <ConnectorPoint PointX="6.7284615384615378" PointY="4.8802294921874818" />
         </AssociationConnector>
         <AssociationConnector Association="MBRModel.FK_Reference_6" >
-          <ConnectorPoint PointX="9.25" PointY="9.9850162760416765" />
-          <ConnectorPoint PointX="10" PointY="9.9850162760416765" />
+          <ConnectorPoint PointX="12.25" PointY="1.9850162760416765" />
+          <ConnectorPoint PointX="13" PointY="1.9850162760416765" />
         </AssociationConnector>
         <AssociationConnector Association="MBRModel.FK_Reference_2" >
-          <ConnectorPoint PointX="6.75" PointY="43.235016276041677" />
-          <ConnectorPoint PointX="7.5" PointY="43.235016276041677" />
+          <ConnectorPoint PointX="6.75" PointY="43.235016276041662" />
+          <ConnectorPoint PointX="7.5" PointY="43.235016276041662" />
         </AssociationConnector>
         <AssociationConnector Association="MBRModel.FK_Reference_1" >
-          <ConnectorPoint PointX="4.5" PointY="43.672516276041677" />
-          <ConnectorPoint PointX="5.25" PointY="43.672516276041677" />
+          <ConnectorPoint PointX="4.5" PointY="43.672516276041662" />
+          <ConnectorPoint PointX="5.25" PointY="43.672516276041662" />
         </AssociationConnector>
         <AssociationConnector Association="MBRModel.FK_Reference_3" >
           <ConnectorPoint PointX="4.5000000000000018" PointY="43.125" />
           <ConnectorPoint PointX="4.875" PointY="42.75" />
-          <ConnectorPoint PointX="4.875" PointY="33.94869835807291" />
-          <ConnectorPoint PointX="5.25" PointY="33.94869835807291" />
+          <ConnectorPoint PointX="4.875" PointY="33.948698358072917" />
+          <ConnectorPoint PointX="5.25" PointY="33.948698358072917" />
         </AssociationConnector>
         <AssociationConnector Association="MBRModel.FK_Reference_4" >
           <ConnectorPoint PointX="4.5" PointY="45.492055664062491" />
           <ConnectorPoint PointX="5.25" PointY="45.492055664062491" />
         </AssociationConnector>
         <AssociationConnector Association="MBRModel.RoleUser" >
-          <ConnectorPoint PointX="9.25" PointY="6.2715458170573015" />
-          <ConnectorPoint PointX="10" PointY="6.2715458170573015" />
+          <ConnectorPoint PointX="9.25" PointY="11.271545817057302" />
+          <ConnectorPoint PointX="10" PointY="11.271545817057302" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

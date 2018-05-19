@@ -164,6 +164,7 @@
     <Compile Include="Controllers\KnowlegeController.cs" />
     <Compile Include="Controllers\WarningCondController.cs" />
     <Compile Include="Controllers\ParamSettController.cs" />
+    <Compile Include="Controllers\DATADICTIONARYController.cs" />
     <Compile Include="Core\BaseController.cs" />
     <Compile Include="Core\Constants.cs" />
     <Compile Include="Core\DataPagingHelper.cs" />
@@ -195,6 +196,8 @@
     <Compile Include="Services\WarningSettService.cs" />
     <Compile Include="Services\WarningCondService.cs" />
     <Compile Include="Services\ParamSettService.cs" />
+    <Compile Include="Services\DATADICTIONARYService.cs" />
+    <Compile Include="Services\SYS_ParamInfoService.cs" />
     <Compile Include="Util\Encrypt.cs" />
     <Compile Include="Util\EnumHelper.cs" />
     <Compile Include="Util\ExceptionHander.cs" />

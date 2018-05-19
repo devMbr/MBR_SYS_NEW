@@ -12,7 +12,6 @@ namespace MBR.Web.Controllers
 {
     public class WarningSettController : BaseController
     {
-
         public ViewResult Index()
         {
             return View();
@@ -21,10 +20,13 @@ namespace MBR.Web.Controllers
         public ViewResult WarningSettEdit()
         {
             WarningSettModel model = new WarningSettModel();
+
+
             using (MBREntities db = new MBREntities())
             {
                 model.Settings = db.Settings.AsQueryable().FirstOrDefault();
             }
+
             return View(model);
         }
 
@@ -61,6 +63,25 @@ namespace MBR.Web.Controllers
 
         public ActionResult Create()
         {
+
+            List<SelectListItem> WarningLevelList = new List<SelectListItem>();
+            DATADICTIONARYService DATADICTIONARYService = new DATADICTIONARYService();
+            var dicValues = DATADICTIONARYService.GetDicValuesByCode("WarningLevel");
+
+            if (dicValues != null)
+            {
+                foreach (var item in dicValues)
+                {
+                    WarningLevelList.Add(new SelectListItem()
+                    {
+                        Text = item.Value,
+                        Value = item.Key
+                    });
+                }
+            }
+
+            ViewBag.WarningLevel = WarningLevelList;
+
             return View();
         }
 
@@ -71,6 +92,28 @@ namespace MBR.Web.Controllers
             {
                 entity = db.WN_WarningSett.Find(id);
             }
+
+            List<SelectListItem> WarningLevelList = new List<SelectListItem>();
+            DATADICTIONARYService DATADICTIONARYService = new DATADICTIONARYService();
+            var dicValues = DATADICTIONARYService.GetDicValuesByCode("WarningLevel");
+
+            if (dicValues != null)
+            {
+                foreach (var item in dicValues)
+                {
+                    bool selected = item.Key.Equals((entity.WarningLevel ?? 0).ToString());
+                    WarningLevelList.Add(new SelectListItem()
+                    {
+                        Text = item.Value,
+                        Value = item.Key,
+                        Selected = selected
+                    });
+                }
+            }
+
+
+            ViewBag.WarningLevel = WarningLevelList;
+
             return View(entity);
         }
 
@@ -163,7 +206,7 @@ namespace MBR.Web.Controllers
         }
 
 
-        public JsonResult GetConditonList(GridPager pager,int WarningSettID=0)
+        public JsonResult GetConditonList(GridPager pager, int WarningSettID = 0)
         {
             Expression<Func<WN_WarningCond, bool>> predicate = null;
 

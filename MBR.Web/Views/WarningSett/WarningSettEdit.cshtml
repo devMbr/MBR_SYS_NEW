@@ -124,9 +124,25 @@
         var CreateUrl = '@Url.Action("Create")';
         var EditUrl = '@Url.Action("Edit")';
         var DeleteUrl = '@Url.Action("Delete")';
+        var GetDicList = '@Url.Action("GetDicValuesByCode", "DATADICTIONARY", new { })';
     </script>
     <script type="text/javascript">
         $(function () {
+
+            var WarningLevelDic = [];
+
+            $.ajax({
+                url: GetDicList,
+                async: false, //同步
+                dataType: 'json',
+                data: { code: 'WarningLevel' },
+                success: function (res) {
+                    if (res) {
+                        WarningLevelDic = res;
+                    }
+                }
+            });
+
             var table = $('#tbWarningSett').DataTable({
                 "searching": false,
                 "processing": true,
@@ -144,7 +160,13 @@
                 },
                 "columns": [
                     { "data": "Title" },
-                    { "data": "WarningLevel" },
+                    {
+                        "data": "WarningLevel",
+                        "render": function (data, type, full, meta) {
+
+                            return WarningLevelDic[data];
+                        }
+                    },
                     { "data": "WarningInfo" },
                     {
                         "data": "WarningSettID",
@@ -176,7 +198,7 @@
 
         function OnEdit(id) {
             var modal = $('#EditModal');
-            modal.find('.modal-body').html("<iframe name='editFrame' width='100%' height='450' scrolling='no' frameborder='0' src='" + EditUrl + '?id=' + id + "'></iframe>");
+            modal.find('.modal-body').html("<iframe name='editFrame' width='100%' height='550' scrolling='no' frameborder='0' src='" + EditUrl + '?id=' + id + "'></iframe>");
         }
 
         function OnDelete(id) {

@@ -28,7 +28,7 @@
         <div class="form-group">
             @Html.LabelFor(m => m.Content, new { @class = "control-label col-xs-2" })
             <div class="col-xs-10">
-                @Html.TextAreaFor(m => m.Content, new { @class = "form-control",rows="5" })
+                @Html.TextAreaFor(m => m.Content, new { @class = "form-control",rows="8" })
                 @Html.ValidationMessageFor(m => m.Content)
             </div>
         </div>
@@ -47,14 +47,29 @@
     </div>
 }
 @section header{
-    <link rel="stylesheet" href="~/plugins/datepicker/datepicker3.css">
+    <link rel="stylesheet" href="~/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 }
 @section scripts{
+    <script src="~/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+    <script src="~/plugins/bootstrap-wysihtml5/locales/bootstrap-wysihtml5.zh-CN.js"></script>
     <script src="~/plugins/datepicker/bootstrap-datepicker.js"></script>
     <script src="~/plugins/datepicker/locales/bootstrap-datepicker.zh-CN.js"></script>
     <script>
         $(function () {
-
+            $('#Content').wysihtml5({
+                locale: "zh-CN",
+                toolbar: {
+                    "font-styles": true, //Font styling, e.g. h1, h2, etc. Default true
+                    "emphasis": true, //Italics, bold, etc. Default true
+                    "lists": true, //(Un)ordered lists, e.g. Bullets, Numbers. Default true
+                    "html": true, //Button which allows you to edit the generated HTML. Default false
+                    "link": false, //Button to insert a link. Default true
+                    "image": true, //Button to insert an image. Default true,
+                    "color": false, //Button to change color of font  
+                    "blockquote": true, //Blockquote  
+                    "size": 'none' //default: none, other options are xs, sm, lg
+                }
+            });
 
             $('#ChangeDate').datepicker({
                 language: 'zh-CN',
